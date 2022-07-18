@@ -1,0 +1,3001 @@
+@prefix : <http://www.semanticweb.org/daria/dt_archive#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix wd: <https://www.wikidata.org/wiki/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xml:<http://www.w3.org/XML/1998/namespace/> .
+@prefix itdt: <http://www.semanticweb.org/daria/dt_archive#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/daria/dt_archive> .
+
+<http://www.semanticweb.org/daria/dt_archive> rdf:type owl:Ontology ;
+                                               dc:creator "Daria Mikhaylova (University of Pisa)"@en ;
+                                               dcterms:contributor "Daniele Metilli (University College London)"@en ;
+                                               <http://purl.org/vocab/vann/preferredNamespacePrefix> "itdt"@en ;
+                                               rdfs:comment """The ITDT ontology is an extension of RiC-O (https://www.ica.org/standards/RiC/ontology) created to describe the architectual records of the Italian architect and engineer Dino Tamburini. 
+The ontology provides sub-classes of the class rico:Record for description of architectural graphical documents. 
+The main concept of the ontology is the Architectural Project, which is seen from three different perspectives: that of file, that of knowledge process and that of potential built work."""@en ;
+                                               rdfs:label "ITDT Ontology: Extension of RiC Ontology for architectural archives (version 0.1)"@en ;
+                                               owl:versionInfo "version 0.1, 2022-07-17"@en .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+<http://purl.org/vocab/vann/preferredNamespacePrefix> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#sameAs
+owl:sameAs rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+<http://www.w3.org/2004/02/skos/core#changeNote> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+<http://www.w3.org/2004/02/skos/core#definition> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+<http://www.w3.org/2004/02/skos/core#example> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+<http://www.w3.org/2004/02/skos/core#inScheme> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+<http://www.w3.org/2004/02/skos/core#scopeNote> rdf:type owl:AnnotationProperty .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RiCCMCorrespondingComponent
+rico:RiCCMCorrespondingComponent rdf:type owl:AnnotationProperty .
+
+
+###  https://www.ica.org/standards/RiC/ontology#closeTo
+rico:closeTo rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/daria/dt_archive#followsInProject
+itdt:followsInProject rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:followsInTime ;
+                      owl:inverseOf itdt:precedesInProject ;
+                      rdfs:domain rico:Record ;
+                      rdfs:range rico:Record ;
+                      rdfs:label "dt follows in project"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasFormalBuildingType
+itdt:hasFormalBuildingType rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:hasOrHadCategory ;
+                           owl:inverseOf itdt:isFormalBuildingTypeOf ;
+                           rdfs:domain itdt:ArchitecturalProject ;
+                           rdfs:range itdt:FormalBuildingType ;
+                           rdfs:comment "Collega un Progetto architettonico alla sua tipologia edilizia formale."@it ,
+                                        "Connects an Architectual Project to its Formal Building Type."@en ;
+                           rdfs:label "ha una tipologia edilizia formale"@it ,
+                                      "has formal building type"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasFunctionalBuildingType
+itdt:hasFunctionalBuildingType rdf:type owl:ObjectProperty ;
+                               rdfs:subPropertyOf rico:hasOrHadCategory ;
+                               owl:inverseOf itdt:isFunctionalBuildingTypeOf ;
+                               rdfs:domain itdt:ArchitecturalProject ;
+                               rdfs:range itdt:FunctionalBuildingType ;
+                               rdfs:comment "Collega un Progetto architettonico alla sua Destinazione d'uso."@it ,
+                                            "Connects an Architectual Project to its Functional Building Type."@en ;
+                               rdfs:label "ha una destinazione d'uso"@it ,
+                                          "has functional building type"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasOrHadProjectPhase
+itdt:hasOrHadProjectPhase rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:hasOrHadPart ;
+                          owl:inverseOf itdt:isOrWasProjectPhaseOf ;
+                          rdfs:domain itdt:ArchitecturalProject ;
+                          rdfs:range itdt:ProjectPhase ;
+                          rdfs:comment "Collega un Progetto Architettonico alla sua Fase di progetto"@it ,
+                                       "Connects an Architectural Project to its Project Phase"@en ;
+                          rdfs:label "ha o ha avuto una fase di progetto"@it ,
+                                     "has or had project phase"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasOrHadProjectRole
+itdt:hasOrHadProjectRole rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:isRelatedTo ;
+                         owl:inverseOf itdt:isOrWasProjectRoleOf ;
+                         rdfs:domain itdt:ProjectParticipation ;
+                         rdfs:range itdt:ProjectRole ;
+                         rdfs:comment "Collega Partecipazione in progetto ad un Ruolo professionale in progetto che l'Agente ha avuto nel Progetto architettonico."@it ,
+                                      "Connects Project Participation with the Project Role the Agent had in the Architectural Project."@en ;
+                         rdfs:label "ha o ha avuto un ruolo professionale in progetto"@it ,
+                                    "has or had project role"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasOrHasProjectParticipation
+itdt:hasOrHasProjectParticipation rdf:type owl:ObjectProperty ;
+                                  rdfs:subPropertyOf rico:isEventAssociatedWith ;
+                                  owl:inverseOf itdt:isOrWasProjectParticipationOf ;
+                                  rdfs:domain rico:Activity ;
+                                  rdfs:range itdt:ProjectParticipation ;
+                                  rdfs:comment "Collega un Progetto architettonico o una Fase di progetto ad una Partecipazione in progetto"@it ,
+                                               "Connects an Architectural Project o Project Phase to a Project Participation."@en ;
+                                  rdfs:label "ha o ha avuto partecipazione in progetto"@it ,
+                                             "has or had project participation"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#hasProjectScale
+itdt:hasProjectScale rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf rico:hasOrHadCategory ;
+                     owl:inverseOf itdt:isProjectScaleOf ;
+                     rdfs:domain itdt:ArchitecturalProject ;
+                     rdfs:range itdt:ProjectScale ;
+                     rdfs:comment "Collega un Progetto architettonico alla sua Scala di progetto."@it ,
+                                  "Connects an Architectual Project to its Project Scale"@en ;
+                     rdfs:label "ha scala di progetto"@it ,
+                                "has project scale"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isCommissionedBy
+itdt:isCommissionedBy rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:hasProvenance ;
+                      owl:inverseOf itdt:isCommissionerOf ;
+                      rdfs:domain itdt:ArchitecturalProject ;
+                      rdfs:range rico:Agent ;
+                      rdfs:comment "Collega un Progetto architettonico con l'Agente che lo ha commissionato."@it ,
+                                   "Connects an Architectural Project to an Agent that commissioned its realisation."@en ;
+                      rdfs:label "commissionato da"@it ,
+                                 "is commissioned by"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isCommissionerOf
+itdt:isCommissionerOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isProvenanceOf ;
+                      rdfs:domain rico:Agent ;
+                      rdfs:range itdt:ArchitecturalProject ;
+                      rdfs:comment "Collega un Agente ad un Progetto architettonico che egli ha commissionato."@it ,
+                                   "Connects an Agent to an Architectural project that they commisioned."@en ;
+                      rdfs:label "ha commissionato"@it ,
+                                 "is commissioner of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isFormalBuildingTypeOf
+itdt:isFormalBuildingTypeOf rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                            rdfs:domain itdt:FormalBuildingType ;
+                            rdfs:range itdt:ArchitecturalProject ;
+                            rdfs:comment "Collega una Tipologia edilizia formale al Progetto Architettonico che essa classifica."@it ,
+                                         "Connects a Formal Building Type to an Architectural Project that it categorises."@en ;
+                            rdfs:label "e' tipoligia edilizia formale di"@it ,
+                                       "is formal building type of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isFunctionalBuildingTypeOf
+itdt:isFunctionalBuildingTypeOf rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                                rdfs:domain itdt:FunctionalBuildingType ;
+                                rdfs:range itdt:ArchitecturalProject ;
+                                rdfs:comment "Collega una Destinazione d'uso ad un Progetto architettonico che essa classifica."@it ,
+                                             "Connects a Functional Building Type to an Architectural Project that it categorises."@en ;
+                                rdfs:label "e' destinazione d'uso di"@it ,
+                                           "is functional building type of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isOrWasDescribedBy
+itdt:isOrWasDescribedBy rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:isOrWasSubjectOf ;
+                        owl:inverseOf rico:describesOrDescribed ;
+                        rdfs:range rico:RecordResource ;
+                        rdfs:comment "inverse of describes or described"@en ;
+                        rdfs:label "is or was described by"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isOrWasProjectParticipationOf
+itdt:isOrWasProjectParticipationOf rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf rico:isAssociatedWithEvent ;
+                                   rdfs:domain itdt:ProjectParticipation ;
+                                   rdfs:range rico:Activity ;
+                                   rdfs:comment "Collega una Partecipazione in progetto con un Progetto architettonico o con un Fase di progetto nel quale un Agente ha partecipato con un particolare Ruolo professionale in progetto"@it ,
+                                                "Connects Project Participation to an Architectural Project or to a Project Phase in which an Agent participated with a specific Project Role"@en ;
+                                   rdfs:label "e' o e' stata patecipazione di"@it ,
+                                              "is or was project participation of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isOrWasProjectPhaseOf
+itdt:isOrWasProjectPhaseOf rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isOrWasPartOf ;
+                           rdfs:domain itdt:ProjectPhase ;
+                           rdfs:range itdt:ArchitecturalProject ;
+                           rdfs:comment "Collega una Fase di progetto ad un Progetto architettonico di cui faceva parte."@it ,
+                                        "Connects a Project Phase to an Architectural Project of which it was part."@en ;
+                           rdfs:label "e' o e' stata una fase di progetto"@it ,
+                                      "is or was project phase of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isOrWasProjectRoleOf
+itdt:isOrWasProjectRoleOf rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:isRelatedTo ;
+                          rdfs:domain itdt:ProjectRole ;
+                          rdfs:range itdt:ProjectParticipation ;
+                          rdfs:comment "Collega una Partecipazione in progetto  ad un Ruolo professionale in progetto con la quale un Agente ha partecipato in un Progetto architettonico, collegati con la stessa Partecipazione in progetto."@it ,
+                                       "Connects a Project Participation to a Project Role with which an Agent participated in a Architectural project connected by the same Project Participation."@en ;
+                          rdfs:label "e' o e' stato ruolo di"@it ,
+                                     "is or was project role of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isProjectScaleOf
+itdt:isProjectScaleOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                      rdfs:domain itdt:ProjectScale ;
+                      rdfs:range itdt:ArchitecturalProject ;
+                      rdfs:comment "Collega una Scala di progetto ad un Progetto architettonico che essa classifica."@it ,
+                                   "Connects a Project Scale to an Architectural Project that it categorises."@en ,
+                                   "e' una scala di progetto di"@it ;
+                      rdfs:label "is project scale of"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#precedesInProject
+itdt:precedesInProject rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:precedesInTime ;
+                       rdfs:domain rico:Record ;
+                       rdfs:range rico:Record ;
+                       rdfs:label "precedes in project"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#containsOrContained
+rico:containsOrContained rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:hasOrHadPart ,
+                                            rico:isAssociatedWithPlace ;
+                         owl:inverseOf rico:isOrWasContainedBy ;
+                         rdfs:domain rico:Place ;
+                         rdfs:range rico:Place ;
+                         rdfs:comment """Connects a Place to a region that is or was within
+            it."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "contains or contained"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Use for connecting two geographical or administrative
+            regions."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R007 ('contains or contained'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#describesOrDescribed
+rico:describesOrDescribed rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:hasOrHadSubject ;
+                          rdfs:domain rico:RecordResource ;
+                          rdfs:comment """Connects a Record Resource to a Thing that it
+            describes."""@en ;
+                          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                          rdfs:label "describes or described"@en ;
+                          <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Can be used, among other situations, for specifying that some
+            finding aid (a Record that has Documentary Form Type Finding Aid) describes some Record
+            Set."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R021 (describes or
+            described)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#documentedBy
+rico:documentedBy rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf rico:resultsOrResultedIn ;
+                  owl:inverseOf rico:documents ;
+                  rdfs:domain rico:Activity ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( rico:Instantiation
+                                             rico:RecordResource
+                                           )
+                             ] ;
+                  rdfs:comment "Inverse of 'documents' object property."@en ;
+                  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                  rdfs:label "documented by"@en ;
+                  <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R033i ('documented by'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#documents
+rico:documents rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf rico:resultsOrResultedFrom ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( rico:Instantiation
+                                           rico:RecordResource
+                                         )
+                           ] ;
+               rdfs:range rico:Activity ;
+               owl:propertyChainAxiom ( rico:documents
+                                        itdt:isOrWasProjectPhaseOf
+                                      ) ;
+               rdfs:comment """Connects a Record Resource or an Instantiation to the Activity
+            that generates the Record Resource or Instantiation."""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "documents"@en ;
+               <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R033 ('documents'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#followsInTime
+rico:followsInTime rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:followsOrFollowed ;
+                   owl:inverseOf rico:precedesInTime ;
+                   rdfs:label "follows in time"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#followsOrFollowed
+rico:followsOrFollowed rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isRelatedTo ;
+                       owl:inverseOf rico:precedesOrPreceded ;
+                       rdfs:comment "Inverse of 'precedesOrPreceded' object property."@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "follows or followed"@en ;
+                       <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R008i ('follows or followed'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasAuthor
+rico:hasAuthor rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf rico:hasCreator ;
+               owl:inverseOf rico:isAuthorOf ;
+               rdfs:domain rico:Record ;
+               rdfs:comment """Connects a Record to the Group, Person or Position that is
+            responsible for conceiving and formulating the information contained in the
+            Record."""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "has author"@en ;
+               <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """To be used for any contribution to the content of a Record.
+            Includes (of course) the Person, Group or Position in whose name or by whose command the
+            content may have been formulated and first instantiated (e.g. the person who signed
+            it)."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R079 ('has author'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasBeginningDate
+rico:hasBeginningDate rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isAssociatedWithDate ;
+                      owl:inverseOf rico:isBeginningDateOf ;
+                      rdfs:range rico:Date ;
+                      rdfs:comment "Inverse of 'is beginning date of' object property"@en ;
+                      rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                      rdfs:label "has beginning date "@en ;
+                      rico:RiCCMCorrespondingComponent """RiC-R069i ('has beginning date'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasBirthDate
+rico:hasBirthDate rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf rico:hasBeginningDate ;
+                  owl:inverseOf rico:isBirthDateOf ;
+                  rdfs:domain rico:Person ;
+                  rdfs:range rico:Date ;
+                  rdfs:comment "Inverse of 'is birth date of' object property"@en ;
+                  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                  rdfs:label "has birth date "@en ;
+                  rico:RiCCMCorrespondingComponent """RiC-R070i ('has birth date'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasCreator
+rico:hasCreator rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rico:hasProvenance ;
+                owl:inverseOf rico:isCreatorOf ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( rico:Instantiation
+                                            rico:RecordResource
+                                          )
+                            ] ;
+                rdfs:range rico:Agent ;
+                rdfs:comment """Connects a Record Resource or an Instantiation to an Agent that
+            is either responsible for all or some of the content of the Record Resource or is a
+            contributor to the genesis or production of an Instantiation."""@en ;
+                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                rdfs:label "has creator"@en ;
+                <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Covers the definition of author in diplomatics, and any
+            contribution to the intellectual content of a Record Resource."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R027 ('has creator'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasDeathDate
+rico:hasDeathDate rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf rico:hasEndDate ;
+                  owl:inverseOf rico:isDeathDateOf ;
+                  rdfs:domain rico:Person ;
+                  rdfs:range rico:Date ;
+                  rdfs:comment "Inverse of 'is death date of' object property"@en ;
+                  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                  rdfs:label "has death date "@en ;
+                  rico:RiCCMCorrespondingComponent """RiC-R072i ('has death date'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasDerivedInstantiation
+rico:hasDerivedInstantiation rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rico:precedesInTime ;
+                             owl:inverseOf rico:isDerivedFromInstantiation ;
+                             rdfs:domain rico:Instantiation ;
+                             rdfs:range rico:Instantiation ;
+                             rdfs:comment """Connects an Instantiation to an Instantiation that is derived
+            from it."""@en ;
+                             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                             rdfs:label "has derived instantiation "@en ;
+                             rico:RiCCMCorrespondingComponent """RiC-R014 ('has derived instantiation'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasDocumentaryFormType
+rico:hasDocumentaryFormType rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rico:hasOrHadCategory ;
+                            owl:inverseOf rico:isDocumentaryFormTypeOf ;
+                            rdfs:domain [ rdf:type owl:Class ;
+                                          owl:unionOf ( rico:Record
+                                                        rico:RecordPart
+                                                      )
+                                        ] ;
+                            rdfs:range rico:DocumentaryFormType ;
+                            rdfs:comment """Connects a Record or Record Part to its Documentary Form
+            Type."""@en ;
+                            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                            rdfs:label "has documentary form type"@en ;
+                            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasEndDate
+rico:hasEndDate rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rico:isAssociatedWithDate ;
+                owl:inverseOf rico:isEndDateOf ;
+                rdfs:range rico:Date ;
+                rdfs:comment "Inverse of 'is end date of' object property."@en ;
+                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                rdfs:label "has end date "@en ;
+                rico:RiCCMCorrespondingComponent """RiC-R071i ('has end date'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasInstantiation
+rico:hasInstantiation rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isRelatedTo ;
+                      owl:inverseOf rico:isInstantiationOf ;
+                      rdfs:domain rico:RecordResource ;
+                      rdfs:range rico:Instantiation ;
+                      rdfs:comment """Connects a Record Resource to one of its
+            Instantiations."""@en ;
+                      rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                      rdfs:label "has instantiation"@en ;
+                      <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R025 ('has instantiation'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadAuthorityOver
+rico:hasOrHadAuthorityOver rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isRelatedTo ;
+                           owl:inverseOf rico:isOrWasUnderAuthorityOf ;
+                           rdfs:domain rico:Agent ;
+                           rdfs:comment """Connects an Agent to a Thing the Agent has or had authority
+            over."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "has or had authority over"@en ;
+                           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R036 ('has or had authority over'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadCategory
+rico:hasOrHadCategory rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isRelatedTo ;
+                      owl:inverseOf rico:isOrWasCategoryOf ;
+                      rdfs:domain rico:Thing ;
+                      rdfs:range rico:Type ;
+                      rdfs:comment """Connects a Thing to a Type that categorizes or categorized
+            it."""@en ;
+                      rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                      rdfs:label "has or had category"@en ;
+                      <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadController
+rico:hasOrHadController rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:isOrWasUnderAuthorityOf ;
+                        owl:inverseOf rico:isOrWasControllerOf ;
+                        rdfs:domain rico:Agent ;
+                        rdfs:range rico:Agent ;
+                        rdfs:comment """Inverse of 'is or was controller of' object
+            property."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "has or had controller"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R041i ('has or had controller'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadLeader
+rico:hasOrHadLeader rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf rico:hasOrHadController ;
+                    owl:inverseOf rico:isOrWasLeaderOf ;
+                    rdfs:domain rico:Group ;
+                    rdfs:range rico:Person ;
+                    rdfs:comment "Inverse of 'is or was leader of' object property."@en ;
+                    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                    rdfs:label "has or had leader"@en ;
+                    <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R042i ('has or had leader'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadMainSubject
+rico:hasOrHadMainSubject rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:hasOrHadSubject ;
+                         owl:inverseOf rico:isOrWasMainSubjectOf ;
+                         rdfs:domain rico:RecordResource ;
+                         rdfs:comment """Connects a Record Resource to a Thing that is or was its main
+            subject."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "has or had main subject"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Use for specifying, for example, that a Record Set of type
+            personal file has main subject some person, which would help end users to retrieve the
+            main archival resources about this person."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R020 ('has or had main subject'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadOwner
+rico:hasOrHadOwner rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:isOrWasUnderAuthorityOf ;
+                   owl:inverseOf rico:isOrWasOwnerOf ;
+                   rdfs:comment "Inverse of 'is or was owner of' object property."@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "has or had owner"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R037i ('has or had owner'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadPart
+rico:hasOrHadPart rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf rico:isRelatedTo ;
+                  owl:inverseOf rico:isOrWasPartOf ;
+                  rdfs:comment "Connects a Thing to a constitutive or component part of that Thing."@en ;
+                  rdfs:label "has or had part"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadParticipant
+rico:hasOrHadParticipant rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:isEventAssociatedWith ;
+                         owl:inverseOf rico:isOrWasParticipantIn ;
+                         rdfs:domain rico:Event ;
+                         rdfs:comment """Connects an Event to a Thing that is or was actively or
+            passively involved in it."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "has or had participant"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R058 ('has or had participant'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadSubject
+rico:hasOrHadSubject rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf rico:isRelatedTo ;
+                     owl:inverseOf rico:isOrWasSubjectOf ;
+                     rdfs:domain rico:RecordResource ;
+                     rdfs:comment """Connects a Record Resource to a Thing that is or was its
+            subject."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "has or had subject"@en ;
+                     <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R019 ('has or had subject'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasOrHadSubordinate
+rico:hasOrHadSubordinate rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:isAgentAssociatedWithAgent ;
+                         rdfs:label "has or had subordinate"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasProvenance
+rico:hasProvenance rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:isRelatedTo ;
+                   owl:inverseOf rico:isProvenanceOf ;
+                   rdfs:domain [ rdf:type owl:Class ;
+                                 owl:unionOf ( rico:Instantiation
+                                               rico:RecordResource
+                                             )
+                               ] ;
+                   rdfs:range rico:Agent ;
+                   rdfs:comment "Connects a Record Resource or an Instantiation to an Agent that creates or accumulates the Record Resource, receives it, or sends it." ;
+                   rdfs:label "has provenance" .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasRecordSetType
+rico:hasRecordSetType rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:hasOrHadCategory ;
+                      owl:inverseOf rico:isRecordSetTypeOf ;
+                      rdfs:domain rico:RecordSet ;
+                      rdfs:range rico:RecordSetType ;
+                      rdfs:comment """Connects a Record Set to a Record Set Type that categorizes
+            it."""@en ;
+                      rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                      rdfs:label "has record set type"@en ;
+                      <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#hasRepresentationType
+rico:hasRepresentationType rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:hasOrHadCategory ;
+                           owl:inverseOf rico:isRepresentationTypeOf ;
+                           rdfs:domain rico:Instantiation ;
+                           rdfs:range rico:RepresentationType ;
+                           rdfs:comment """Connects an Instantiation to a Representation Type that
+            categorizes its representation type."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "has representation type"@en ;
+                           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#includesOrIncluded
+rico:includesOrIncluded rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:isRecordResourceAssociatedWithRecordResource ;
+                        owl:inverseOf rico:isOrWasIncludedIn ;
+                        rdfs:domain rico:RecordSet ;
+                        rdfs:range [ rdf:type owl:Class ;
+                                     owl:unionOf ( rico:Record
+                                                   rico:RecordSet
+                                                 )
+                                   ] ;
+                        rdfs:comment """Connects a Record Set to a Record or Record Set it aggregates,
+            or aggregated in the past."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "includes or included"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """A Record or Record Set can be aggregated in one or many Record
+            Sets simultaneously or through time"""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R024 ('includes or included'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isAgentAssociatedWithAgent
+rico:isAgentAssociatedWithAgent rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf rico:isRelatedTo ;
+                                rdf:type owl:SymmetricProperty ;
+                                rdfs:domain rico:Agent ;
+                                rdfs:range rico:Agent ;
+                                rdfs:comment """Connects two Agents. This object property is
+            symmetric."""@en ;
+                                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                                rdfs:label "is agent associated with agent "@en ;
+                                <http://www.w3.org/2004/02/skos/core#scopeNote> """Use to connect two Agents only if it is not possible to be
+            more accurate and use a narrower Agent to Agent relation, e.g. ‘has work relation
+            with’."""@en ;
+                                rico:RiCCMCorrespondingComponent """RiC-R044 ('is agent associated with agent'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isAssociatedWithDate
+rico:isAssociatedWithDate rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:isRelatedTo ;
+                          owl:inverseOf rico:isDateAssociatedWith ;
+                          rdfs:range rico:Date ;
+                          rdfs:comment """Inverse of 'is date associated with' object
+            property."""@en ;
+                          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                          rdfs:label "is associated with date "@en ;
+                          rico:RiCCMCorrespondingComponent """RiC-R068i ('is associated with date'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isAssociatedWithEvent
+rico:isAssociatedWithEvent rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isRelatedTo ;
+                           owl:inverseOf rico:isEventAssociatedWith ;
+                           rdfs:range rico:Event ;
+                           rdfs:comment """Inverse of 'is event associated with' object
+            property."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "is associated with event "@en ;
+                           rico:RiCCMCorrespondingComponent """RiC-R057i ('is associated with event'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isAssociatedWithPlace
+rico:isAssociatedWithPlace rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isRelatedTo ;
+                           owl:inverseOf rico:isPlaceAssociatedWith ;
+                           rdfs:domain rico:Thing ;
+                           rdfs:range rico:Place ;
+                           rdfs:comment """Inverse of 'is place associated with' object
+            property."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "is associated with place "@en ;
+                           rico:RiCCMCorrespondingComponent """RiC-R074i ('is associated with place'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isAuthorOf
+rico:isAuthorOf rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf rico:isCreatorOf ;
+                rdfs:range rico:Record ;
+                rdfs:comment "Inverse of 'has author' object property."@en ;
+                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                rdfs:label "is author of"@en ;
+                <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R079i ('is author of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isBeginningDateOf
+rico:isBeginningDateOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isDateAssociatedWith ;
+                       rdfs:domain rico:Date ;
+                       rdfs:comment """Connects a Date to a Thing that came into existence on that
+            Date."""@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "is beginning date of "@en ;
+                       rico:RiCCMCorrespondingComponent """RiC-R069 ('is beginning date of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isBirthDateOf
+rico:isBirthDateOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:isBeginningDateOf ;
+                   rdfs:domain rico:Date ;
+                   rdfs:range rico:Person ;
+                   rdfs:comment """Connects a Date to a Person that was born on that
+            Date."""@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "is birth date of "@en ;
+                   rico:RiCCMCorrespondingComponent """RiC-R070 ('is birth date of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isCreatorOf
+rico:isCreatorOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf rico:isProvenanceOf ;
+                 rdfs:domain rico:Agent ;
+                 rdfs:range [ rdf:type owl:Class ;
+                              owl:unionOf ( rico:Instantiation
+                                            rico:RecordResource
+                                          )
+                            ] ;
+                 rdfs:comment "Inverse of 'has creator' object property."@en ;
+                 rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                 rdfs:label "is creator of"@en ;
+                 <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R027i ('is creator of
+            'relation')"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isDateAssociatedWith
+rico:isDateAssociatedWith rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:isRelatedTo ;
+                          rdfs:domain rico:Date ;
+                          rdfs:comment """Connects a Date to a Thing that the Date is associated with the
+            existence and lifecycle of."""@en ;
+                          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                          rdfs:label "is date associated with "@en ;
+                          rico:RiCCMCorrespondingComponent """RiC-R068 ('is date associated with'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isDeathDateOf
+rico:isDeathDateOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:isEndDateOf ;
+                   rdfs:domain rico:Date ;
+                   rdfs:range rico:Person ;
+                   rdfs:comment """Connects a Date to a Person who died on that
+            Date."""@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "is death date of "@en ;
+                   rico:RiCCMCorrespondingComponent """RiC-R072 ('is death date of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isDerivedFromInstantiation
+rico:isDerivedFromInstantiation rdf:type owl:ObjectProperty ;
+                                rdfs:subPropertyOf rico:followsInTime ,
+                                                   rico:isInstantiationAssociatedWithInstantiation ;
+                                rdfs:domain rico:Instantiation ;
+                                rdfs:range rico:Instantiation ;
+                                rdfs:comment """Inverse of 'has derived instantiation' object
+            property."""@en ;
+                                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                                rdfs:label "is derived from instantiation "@en ;
+                                rico:RiCCMCorrespondingComponent """RiC-R014i ('is derived from instantiation'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isDocumentaryFormTypeOf
+rico:isDocumentaryFormTypeOf rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                             rdfs:domain rico:DocumentaryFormType ;
+                             rdfs:range [ rdf:type owl:Class ;
+                                          owl:unionOf ( rico:Record
+                                                        rico:RecordPart
+                                                      )
+                                        ] ;
+                             rdfs:comment """Connects a Documentary Form Type to a Record or Record Part that
+            it categorizes."""@en ;
+                             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                             rdfs:label "is documentary form type of"@en ;
+                             <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isEndDateOf
+rico:isEndDateOf rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf rico:isDateAssociatedWith ;
+                 rdfs:domain rico:Date ;
+                 rdfs:comment """Connects a Date to a Thing whose existence ended on that
+            Date."""@en ;
+                 rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                 rdfs:label "is end date of "@en ;
+                 rico:RiCCMCorrespondingComponent """RiC-R071 ('is end date
+            of')"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isEventAssociatedWith
+rico:isEventAssociatedWith rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isRelatedTo ;
+                           rdfs:domain rico:Event ;
+                           rdfs:comment """Connects an Event to a Thing that is associated with the
+            existence and lifecycle of the Event."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "is event associated with "@en ;
+                           rico:RiCCMCorrespondingComponent """RiC-R057 ('is event associated with'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isInstantiationAssociatedWithInstantiation
+rico:isInstantiationAssociatedWithInstantiation rdf:type owl:ObjectProperty ;
+                                                rdfs:subPropertyOf rico:isRelatedTo ;
+                                                rdf:type owl:SymmetricProperty ;
+                                                rdfs:domain rico:Instantiation ;
+                                                rdfs:range rico:Instantiation ;
+                                                rdfs:comment """Connects two Instantiations. This object property is
+            symmetric."""@en ;
+                                                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                                                rdfs:label "is instantiation associated with instantiation "@en ;
+                                                rico:RiCCMCorrespondingComponent """RiC-R034 ('is instantiation associated with
+            instantiation' relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isInstantiationOf
+rico:isInstantiationOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isRelatedTo ;
+                       rdfs:domain rico:Instantiation ;
+                       rdfs:range rico:RecordResource ;
+                       rdfs:comment "Inverse of 'has instantiation' object property."@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "is instantiation of"@en ;
+                       <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R025i ('is instantiation of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasCategoryOf
+rico:isOrWasCategoryOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isRelatedTo ;
+                       rdfs:domain rico:Type ;
+                       rdfs:range rico:Thing ;
+                       rdfs:comment """Connects a Type (a category) to a Thing that it categorizes or
+            categorized."""@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "is or was category of"@en ;
+                       <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasContainedBy
+rico:isOrWasContainedBy rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:isAssociatedWithPlace ,
+                                           rico:isOrWasPartOf ,
+                                           rico:isPlaceAssociatedWith ;
+                        rdfs:domain rico:Place ;
+                        rdfs:range rico:Place ;
+                        rdfs:comment """Inverse of 'contains or contained' object
+            property."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "is or was contained by"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R007i ('is or was contained by'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasControllerOf
+rico:isOrWasControllerOf rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:hasOrHadAuthorityOver ,
+                                            rico:hasOrHadSubordinate ;
+                         rdfs:domain rico:Agent ;
+                         rdfs:range rico:Agent ;
+                         rdfs:comment """Connects an Agent to another Agent it controls or controlled via
+            Activities, i.e. controls by function."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "is or was controller of"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R041 ('is or was controller of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasIncludedIn
+rico:isOrWasIncludedIn rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isRecordResourceAssociatedWithRecordResource ;
+                       rdfs:domain [ rdf:type owl:Class ;
+                                     owl:unionOf ( rico:Record
+                                                   rico:RecordSet
+                                                 )
+                                   ] ;
+                       rdfs:range rico:RecordSet ;
+                       rdfs:comment """Inverse of 'includes or included' object
+            property."""@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "is or was included in"@en ;
+                       <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R024i ('is or was included in'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasLeaderOf
+rico:isOrWasLeaderOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf rico:isOrWasControllerOf ;
+                     rdfs:domain rico:Person ;
+                     rdfs:range rico:Group ;
+                     rdfs:comment """Connects a Person to the Group that Person leads or led in the
+            past."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "is or was leader of"@en ;
+                     <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R042 ('is or was leader of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasMainSubjectOf
+rico:isOrWasMainSubjectOf rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:isOrWasSubjectOf ;
+                          rdfs:range rico:RecordResource ;
+                          rdfs:label "is or was main subject of"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasOwnerOf
+rico:isOrWasOwnerOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf rico:hasOrHadAuthorityOver ;
+                    rdfs:comment """Connects a Group, Person or Position to a Thing that this Agent
+            owns or owned."""@en ;
+                    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                    rdfs:label "is or was owner of"@en ;
+                    <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R037 ('is or was owner of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasPartOf
+rico:isOrWasPartOf rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf rico:isRelatedTo ;
+                   rdfs:domain rico:Thing ;
+                   rdfs:range rico:Thing ;
+                   rdfs:comment "Inverse of 'has or had part' relation."@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "is or was part of"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R002i (is or was part of
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasParticipantIn
+rico:isOrWasParticipantIn rdf:type owl:ObjectProperty ;
+                          rdfs:subPropertyOf rico:isAssociatedWithEvent ;
+                          rdfs:range rico:Event ;
+                          rdfs:comment """Inverse of 'has or had participant' object
+            property."""@en ;
+                          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                          rdfs:label "is or was participant in"@en ;
+                          <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R058i ('is or was participant in'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasPerformedBy
+rico:isOrWasPerformedBy rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:hasOrHadParticipant ;
+                        owl:inverseOf rico:performsOrPerformed ;
+                        rdfs:domain rico:Activity ;
+                        rdfs:range rico:Agent ;
+                        rdfs:comment """Connects an Activity to an Agent that performed or performs the
+            Activity."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "is or was performed by"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R060 ('is or was performed by'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasSubjectOf
+rico:isOrWasSubjectOf rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf rico:isRelatedTo ;
+                      rdfs:range rico:RecordResource ;
+                      rdfs:comment "Inverse of 'has or had subject' object property."@en ;
+                      rdfs:label "is or was subject of"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isOrWasUnderAuthorityOf
+rico:isOrWasUnderAuthorityOf rdf:type owl:ObjectProperty ;
+                             rdfs:subPropertyOf rico:isRelatedTo ;
+                             rdfs:range rico:Agent ;
+                             rdfs:comment """Inverse of 'has or had authority over' object
+            property."""@en ;
+                             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                             rdfs:label "is or was under authority of"@en ;
+                             <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R036i ('is or was under authority of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isPlaceAssociatedWith
+rico:isPlaceAssociatedWith rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isRelatedTo ;
+                           rdfs:domain rico:Place ;
+                           rdfs:range rico:Thing ;
+                           rdfs:comment """Connects a Place to a Thing that Place is associated with the
+            existence and lifecycle of."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "is place associated with "@en ;
+                           rico:RiCCMCorrespondingComponent """RiC-R074 ('is place associated with'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isProvenanceOf
+rico:isProvenanceOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf rico:isRelatedTo ;
+                    rdfs:domain rico:Agent ;
+                    rdfs:range [ rdf:type owl:Class ;
+                                 owl:unionOf ( rico:Instantiation
+                                               rico:RecordResource
+                                             )
+                               ] ;
+                    rdfs:comment "inverse of 'has provenance' object property."@en ;
+                    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                    rdfs:label "is provenance of "@en ;
+                    rico:RiCCMCorrespondingComponent """RiC-R026i ('is provenance of'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isRecordResourceAssociatedWithRecordResource
+rico:isRecordResourceAssociatedWithRecordResource rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf rico:isRelatedTo ;
+                                                  rdf:type owl:SymmetricProperty ;
+                                                  rdfs:domain rico:RecordResource ;
+                                                  rdfs:range rico:RecordResource ;
+                                                  rdfs:label "is record resource associated with record resource"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isRecordSetTypeOf
+rico:isRecordSetTypeOf rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                       rdfs:domain rico:RecordSetType ;
+                       rdfs:range rico:RecordSet ;
+                       rdfs:comment """Connects a Record Set Type to a Record Set that it
+            categorizes."""@en ;
+                       rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                       rdfs:label "is record set type of"@en ;
+                       <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isRelatedTo
+rico:isRelatedTo rdf:type owl:ObjectProperty ,
+                          owl:SymmetricProperty ;
+                 rdfs:comment """The most generic object property. Connects an Thing to any other
+            Thing This is a symmetric object property."""@en ;
+                 rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                 rdfs:label "is related to "@en ;
+                 rico:RiCCMCorrespondingComponent """RiC-R001 (is related to
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#isRepresentationTypeOf
+rico:isRepresentationTypeOf rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                            rdfs:domain rico:RepresentationType ;
+                            rdfs:range rico:Instantiation ;
+                            rdfs:comment """Connects a Representation Type to an Instantiation that it
+            categorizes."""@en ;
+                            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                            rdfs:label "is representation type of"@en ;
+                            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] .
+
+
+###  https://www.ica.org/standards/RiC/ontology#performsOrPerformed
+rico:performsOrPerformed rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:isOrWasParticipantIn ;
+                         rdfs:domain rico:Agent ;
+                         rdfs:range rico:Activity ;
+                         rdfs:comment """Inverse of 'is or was performed by' object
+            property."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "performs or performed"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R060i ('performs or performed'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#precedesInTime
+rico:precedesInTime rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf rico:precedesOrPreceded .
+
+
+###  https://www.ica.org/standards/RiC/ontology#precedesOrPreceded
+rico:precedesOrPreceded rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf rico:isRelatedTo ;
+                        rdfs:comment """Connects a Thing to a Thing that follows or followed it in some
+            sequence."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "precedes or preceded"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """The relation does not specify by itself what criteria are used
+            for ordering the sequence. There may actually be zero to many intermediate Entities,
+            ignored or unkown, in the sequence between the two connected Things. Can be used, for
+            example, for specifying that some Record 'precedes' (has next) some Record within a
+            Record Set."""@en ;
+rico:RiCCMCorrespondingComponent """RiC-R008 ('precedes or preceded'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#resultsOrResultedFrom
+rico:resultsOrResultedFrom rdf:type owl:ObjectProperty ;
+                           rdfs:subPropertyOf rico:isAssociatedWithEvent ;
+                           owl:inverseOf rico:resultsOrResultedIn ;
+                           rdfs:range rico:Event ;
+                           rdfs:comment """Inverse of 'results or resulted in' object
+            property."""@en ;
+                           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                           rdfs:label "results or resulted from"@en ;
+                           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R061i ('results or resulted from'
+            relation)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#resultsOrResultedIn
+rico:resultsOrResultedIn rdf:type owl:ObjectProperty ;
+                         rdfs:subPropertyOf rico:isEventAssociatedWith ;
+                         rdfs:domain rico:Event ;
+                         rdfs:comment """Connects an Event to a Thing that results or resulted from the
+            Event."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "results or resulted in"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """RiC-R061 ('results or resulted in'
+            relation)"""@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P106
+xml:Property:P106 rdf:type owl:ObjectProperty ;
+                  rdfs:label "occupation"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P166
+xml:Property:P166 rdf:type owl:ObjectProperty ;
+                  rdfs:label "award received"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P18
+xml:Property:P18 rdf:type owl:ObjectProperty ;
+                 rdfs:label "image"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P2031
+xml:Property:P2031 rdf:type owl:ObjectProperty ;
+                   rdfs:label "work period (start)"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P31
+xml:Property:P31 rdf:type owl:ObjectProperty ;
+                 rdfs:label "is instance of"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P6715
+xml:Property:P6715 rdf:type owl:ObjectProperty ;
+                   rdfs:label "SIUSA archive creator person ID"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P69
+xml:Property:P69 rdf:type owl:ObjectProperty ;
+                 rdfs:label "educated at"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P734
+xml:Property:P734 rdf:type owl:ObjectProperty ;
+                  rdfs:label "cognome"@it ,
+                             "family name"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P735
+xml:Property:P735 rdf:type owl:ObjectProperty ;
+                  rdfs:label "given name"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:P800
+xml:Property:P800 rdf:type owl:ObjectProperty ;
+                  rdfs:label "notable work"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:1066
+<https://www.wikidata.org/wiki/Property:1066> rdf:type owl:ObjectProperty ;
+                                              rdfs:label "student of"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:2032
+<https://www.wikidata.org/wiki/Property:2032> rdf:type owl:ObjectProperty ;
+                                              rdfs:label "work period (end)"@en .
+
+
+###  https://www.wikidata.org/wiki/Property:26
+<https://www.wikidata.org/wiki/Property:26> rdf:type owl:ObjectProperty ;
+                                            rdfs:label "spouse"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/daria/dt_archive#arrangement
+itdt:arrangement rdf:type owl:DatatypeProperty .
+
+
+###  https://www.ica.org/standards/RiC/ontology#conditionsOfAccess
+rico:conditionsOfAccess rdf:type owl:DatatypeProperty ;
+                        rdfs:domain [ rdf:type owl:Class ;
+                                      owl:unionOf ( rico:Instantiation
+                                                    rico:RecordResource
+                                                  )
+                                    ] ;
+                        rdfs:range rdfs:Literal ;
+                        rdfs:comment """Terms and circumstances affecting the availability of a Record
+            Resource for consultation. Such conditions may originate in laws, regulations and
+            policies, including those pertaining to privacy and security concerns or restrictions;
+            they may concern a specific Instantiation of a Record Resource, for example, conditions
+            that require preservation treatment; or they may specify the software or hardware
+            necessary to access the Instantiation."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "conditions of access"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#example> """Acceso libre a través de los terminales de
+            consulta"""@es ,
+                                              """Recognita software, min. version 3.0, is needed in order to open
+            the file."""@en ,
+                                              "closed as awaiting conservation treatment"@en ,
+                                              "closed under data protection legislation"@en ,
+                                              "open"@en ,
+                                              """the Archives cannot provide VHS reader to access the content of
+            the tape."""@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """This property provides information about the accessibility of
+            a Record Resource, as well as the physical, technical or legal limitations that exist
+            for providing access to it."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A08 (Conditions of Access
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#conditionsOfUse
+rico:conditionsOfUse rdf:type owl:DatatypeProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( rico:Instantiation
+                                                 rico:RecordResource
+                                               )
+                                 ] ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment """Terms and circumstances affecting the use of a Record Resource
+            after access has been provided. Includes conditions governing reproduction of the Record
+            Resource under applicable copyright (intellectual property) and/or property legislation,
+            and of the Instantiation, due to conservation status."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "conditions of use"@en ;
+                     <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "Freely usable without restrictions"@en ,
+                                              """The permission of the owner of the Record must be obtained
+            before use."""@en ,
+                                              """The record cannot be copied using warm light copying machines or
+            photographed using flashlight."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A09 (Conditions of Use
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#descriptiveNote
+rico:descriptiveNote rdf:type owl:DatatypeProperty ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment """Descriptive information about an entity that is not otherwise
+            addressed."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "descriptive note"@en ;
+                     rico:RiCCMCorrespondingComponent """Corresponds to RiC-A16 (Descriptive Note
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#history
+rico:history rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( rico:Activity
+                                         rico:Agent
+                                         rico:Event
+                                         rico:Instantiation
+                                         rico:Place
+                                         rico:RecordResource
+                                         rico:Rule
+                                       )
+                         ] ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment """Summary of the development of an entity, since its origin until
+            present time."""@en ;
+             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+             rdfs:label "history"@en ;
+             <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> """El primer sorteo de lotería se celebró el 13 de mayo de 1771,
+            siendo desarrollado por la Real Lotería General de Nueva España…
+            (Activity)"""@es ,
+                                              """Nacido en Barbastro en 1892, donde realizó sus primeros estudios
+            con los escolapios. Licenciado en Derecho por la Universidad de Zaragoza, aprobó las
+            oposiciones al cuerpo nacional de notarios…(Person)"""@es ,
+                                              """The manuscripts are part of the collections of Robert Harley (d
+            1724) and Edward Harley (d 1741), 1st and 2nd Earls of Oxford, that were brought by
+            Parliament and transferred to the British Museum in 1753. Those materials were then
+            separated into this collection and those for Harley Charters and Harley Rolls and became
+            part of the collections of the British Library in 1972. (Record Set)"""@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """History can alternatively be represented by a series of
+            related Events."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A21 (History
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#identifier
+rico:identifier rdf:type owl:DatatypeProperty ;
+                rdfs:domain rico:Thing ;
+                rdfs:range rdfs:Literal ;
+                rdfs:comment """A word, number, letter, symbol, or any combination of these used
+            to uniquely identify or reference an individual instance of an entity within a specific
+            information domain. Includes Global Persistent Identifiers (globally unique and
+            persistently resolvable identifier for the entity) and/or Local
+            Identifiers."""@en ;
+                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                rdfs:label "identifier"@en ;
+                <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "Ark ID: w6tz44ht"@en ,
+                                              """BUD-01-F002 [example of a classification number from a corporate
+            file plan]"""@en ,
+                                              """F 1204 [example of a local identifier for a Record Set assigned
+            by a repository]"""@en ,
+                                              "ISNI : 0000000073572182"@en ,
+                                              """NAS1/A/1.1 [example of local identifier for a
+            Record]"""@en ,
+                                              "SNAC ID: 83847206"@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Use only if you don't use Identifier class for handling
+            identifiers. Within a given domain (a closed system), identifiers are used to uniquely
+            reference instances of an entity. Identifiers are instruments of control that facilitate
+            management of the entities within the domain. The formulation of identifiers commonly is
+            based on rules."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A22 (Identifier
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#instantiationExtent
+rico:instantiationExtent rdf:type owl:DatatypeProperty ;
+                         rdfs:subPropertyOf rico:physicalOrLogicalExtent ;
+                         rdfs:domain rico:Instantiation ;
+                         rdfs:range rdfs:Literal ;
+                         rdfs:comment """Countable characteristics of the Instantiation expressed as a
+            quantity."""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "Instantiation extent"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "Size of PDF-file: 1.5 MB"@en ,
+                                              "The book register has 345 written leaves."@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """For a given Record Resource, the Instantiation Extent may
+            vary, based on format, density of information on the carrier, etc. For example, a file
+            of 1500 words (Record Resource Extent) may have Instantiation Extent 3kb as a Word
+            document and 5kb as a PDF file, and instantiations may be represented on a CD of 700mb
+            (Carrier Extent). Use if you don't use InstantiationExtent class and its properties for
+            handling such information."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A23 (Instantiation Extent
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#instantiationStructure
+rico:instantiationStructure rdf:type owl:DatatypeProperty ;
+                            rdfs:subPropertyOf rico:structure ;
+                            rdfs:domain rico:Instantiation ;
+                            rdfs:range rdfs:Literal ;
+                            rdfs:comment """Information about the physical arrangement and composition of an
+            Instantiation."""@en ;
+                            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                            rdfs:label "Instantiation structure"@en ;
+                            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """Specialization of RiC-A40 (Structure
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#name
+rico:name rdf:type owl:DatatypeProperty ;
+          rdfs:domain rico:Thing ;
+          rdfs:range rdfs:Literal ;
+          rdfs:comment """A label, title or term designating the entity in order to make
+            it distinguishable from other similar entities. For Record Resource or Instantiation,
+            the Name is generally assigned by an Agent as most do not have a Name given when
+            created."""@en ;
+          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+          rdfs:label "name"@en ;
+          <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "4 March 1842"@en ,
+                                              """Digital copy of the Pomarius archival inventory from
+            1575"""@en ,
+                                              "Nelson Mandela"@en ,
+                                              "Papers of the Earls of Liverpool"@en ,
+                                              "Sketch Map of the Qatar Peninsula"@en ,
+                                              """The Letter of Neacsu from Campulung to the Mayor of
+            Brasov"""@en ,
+                                              "fundraising, University of Glasgow"@en ,
+                                              "hearing services"@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Use only if you don't use Name class for handling
+            names."""@en ;
+rico:RiCCMCorrespondingComponent """Corrresponds to RiC-A28 (Name
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#physicalOrLogicalExtent
+rico:physicalOrLogicalExtent rdf:type owl:DatatypeProperty ;
+                             rdfs:domain [ rdf:type owl:Class ;
+                                           owl:unionOf ( rico:Instantiation
+                                                         rico:RecordResource
+                                                       )
+                                         ] ;
+                             rdfs:range rdfs:Literal ;
+                             rdfs:comment """Countable characteristics of the content of an entity expressed
+            as a quantity."""@en ;
+                             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                             rdfs:label "physical or logical extent"@en ;
+                             <http://www.w3.org/2004/02/skos/core#scopeNote> """Provided for usability reasons. Use only if you cannot use the
+            subproperties (particularly if the same free text is being used in your current metadata
+            for describing the record resource, carrier and instantiation extent)."""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#recordResourceExtent
+rico:recordResourceExtent rdf:type owl:DatatypeProperty ;
+                          rdfs:subPropertyOf rico:physicalOrLogicalExtent ;
+                          rdfs:domain rico:RecordResource ;
+                          rdfs:range rdfs:Literal ;
+                          rdfs:comment """The quantity of information content as human experienced
+            represented in the Record Resource. The method and precision of expressing the quantity
+            of information represented in a Record Resource will vary by the kind of Record Resource
+            being described as well as by processing economy constraints. For record sets, quantity
+            may be expressed as number of records, or, for analogue records in particular, by the
+            physical storage dimensions of the Record members. For individual records or record
+            parts, quantity may be expressed in more precise terms. Use if you don't use
+            RecordResourceExtent class and its properties for handling such
+            information."""@en ;
+                          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                          rdfs:label "Record Resource extent"@en ;
+                          <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ,
+[ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "1,500 words"@en ,
+                                              "2 films"@en ,
+                                              "2.065.735 characters"@en ,
+                                              "3 minutes and 24 seconds"@en ,
+                                              "34 poems"@en ,
+                                              "6 maps"@en ,
+                                              "6 photographs"@en ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """The number, size or duration of the information content
+            unit(s) remains the same even if the information is instantiated in various carriers.
+            For example, a file of 1500 words (Record Resource Extent) may have Instantiation Extent
+            3kb as a Word document and 5kb as a PDF file, and instantiations may be represented on a
+            CD of 700mb (Carrier Extent). Use if you don't use RecordResourceExtent class and its
+            properties for handling such information."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A35 (Record Resource extent
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#recordResourceStructure
+rico:recordResourceStructure rdf:type owl:DatatypeProperty ;
+                             rdfs:subPropertyOf rico:structure ;
+                             rdfs:domain rico:RecordResource ;
+                             rdfs:range rdfs:Literal ;
+                             rdfs:comment """Information about the intellectual arrangement and composition
+            of a Record Resource. For Record and Record Part, it encompasses information about the
+            intellectual composition of the record, the presence of record parts and their
+            functions. For Record Set, it encompasses information about the methodology or criteria
+            used for arranging the Record Set members or Record members within the containing Record
+            Set"""@en ;
+                             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                             rdfs:label "Record Resource structure"@en ;
+                             <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> """Inside each file, the records are arranged
+            chronologically."""@en ,
+                                              """The database has 3 related tables: names, addresses, and
+            passport numbers."""@en ,
+                                              """The record has 2 appendixes, comprising a full account of the
+            income from car taxes and real estate taxes."""@en ,
+                                              """The series have the files arranged according to the alphabetical
+            order of the places concerned."""@en ;
+rico:RiCCMCorrespondingComponent """Specialization of RiC-A40 (Structure
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#scopeAndContent
+rico:scopeAndContent rdf:type owl:DatatypeProperty ;
+                     rdfs:domain rico:RecordResource ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment """Summary of the scope (such as time periods, geography) and
+            content (such as subject matter, administrative processes) of the Record Resource. It
+            should highlight the information conveyed in the Record Resource, why it was created,
+            received, and/or maintained, and the Agents connected to it. Scope and Content provides
+            a more complete summary of the informational content of the Record Resource. It may
+            include description of relations with agents, activities, dates and places, or with
+            other record resources. It is not to be confused with the History attribute which
+            focuses on the origination and subsequence changes to a Record Resource."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "scope and content"@en ;
+                     <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "Among the witnesses, the duke of Normandy."@en ,
+                                              """Includes a detailed list of the lands and villages given by the
+            King to the Abbey."""@en ,
+                                              """Letter from Vlad the Impaler (Dracula) to the Council of
+            Kronstadt asking them to send military support against the Ottomans, within the
+            framework of their alliance treaty."""@en ,
+                                              """Se hace referencia a construcción del Gran Hotel, iniciada en
+            1899 bajo el nombre de Casa Celestino. Tras su interrupción en 1902, continuó la obra ya
+            con su nombre actual."""@es ,
+                                              """The author explains why he does not agree with the decision made
+            and adds that it cannot be applied."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A38 (Scope and Content
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#structure
+rico:structure rdf:type owl:DatatypeProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( rico:Instantiation
+                                           rico:RecordResource
+                                         )
+                           ] ;
+               rdfs:range rdfs:Literal ;
+               rdfs:comment """Information about the intellectual arrangement and composition
+            of a Record Resource or the physical arrangement and composition of an Instantiation.
+            For Record and Record Part, it encompasses information about the intellectual
+            composition of the record, the presence of record parts and their functions. For Record
+            Set, it encompasses information about the methodology or criteria used for arranging the
+            Record Set members or Record members within the containing Record Set. For
+            Instantiation, it may comprise information about the composition of the physical
+            elements of the instantiation"""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "structure"@en ;
+               <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Use only if you cannot use the subproperties (particularly if
+            the same free text is being used in your current metadata for describing the record
+            resource and the instantiation structure)."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A40 (Structure
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#title
+rico:title rdf:type owl:DatatypeProperty ;
+           rdfs:subPropertyOf rico:name ;
+           rdfs:domain [ rdf:type owl:Class ;
+                         owl:unionOf ( rico:Instantiation
+                                       rico:RecordResource
+                                       rico:Rule
+                                     )
+                       ] ;
+           rdfs:range rdfs:Literal ;
+           rdfs:comment """An identifying name of a Record Resource, Instantiation or
+            Rule."""@en ;
+           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+           rdfs:label "title"@en ;
+           <http://www.w3.org/2004/02/skos/core#scopeNote> """Use only if you don't use Title class for handling
+            titles."""@en ;
+           rico:RiCCMCorrespondingComponent """Specialization of RiC-A28 (Name
+            attribute)"""@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/daria/dt_archive#AcceptancePhase
+itdt:AcceptancePhase rdf:type owl:Class ;
+                     rdfs:subClassOf itdt:ProjectPhase ;
+                     rdfs:comment "La quarta fase del progetto che delinea la conclusione dei lavori di costruzione durante la quale l'edificio (o un'altra opera) viene accettata dall'architetto e poi dal cliente."@it ,
+                                  "The fourth phase of the project  that marks the end of construction works during which the building is accepted by an architect and then by a client."@en ;
+                     rdfs:label "Acceptance Phase"@en ,
+                                "Fase di accettazione"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#AnalysisPhase
+itdt:AnalysisPhase rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ProjectPhase ;
+                   rdfs:comment "La prima fase del progetto architettonico durante la quale l'architetto analizza i requisiti per il progetto (le leggi e i regolamenti da rispettare), le condizioni materiali (il budget, i materiali e techniche costruttivi) e il sito della costruzione (il contesto naturale o urbano)."@it ,
+                                "The firsrt phase of the project during which an architect analyses the requirements (the laws and regulations to respect), the material conditions (the budget, building materials and technics) and the construction site (the natural or urban context) for the future project:"@en ;
+                   rdfs:label "Analysis Phase"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ArchitecturalDrawing
+itdt:ArchitecturalDrawing rdf:type owl:Class ;
+                          rdfs:subClassOf itdt:GraphicRecord ;
+                          rdfs:comment "A drawing for architectural project or a drawing of architecture"@en ,
+                                       "Disegno creato per un progetto architettonico o disegno di un opera di architettura."@en ;
+                          rdfs:label "Architectual Drawing"@en ,
+                                     "Disegno di architettura"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ArchitecturalProject
+itdt:ArchitecturalProject rdf:type owl:Class ;
+                          rdfs:subClassOf rico:Activity ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty itdt:isCommissionedBy ;
+                                            owl:allValuesFrom rico:Agent
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty itdt:hasOrHadProjectPhase ;
+                                            owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass itdt:ProjectPhase
+                                          ] ;
+                          rdfs:comment "Artistic concepts comprising proposed undertakings or creations in architecture, or for the actual carrying out of such proposals. An activity carried out to design and/or construct a building."@en ,
+                                       "Concetti artistici, impegni o creazioni proposti nell'architettura, realizzazione di queste proposte. Un'attività svolta per progettare e/o costruire un edificio."@it ;
+                          rdfs:label "Architectural Project"@en ,
+                                     "Progetto architettonico"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ArchitecturalRecord
+itdt:ArchitecturalRecord rdf:type owl:Class ;
+                         rdfs:subClassOf rico:Record ;
+                         rdfs:comment "A record that documents creative and projectual activity of an architect or an architect firm."@en ,
+                                      "Documento, testimonio dell'attività creativa, progettuale o manageriale di un architetto, ingegnere o uno studio di architettura."@it ;
+                         rdfs:label "Architectural Record"@en ,
+                                    "Documento di architettura"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Article
+itdt:Article rdf:type owl:Class ;
+             rdfs:subClassOf itdt:WrittenRecord ;
+             rdfs:comment "Literary composition prepared for publication as an independent portion of a magazine or newspaper"@en ,
+                          "Scritto di un giornale o di una rivista, che tratti un particolare argomento legato all'architettura."@it ;
+             rdfs:label "Article"@en ,
+                        "Articolo"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#BidPhase
+itdt:BidPhase rdf:type owl:Class ;
+              rdfs:subClassOf itdt:ExecutionPhase ;
+              rdfs:comment "Il secondo stadio della fase esecutiva che ha lo scopo di trovare i fornitori e i contraenti."@it ,
+                           "The second stage of the execution phase of the project that has a goal to choose contractors and suppliers."@en ;
+              rdfs:label "Bid Stage"@en ,
+                         "Stadio di appalto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#CarpentryPlan
+itdt:CarpentryPlan rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ConstructionDrawing ;
+                   rdfs:comment "Disegno creato per illustrare gli infissi e i seramenti di un edificio."@it ,
+                                "Drawing that illustrates door and windows frames and fixtures for a building."@en ;
+                   rdfs:label "Carpentary Plan"@en ,
+                              "Piano di infissi"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ConceptualDrawing
+itdt:ConceptualDrawing rdf:type owl:Class ;
+                       rdfs:subClassOf itdt:ArchitecturalDrawing ;
+                       rdfs:comment "Small-scale, free-hand drawings which give an idea of the design of the building project or express forms of the building project in symbolic way"@en ;
+                       rdfs:label "Conceptual Drawing"@en ,
+                                  "Schizzo"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ConciseIdeaStage
+itdt:ConciseIdeaStage rdf:type owl:Class ;
+                      rdfs:subClassOf itdt:CreativePhase ;
+                      rdfs:comment "Il secondo stadio della fase creativa durante la quale l'architetto crea un'idea sintetica del futuro edificio, partendo da un solido primario, una combinazione dei spazi, dai materiali, da un'anologia o una metonimia e la sviluppa o a partire dalla visione d'insieme verso i particolari o vice versa. In questo stadio di solito produce i schizzi e i disegni."@it ,
+                                   "The second stage of the creative phase during which an architect formulates a concise idea of the future building starting from a primary solid, a composition of spaces, an analogy or a metonymy and develops the idea from general vision to particular details, or vice versa .  During this stage, architects decide a formal typology of the future building. The documents and drawings resulting from this stage are conceptual and design drawings and are often equal to the papers submitted for design competition."@en ;
+                      rdfs:label "Concise Idea Stage"@en ,
+                                 "Stadio di idea sintetica"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ConstructionDrawing
+itdt:ConstructionDrawing rdf:type owl:Class ;
+                         rdfs:subClassOf itdt:ArchitecturalDrawing ;
+                         rdfs:comment "Disegno realizzato per costruire un edificio o un altro progetto architettonico e usato dai costruttori direttamente nel luogo di lavoro."@it ,
+                                      "Drawing that is used to communicate information about buildings, specifically the mechanics of their construction, and used by the team tasked with erecting an edifice."@en ;
+                         rdfs:label "Construction Drawing"@en ,
+                                    "Disegno costruttivo"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ConstructionPhase
+itdt:ConstructionPhase rdf:type owl:Class ;
+                       rdfs:subClassOf itdt:ExecutionPhase ;
+                       rdfs:comment "Il terzo e l'ultimo stadio della fase esecutiva che ha lo scopo di costruire l'edificio o completare gli altri lavori definiti."@it ,
+                                    "The third and the last stage of the execution phase that has a goal to construct the designed building or to complete other works."@en ;
+                       rdfs:label "Construction Stage"@en ,
+                                  "Stadio di costruzione"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ContextPhotograph
+itdt:ContextPhotograph rdf:type owl:Class ;
+                       rdfs:subClassOf itdt:Photo ;
+                       rdfs:comment "Fotografia realizzata da un architetto per documentare l'area della futura costruzione di un edificio o dintorni."@it ,
+                                    "Photograph  that is taken by an architect in the stage of conceptual design or after the submission of the work and may include depictions of the construction site or surroundings."@en ;
+                       rdfs:label "Context Photograph"@en ,
+                                  "Fotografia di contesto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#CreativePhase
+itdt:CreativePhase rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ProjectPhase ;
+                   rdfs:comment "La seconda fase del progetto nella quale l'architetto concepisce e sviluppa l'idea progettuale per il futuro edificio (o altra creazione)."@it ,
+                                "The second phase of the project during which an architect conceives and develops an idea for future building."@en ;
+                   rdfs:label "Creative phase"@en ,
+                              "Fase creativa"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#DesignDrawing
+itdt:DesignDrawing rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ArchitecturalDrawing ;
+                   rdfs:comment "Drawings that refine conceptual drawings and are usually prepared using instruments"@en ;
+                   rdfs:label "Design Drawing"@en ,
+                              "Disegno"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#DetailPhotograph
+itdt:DetailPhotograph rdf:type owl:Class ;
+                      rdfs:subClassOf itdt:Photo ;
+                      rdfs:comment "Fotografia che rappresenta dettagli costruttivi o decorativi di un edificio, spesso realizzata con primissimo piano."@it ,
+                                   "Photograph that depicts external or internal decorations of the building or particular construction solutions, usually shot with close-up."@en ;
+                      rdfs:label "Detail Photograph"@en ,
+                                 "Fotografia di dettagli"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#DevelopmentStage
+itdt:DevelopmentStage rdf:type owl:Class ;
+                      rdfs:subClassOf itdt:CreativePhase ;
+                      rdfs:comment "L'ultimo stadio della fase creativa durante la quale l'idea sintetica del progetto si sviluppa nello schema morfologico che stabilisce la quantità dei spazi neccessarie e la loro posizione, grandezza e forma elementare. L'architetto poi produce uno schema volumetrico-spaziale, una conformazione complessiva dell'edificio attraverso un convincente sistema di corrispondenze tra piante, sezioni, prospetti e immagini tridimensionali. In questo stadio l'architetto può produrre i disegni per verificare la coerenza geometrica del progetto."@it ,
+                                   "The final stage of the creative phase during which the concise idea evolves into a morphological scheme, where the quantity of necessary spaces is defined along with their elementary shape, position and relative size. The architect develops a scheme of spaces and volumes and produces consistent floor plans, sections, elevations and three-dimensional drawings. In this stage, an architect also produces drawings that verify geometrical consistency of the project."@en ;
+                      rdfs:label "Development Stage"@en ,
+                                 "Stadio di sviluppo"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Elevation
+itdt:Elevation rdf:type owl:Class ;
+               rdfs:subClassOf itdt:WorkingDrawing ;
+               rdfs:comment "Drawing or work in another medium showing the arrangement of vertical elements of a building, either exterior or interior, as a direct projection to a vertical plane."@en ,
+                            "Una rappresentazione grafica della superficie esterna o interna di un edificio o di un elemento architettonico in proiezione ortogonale."@it ;
+               rdfs:label "Alzato"@it ,
+                          "Elevation"@en ,
+                          "Prospetto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ExecutionPhase
+itdt:ExecutionPhase rdf:type owl:Class ;
+                    rdfs:subClassOf itdt:ProjectPhase ;
+                    rdfs:comment "La terza fase del progetto architettonico che ha lo scopo di costruire l'edificio progettato o realizzare altri lavori definiti nella fase precedente."@it ,
+                                 "The third phase of the architectural project that has a goal to construct the designed building or to carry out other architectural work defined during the previous phase."@en ;
+                    rdfs:label "Execution Phase"@en ,
+                               "Fase esecutiva"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ExteriorPhotograph
+itdt:ExteriorPhotograph rdf:type owl:Class ;
+                        rdfs:subClassOf itdt:Photo ;
+                        rdfs:comment "Fotografia realizzata per comunicare la distribuzione degli spazi dell'edificio visti dall'esterno."@it ,
+                                     "Photograph that communicates the distribution of spaces of a building visible from outside."@en ;
+                        rdfs:label "Exterior Photograph"@en ,
+                                   "Fotografia di esterni"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FloorPlan
+itdt:FloorPlan rdf:type owl:Class ;
+               rdfs:subClassOf itdt:WorkingDrawing ;
+               rdfs:comment "Drawing or work in another two-dimensional medium that represent a horizontal section through a building taken above a floor to diagramatically illustrate the enclosing walls, interior spaces, doors, and windows of a building."@en ,
+                            "Elaborato grafico, una sezione ottenuta mediante un piano orizzontale passante a un determinato livello, e la rappresentazione, mediante proiezione ortogonale su di esso, degli elementi non intersicati dal piano stesso: spazi interni, porte, finestre."@it ;
+               rdfs:label "Floor Plan"@en ,
+                          "Pianta"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FollowUpPhase
+itdt:FollowUpPhase rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ProjectPhase ;
+                   rdfs:comment "L'ultima fase del progetto spesso spostata nel tempo indefinitivamente durante la quale si eseguino gli interventi successivi sull'edificio o un'alra opera (risoluzione dei problemi sorti, lavori decorativi, ripristino e restauro, communicazioni con i media, i clienti e la pubblica amministrazione)."@it ,
+                                "The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artefact, such as consultation for any arised problems, decorative works, renovations, communication with media, owners of the building and administrative offices."@en ;
+                   rdfs:label "Fase di follow-up"@it ,
+                              "Follow-up Phase"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FormalBuildingType
+itdt:FormalBuildingType rdf:type owl:Class ;
+                        rdfs:subClassOf rico:Type ;
+                        rdfs:comment "Categorization of the architectural project with respect to model of formal characteristics and organisation of internal spaces of the building that is meant to be designed and developed by the project."@it ,
+                                     "Categorizzazione di un edificio o di un progetto di esso nel rispetto delle caratteristiche formali nell'organizzazione degli spazi interni."@it ;
+                        rdfs:label "Formal Building Type"@en ,
+                                   "Tipologia edilizia formale"@it ;
+                        <http://www.w3.org/2004/02/skos/core#example> "casa a ballatoio"@it ,
+                                                                      "courtyard house"@en ,
+                                                                      "roman theater"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FoundationPlan
+itdt:FoundationPlan rdf:type owl:Class ;
+                    rdfs:subClassOf itdt:ConstructionDrawing ;
+                    rdfs:comment "Piano realizzato per illustrare la configurazione della fondazione di un edificio, generalmente collocata sotto terra."@it ,
+                                 "Plan that illustrate the configuration and location of the foundation, which comprises the supporting elements of a building, located primarily below ground level, that transmit building loads to the soil or rock underneath."@en ;
+                    rdfs:label "Foundation Plan"@en ,
+                               "Piano di fondazione"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FunctionalBuildingType
+itdt:FunctionalBuildingType rdf:type owl:Class ;
+                            rdfs:subClassOf rico:Type ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty itdt:isFunctionalBuildingTypeOf ;
+                                              owl:allValuesFrom itdt:ArchitecturalProject
+                                            ] ;
+                            rdfs:comment "Categorization of the architectural project with respect to the intended function or use of the building that the project designs and develops."@en ,
+                                         "Categorizzazione di un edificio o di un progetto di esso nel rispetto della sua destinazione d'uso, una funzione primaria che svolge."@it ;
+                            rdfs:label "Destinazione d'uso"@it ,
+                                       "Functional Building Type"@en ;
+                            <http://www.w3.org/2004/02/skos/core#example> "edificio per culto"@it ,
+                                                                          "school building"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#FurniturePlan
+itdt:FurniturePlan rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ConstructionDrawing ;
+                   rdfs:comment "Disegno realizzato per illustrare la collocazione di ogni dettaglio di arredamento all'interno di un edificio."@it ,
+                                "Drawing that indicates the precise location of each piece of furnishing for internal space of a building."@en ;
+                   rdfs:label "Furniture Plan"@en ,
+                              "Schema di arredamento"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#GeneralPlan
+itdt:GeneralPlan rdf:type owl:Class ;
+                 rdfs:subClassOf itdt:WorkingDrawing ;
+                 rdfs:comment "Overall plan, usually graphic and drawn on a small scale, into which the details of other specific plans are fitted."@en ,
+                              "Rappresentazione grafica piana, in scala piccola, di un oggetto o di una superficie eseguita mediante una proiezione ortogonale."@it ;
+                 rdfs:label "General Plan"@en ,
+                            "Planimetria"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#GraphicRecord
+itdt:GraphicRecord rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ArchitecturalRecord ;
+                   rdfs:comment "A document that contains images or designs created in the process of designing or constructing an architectural project."@en ,
+                                "Documento contenente immagini o disegni per la communicazione visuale creato nel processo di progettazione o di costruzione di un progetto architettonico."@it ;
+                   rdfs:label "Documento grafico"@it ,
+                              "Graphical record"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#InteriorDesignPlan
+itdt:InteriorDesignPlan rdf:type owl:Class ;
+                        rdfs:subClassOf itdt:ConstructionDrawing ;
+                        rdfs:comment "Disegno realizzato da un architetto o un ingegnere per comunicare design degli interni di una casa o un edificio, compreso schemi decorativi, collocazione di arredi e mobili, illuminazione."@it ,
+                                     "Plan that describes the design of interiors of homes or other buildings, including placement of furniture, accessories, aesthetic or decorative schemes, and spatial arrangements."@en ;
+                        rdfs:label "Interior Design Plan"@en ,
+                                   "Schema di disegno di interni"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#InteriorPhotograph
+itdt:InteriorPhotograph rdf:type owl:Class ;
+                        rdfs:subClassOf itdt:Photo ;
+                        rdfs:comment "Fotografia realizzata per comunicare la distribuzione dei volumi interni di un edificio o di una stanza, design degli interni e/o arredamento."@it ,
+                                     "Photograph that depicts the internal volumes distribution o a building or a room, interior design and furniture."@en ;
+                        rdfs:label "Fotografia di interni"@it ,
+                                   "Interior Photograph"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#InteriorSystemsPlan
+itdt:InteriorSystemsPlan rdf:type owl:Class ;
+                         rdfs:subClassOf itdt:ConstructionDrawing ;
+                         rdfs:comment "Disegni realizzati spesso da un ingegnere per indicare la collocazione degli impianti interni di un edificio: idraulico, della luce, del gas. Questi disegni sono prodotti come parte dei documenti neccessarie per ricevere il permesso di costruire un edificio."@it ,
+                                      "Drawings or works in another medium, often made by an engineer, that indicate the location of utilities, including water supply lines, fire hydrants, sewage disposal lines, and other utilities. As part of the construction process, these plans are generally required for submission to local authorities."@en ;
+                         rdfs:label "Interior Systems Plan"@en ,
+                                    "Piano di impianti interni"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Invitation
+itdt:Invitation rdf:type owl:Class ;
+                rdfs:subClassOf itdt:WrittenRecord ;
+                rdfs:comment "Biglietto d’invito, qualsiasi cartoncino o foglio, scritto o stampato, che contiene una richiesta di partecipazione di una persona ad un evento."@it ,
+                             "Printed or written expression requesting a person's company at a certain event at a given time and place."@en ;
+                rdfs:label "Invitation"@en ,
+                           "Invito"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Letter
+itdt:Letter rdf:type owl:Class ;
+            rdfs:subClassOf itdt:WrittenRecord ;
+            rdfs:comment "Comunicazione scritta che un agente indirizza a un’altro, più spesso spedita e ricevuta."@it ,
+                         "Pieces of correspondence, sent and delivered."@en ;
+            rdfs:label "Letter"@en ,
+                       "Lettera"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Model
+itdt:Model rdf:type owl:Class ;
+           rdfs:subClassOf itdt:ArchitecturalRecord ;
+           rdfs:comment "Architectural record  that visualises architectural projects in three dimensions, often including a representation of the surrounding site or context."@en ,
+                        "Documento di architettura, rapresentazione di un progetto architettonico in tre dimensioni, raffigura spesso l'area circostante e il contesto."@it ;
+           rdfs:label "Model"@en ,
+                      "Modello"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#PermitStage
+itdt:PermitStage rdf:type owl:Class ;
+                 rdfs:subClassOf itdt:ExecutionPhase ;
+                 rdfs:comment "Il primo stadio della fase escutiva del progetto durante la quale l'architetto sviluppa ulteriormente l'idea progettuale e prepara gli elaborati grafici e i relazioni illustrativi per ricevere il permesso di costruire."@it ,
+                              "The first stage of the executive phase during which an architect develops further the idea and prepares a set of drawings and written documents to receive building permit."@en ;
+                 rdfs:label "Permit Stage"@en ,
+                            "Stadio di permesso per costruire"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Photo
+itdt:Photo rdf:type owl:Class ;
+           rdfs:subClassOf itdt:GraphicRecord ;
+           rdfs:comment "Architectural record that uses photography as a principal documentary form, photographies that have architecture as a main subject."@en ,
+                        "Documento di architettura che usa la fotografia come la sua forma documentaria primaria, fotografie che riotraggono opere di architettura."@it ;
+           rdfs:label "Architectural Photograph"@en ,
+                      "Fotografia di architettura"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#PhysicalModel
+itdt:PhysicalModel rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:Model ;
+                   rdfs:comment "Architectual model in physical form."@en ,
+                                "Modello architettonico fisico."@it ;
+                   rdfs:label "Modello fisico"@it ,
+                              "Physical Model"@en ,
+                              "Plastico"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#PresentationDrawing
+itdt:PresentationDrawing rdf:type owl:Class ;
+                         rdfs:subClassOf itdt:ArchitecturalDrawing ;
+                         rdfs:comment "Drawings that imagine the appearance of the complete project and are prepared with shading, color, and perspective to win the client's approval, they ofte suggest vegetation, people and vehicles to bring image to life"@en ;
+                         rdfs:label "Rendering"@en ,
+                                    "Rendering"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProcessPhotograph
+itdt:ProcessPhotograph rdf:type owl:Class ;
+                       rdfs:subClassOf itdt:Photo ;
+                       rdfs:comment "Fotografia realizzata per documentare lavori di costruzione o demolizione di un edificio e la sua struttura interna, per esempio per accompagnare un rapporto intermedio sui lavori. Può essere realizzata da un'azienda di costruzione."@it ,
+                                    "Photograph that depicts demolition or construction works of a building and taken to document internal structures of the building or to accompany the intermediate report of the construction works."@en ;
+                       rdfs:label "Fotografia di processo"@it ,
+                                  "Process Photograph"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProjectParticipation
+itdt:ProjectParticipation rdf:type owl:Class ;
+                          rdfs:subClassOf rico:Event ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty itdt:hasOrHadProjectRole ;
+                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass itdt:ProjectRole
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty itdt:isOrWasProjectParticipationOf ;
+                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass [ rdf:type owl:Class ;
+                                                          owl:unionOf ( itdt:ArchitecturalProject
+                                                                        itdt:ProjectPhase
+                                                                      )
+                                                        ]
+                                          ] ,
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty rico:hasOrHadParticipant ;
+                                            owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                            owl:onClass rico:Agent
+                                          ] ;
+                          rdfs:comment "Questa classe crea una relazione ternaria tra un Agente e un Progetto architettonico, nel quale l'Agente partecipa con un Rulo professionale in progetto."@it ,
+                                       "This class creates ternary relation between Agent and Project, that they participate in with some particular Project role"@en ;
+                          rdfs:label "Partecipazione in progetto"@it ,
+                                     "Project Participation"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProjectPhase
+itdt:ProjectPhase rdf:type owl:Class ;
+                  rdfs:subClassOf rico:Activity ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty itdt:isOrWasProjectPhaseOf ;
+                                    owl:allValuesFrom itdt:ArchitecturalProject
+                                  ] ;
+                  rdfs:comment "Fase del progetto architettonico, un insieme di attività all'interno del progetto svolto con un particolare scopo."@it ,
+                               "Phase of the architectural project, the set of activities within the project usually performed with a particluar goal."@en ;
+                  rdfs:label "Fase di progetto"@it ,
+                             "Project Phase"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProjectRole
+itdt:ProjectRole rdf:type owl:Class ;
+                 rdfs:subClassOf rico:Thing ;
+                 rdfs:comment "A role in architectural project performed by an architect or an engineer."@en ,
+                              "Un ruolo all'interno di un progetto architettonico svolto da un architetto, un ingegnere o altro specialista di settore edilizio."@it ;
+                 rdfs:label "Project Role"@en ,
+                            "Ruolo professionale in progetto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProjectScale
+itdt:ProjectScale rdf:type owl:Class ;
+                  rdfs:subClassOf rico:Type ;
+                  rdfs:comment "Categorisation of the project in respect of the the area affected by its intervention, where the largest scale project affects a part of territory and the smallest affects only an object."@en ,
+                               "Categorizzazione del progetto architettonico nel rispetto dell'area affetta dal suo intervento, dove la scala più grande riguarda una parte del territorio e quella più piccola un oggetto."@it ;
+                  rdfs:label "Project Scale"@en ,
+                             "Scala di progetto"@it ;
+                  <http://www.w3.org/2004/02/skos/core#example> "design industriale"@it ,
+                                                                "general urban planning"@en ,
+                                                                "interior design"@en ,
+                                                                "progettazione architettonica"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Report
+itdt:Report rdf:type owl:Class ;
+            rdfs:subClassOf itdt:WrittenRecord ;
+            rdfs:comment "Descriptive document submitted, together with drawings, by an architect to regulating bodies to obtain permission for building or as a part of documents for an architectural competition."@en ,
+                         "Elaborato scritto, uno dei documenti preparati per un progetto architettonico con cui illustrare le caratteristiche funzionali dell’opera e individuare le principali criticità e le soluzioni da adottare."@it ;
+            rdfs:label "Relazione"@it ,
+                       "Report"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#Section
+itdt:Section rdf:type owl:Class ;
+             rdfs:subClassOf itdt:WorkingDrawing ;
+             rdfs:comment "Orthographic drawing or work in another media depicting a building, object, or site as if cut through and exposed at one specific plane."@en ,
+                          "Rappresentazione ortografica con cui si presenta un edificio, un oggetto o un luogo nella sua struttura interna nel caso in cui esso sia tagliato da un piano specifico."@it ;
+             rdfs:label "Section"@en ,
+                        "Sezione"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#SetupStage
+itdt:SetupStage rdf:type owl:Class ;
+                rdfs:subClassOf itdt:CreativePhase ;
+                rdfs:comment "Il primo stadio della fase creativa durante la quale l'architetto traduce i requisiti del progetto, spesso espressi come un elenco delle stanze nello schema degli spazi legati tra di loro. In questo stadio l'architetto può produrre i documenti nella forma di ideogrammi, per esempio uno schema distributivo, che sintetizza graficamente le relazioni e le necessità funzionali di contiguità tra i diversi ambienti che compongono l'edificio."@it ,
+                             "The first stage of the creative phase during which an architect translates the requirements for the building, often written in the form of a list of rooms and their intended functions, into a scheme, configuration of spaces connected to each other. The documents associated with this stage are often ideograms, such as a distribution scheme, that describes synthetically the relations and the necessary functions of contiguity of individual spaces that compose the building."@en ;
+                rdfs:label "Setup Stage"@en ,
+                           "Stadio di impostazione"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#StructuralPlan
+itdt:StructuralPlan rdf:type owl:Class ;
+                    rdfs:subClassOf itdt:ConstructionDrawing ;
+                    rdfs:comment "Disegno, o un'altra rappresentazione grafica, realizzato da un igegnere per descrivere le strutture portanti di un edificio."@it ,
+                                 "Drawing or work in another medium, often prepared by an engineer, that is  concerned with the load-carrying members of a structure, the plan outline the size and types of materials to be used and the general demands for connections."@en ;
+                    rdfs:label "Piano di strutture portanti"@it ,
+                               "Structural Plan"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#VirtualModel
+itdt:VirtualModel rdf:type owl:Class ;
+                  rdfs:subClassOf itdt:Model ;
+                  rdfs:comment "Architectural models made using software."@en ,
+                               "Modello architettonico creato con l'uso di software."@it ;
+                  rdfs:label "Modello virtuale"@it ,
+                             "Virtual Model"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#WorkingDrawing
+itdt:WorkingDrawing rdf:type owl:Class ;
+                    rdfs:subClassOf itdt:ArchitecturalDrawing ;
+                    rdfs:comment "A small to medium scale drawing that give a complete graphic representation of the architect’s plans at a scale that is readable but that still shows little detail."@en ,
+                                 "Disegno di piccola o media scala creato per dare una rappresentazione completa di un progetto architettonico in tutte le sue parti ma che ancora non contiene i dettagli sufficienti per la costruzione. Tradizionalmente fa parte di progetto di massima."@it ;
+                    rdfs:label "Elaborato grafico"@it ,
+                               "Working Drawing"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#WrittenRecord
+itdt:WrittenRecord rdf:type owl:Class ;
+                   rdfs:subClassOf itdt:ArchitecturalRecord ;
+                   rdfs:comment "Document that use natural language for communication, with writings on it, created in the process of designing or construction of an architectural project."@en ,
+                                "Documento creato nel processo di progettazione o costruzione di un progetto architettonico che usa come mezzo principale la comunicazione in lingua naturale e la scrittura."@it ;
+                   rdfs:label "Documento scritto"@it ,
+                              "Written record"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+<http://www.w3.org/2004/02/skos/core#Concept> rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+<http://www.w3.org/2004/02/skos/core#ConceptScheme> rdf:type owl:Class .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Activity
+rico:Activity rdf:type owl:Class ;
+              rdfs:subClassOf rico:Event ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty rico:isOrWasPerformedBy ;
+                                owl:allValuesFrom rico:Agent
+                              ] ;
+              rdfs:comment "The doing of something for some human purpose."@en ;
+              rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+              rdfs:label "Activity"@en ;
+              <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Activity is a kind of Event. Activity is specifically used to
+            designate purposeful human activity. Activity may be understood from two perspectives.
+            First it can be understood as leading to an end. The end is the purpose of the Activity,
+            or why the Activity is performed. Second, it can be understood in terms of the processes
+            that lead to achieving the end, how the end is realized through coordinated actions.
+            Purpose and process are complementary understandings of Activity. Together the two
+            perspectives address why the Activity is performed, the expected ends or outcomes; and
+            how the Activity fulfills the purpose. While activity has an intended end, it also has
+            unintended consequences and results, or side-effects. By and large, these may not be the
+            focus of the description, but they are, unquestionably, context. |In a corporate or
+            government context an Activity may also be called a 'function'. An Activity exists in a
+            specific social and cultural context, and within that context is subject to change over
+            time. An Activity may be composed of other Activities."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E15 (Activity
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Agent
+rico:Agent rdf:type owl:Class ;
+           rdfs:subClassOf rico:Thing ;
+           rdfs:comment """A Person, or Group, or an entity created by a Person or Group
+            (Mechanism), or a Position, that acts in the world."""@en ;
+           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+           rdfs:label "Agent"@en ;
+           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """An Agent may have one or more identities; an identity is a
+            constellation of properties or relations that together “identify” the Agent. A Person or
+            Group commonly has one identity, though each also may have one or more alternative
+            identities. Such alternative identities may be shared by more than one Person or Group.
+            Alternative identities include but are not limited to pseudonyms, heteronyms, DBA (Doing
+            Business As), and trade identities. An alternative identity should not be confused with
+            a Position in a Group, for example, presidents, prime ministers, governors, popes,
+            royalty, or bishops. Nor should an alternative identity be confused with a variant name
+            or identifier of the same identity. Agent also includes entities created by a Person or
+            Group that act on behalf of the creating Agent in an autonomous or semi-autonomous
+            manner. Examples of a Mechanism include software agents, robots, and space and
+            underwater probes that generate data (records) in the course of Activity assigned to and
+            in conformance with the instructions given to them by the creating Person or
+            Group."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E07 (Agent
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Concept
+rico:Concept rdf:type owl:Class ;
+             rdfs:subClassOf rico:Thing ;
+             rdfs:comment """An idea, unit of thought, abstract cultural object or
+            category"""@en ;
+             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+             rdfs:label "Concept"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#CorporateBody
+rico:CorporateBody rdf:type owl:Class ;
+                   rdfs:subClassOf rico:Group ;
+                   rdfs:comment """An organized group of persons that act together as an Agent, and
+            that has a recognized legal or social status."""@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "Corporate Body"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> "Corporate Body is a kind of Group."@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E11 (Corporate Body
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Date
+rico:Date rdf:type owl:Class ;
+          rdfs:subClassOf rico:Thing ;
+          rdfs:comment """Chronological information associated with an entity that
+            contributes to its identification and contextualization."""@en ;
+          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+          rdfs:label "Date"@en ;
+          <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Date includes both single dates, a date range, or a set of
+            non-contiguous single dates or date ranges. A date may be represented in natural
+            language, based on a digital standard, or both. Digital standard dates will typically be
+            based on ISO 8601, or Extended Date-Time Format (EDTF)."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E18 (Date
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#DateRange
+rico:DateRange rdf:type owl:Class ;
+               rdfs:subClassOf rico:Date ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty rico:hasBeginningDate ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass rico:SingleDate
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty rico:hasEndDate ;
+                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                 owl:onClass rico:SingleDate
+                               ] ;
+               rdfs:comment """Chronological information associated with an entity that
+            contributes to its identification and contextualization, that implies or explicitly
+            states a start date and end date."""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "Date Range"@en ;
+               rico:RiCCMCorrespondingComponent """Corresponds to RiC-E20 (Date Range
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#DateSet
+rico:DateSet rdf:type owl:Class ;
+             rdfs:subClassOf rico:Date ;
+             rdfs:comment "Non-contiguous single dates or date ranges."@en ;
+             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+             rdfs:label "Date Set"@en ;
+             <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Primarily used in the description of Record Sets to describe
+            dates of member Records"""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E21 (Date Set
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#DocumentaryFormType
+rico:DocumentaryFormType rdf:type owl:Class ;
+                         rdfs:subClassOf rico:Type ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty rico:isDocumentaryFormTypeOf ;
+                                           owl:allValuesFrom [ rdf:type owl:Class ;
+                                                               owl:unionOf ( rico:Record
+                                                                             rico:RecordPart
+                                                                           )
+                                                             ]
+                                         ] ;
+                         rdfs:comment """Categorization of the document with respect to its extrinsic and
+            intrinsic elements that together communicate its content, administrative and documentary
+            context, and authority"""@en ;
+                         rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                         rdfs:label "Documentary Form Type"@en ;
+                         <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Documentary Form Type plays an important role in determining
+            the type of information a Record may comprise, its status of perfection, and its
+            authenticity and reliability. Documentary form types exist in a specific social and
+            cultural context, and within that context, are subject to change over
+            time"""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A17 (Documentary Form Type
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Event
+rico:Event rdf:type owl:Class ;
+           rdfs:subClassOf rico:Thing ;
+           rdfs:comment "Something that happens in time and space."@en ;
+           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+           rdfs:label "Event"@en ;
+           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """An event may be natural, human, or a combination of natural
+            and human. Events have temporal and spatial boundaries. An event may actively involve
+            some agent(s) and affect any entity. An event may be discrete, happening at a specific
+            moment in time, or may occur over an extended period of time. Events may have events as
+            parts, and events may precede or follow one another. Multiple agents may participate in
+            the same event, and in different roles. """@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E14 (Event
+            entity)"""@en ;
+rico:closeTo """LODE Event class
+            (http://linkedevents.org/ontology/#term-Event)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Family
+rico:Family rdf:type owl:Class ;
+            rdfs:subClassOf rico:Group ;
+            rdfs:comment """Two or more persons related by birth, or through marriage,
+            adoption, civil union, or other social conventions that bind them together as a socially
+            recognized familial group."""@en ;
+            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+            rdfs:label "Family"@en ;
+            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Family is a kind of Group. “Family” is used here as a general
+            term that encompasses a wide variety of familial groups. Other types of familial groups
+            include Dynasty, Clan, House, Tribe and others. Though family may be a recognized legal
+            group in specific contexts, the term may also be used for groups that are socially
+            recognized as families. A family may be a group of persons related either by
+            consanguinity or affinity or cohabitation or other social conventions. In some context,
+            a Family may be legally recognized as Corporate Body. For example, certain North
+            American peoples (tribes) retain self-government rights and have jurisdiction over
+            defined tribal lands."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E10 (Family
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Group
+rico:Group rdf:type owl:Class ;
+           rdfs:subClassOf rico:Agent ;
+           owl:disjointWith rico:Person .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Instantiation
+rico:Instantiation rdf:type owl:Class ;
+                   rdfs:subClassOf rico:Thing ;
+                   rdfs:comment """The inscription of information made by an Agent on a physical
+            carrier in any persistent, recoverable form as a means of communicating information
+            through time and space."""@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "Instantiation"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """A Record or Record Part must have been instantiated at least
+            once, though this instantiation may no longer exist at the moment of description. An
+            instantiation might also exist at the moment of description, but be destroyed at a later
+            moment in time, when, for example, a derived instantiation might become the only
+            remaining instantiation. A Record Set may have an instantiation, which is to say that it
+            is not a necessary condition. An Instantiation may be derived from another
+            Instantiation. A Record Resource may have many Instantiations simultaneously (for
+            instance, a record printed and saved in the same time as DOCX and PDF/A would have 3
+            concurrent instantiations) or through time (for example, copy of a record). Depending on
+            the context, a new instantiation may be seen as a new or as the same record resource.
+            During in the process of re-instantiation something is lost and something is preserved,
+            but it is up to the context and the Agent that produces or uses that Instantiation to
+            assess whether the two instantiations are functionally equivalent or not. For instance,
+            a postcard representing a town map from 1874 (Instantiation 1) is digitized and kept as
+            a JPEG file (Instantiation 2). The digital copy may be considered as instantiating the
+            \"same\" Record by an Agent considering the information transmitted by the Record (e.g.,
+            the urban landscape displayed), but as a\" different\" Record by an antiquarian more
+            focused on the materiality of the carrier. Successive instantiations may change the
+            perceivable boundaries of a Record Resource. For instance, a case file comprising many
+            records may be digitized and saved as one single PDF file, which, from management
+            perspective, may be treated as one Record. Similarly, a large Record Set (a fonds or a
+            series) may be maintained as one database. On the other hand, one record (main document
+            and its annexes) may be digitized in separate files and each one may be managed as a
+            discrete “physical” item. Instantiations may require mediation to communicate the
+            information in the Record Resource. While a traditional Record on paper can simply be
+            read by an Agent in order to understand the information, a vinyl recording, a video
+            cassette or a digital file needs a device (mediator) to codify or decodify the
+            information conveyed. This mediator may imply simple physical components (a turntable
+            needle, for example), or a complex gallery of software and hardware elements.
+            Instantiations are more than the mere informational content of Record Resource and may
+            be the focus of preservation and physical management of records. The use of particular
+            document types for records, such as a medieval charter, may have implications for the
+            authenticity of the records. Hence, the way a Record Resource is instantiated
+            contributes to the contextualizing of the content.record resource is instantiated
+            contributes to the contextualizing the content. Distinguishing the message conveyed
+            (Record Resource) and its physical representations (Instantiation) allows for the
+            efficient management of their descriptions, and preserve information about a Record
+            Resource even when no physical representation of it exists or is known to exist anymore.
+            The relations between distinct instantiations can then be expressed wherever they
+            coexist, and they can be related to the Record Resource they
+            instantiate."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E06 (Instantiation
+            entity)"""@en ;
+rico:closeTo "PREMIS Representation"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Person
+rico:Person rdf:type owl:Class ;
+            owl:equivalentClass xml:Q5 ;
+            rdfs:subClassOf rico:Agent ;
+            rdfs:comment "A human being with a social identity or persona."@en ;
+            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+            rdfs:label "Person"@en ;
+            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Person is a kind of Agent. Most commonly, a human being
+            (biological person) has a single coeval social identity or persona. In everyday
+            discourse, this is the “real person.” Less common though not rare, over the course of a
+            lifetime, personae in addition to the coeval (or “original”) persona may be associated
+            with the human being. Such “alternative personae” are most often created by the original
+            person for specific purposes. Under some circumstances, an alternative persona might
+            eclipse or replace the original person (Mark Twain eclipsing Samuel Clemens; John Wayne
+            eclipsing Marion Mitchell Morrison), that is, the social (shared) alternative identity
+            becomes the predominate identity. Less common is whentwo or more persons collaborate to
+            create a shared persona. Persona shared by two or more Persons constitute a kind of
+            Group. Within the archival context, the original Person generally will be the focus of
+            the description, with alternative personae noted. Exceptionally, an alternative persona
+            may displace the coeval persona.s."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E08 (Person
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Place
+rico:Place rdf:type owl:Class ;
+           rdfs:subClassOf rico:Thing ;
+           rdfs:comment "Bounded, named geographic area or region."@en ;
+           rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+           rdfs:label "Place"@en ;
+           <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """A Place may be a jurisdiction, a manmade structure, or a
+            natural feature. A manmade structure or natural feature may also be a jurisdiction. A
+            Place may be referenced to a Physical Location on the earth, or (if you don't want to
+            use the PhysicalLocation class) directly to geographic coordinates. Both jurisdictions
+            and natural features are historical entities. A Place thus may have begin and end dates,
+            and changing boundaries that result from human or natural events. A Jurisdiction is the
+            bounded geographic area within which an Agent has the authority to perform specified
+            activities constrained by rules."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E22 (Place
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Record
+rico:Record rdf:type owl:Class ;
+            rdfs:subClassOf rico:RecordResource ;
+            rdfs:comment """Information inscribed at least once by any method on any
+            physical carrier in any persistent, recoverable form by an Agent in the course of life
+            or work Activity."""@en ;
+            rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+            rdfs:label "Record"@en ;
+            <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Record is a kind of Record Resource. A Record must have or
+            have had at least one Instantiation. A Record may have more than one Instantiation. A
+            re-instantiation of the record may be considered the same record or a new record,
+            depending on the context and of the functions that record serves. Such information may
+            serve a variety of purposes, though it always documents or is evidence of
+            Activity."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E04 (Record
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RecordPart
+rico:RecordPart rdf:type owl:Class ;
+                rdfs:subClassOf rico:Thing .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RecordResource
+rico:RecordResource rdf:type owl:Class ;
+                    rdfs:subClassOf rico:Thing ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty rico:hasInstantiation ;
+                                      owl:allValuesFrom rico:Instantiation
+                                    ] ;
+                    rdfs:comment """A Record, Record Set, or Record Part produced or acquired and
+            retained by an Agent in the course of Activity."""@en ;
+                    rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                    rdfs:label "Record Resource"@en ;
+                    <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ,
+[ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Producing a record resource may imply either its newly
+            creation or a reuse of previous existing information by combination, rearrangement,
+            selecting, reformatting etc. Records, Record Sets, and Record Parts are all evidence of
+            the activities of an Agent. More than one Agent may be involved in the creation of a
+            Record Resource. The role of the Agent in creating the Record Resource may take
+            different forms, for example, authoring of an individual record, accumulating a set of
+            records, or forming a set of records. Though a Record, Record Set, and Record Part,
+            under most circumstances, may be easily distinguished from one another, frequently
+            identifying the boundary of each and how the “bounded information regions” interrelate,
+            may present particular challenges. Documentary Forms provide the rules governing many
+            Records, providing criteria for identifying its boundary, and identifying its essential
+            Record Parts. Many Records, though, do not have well-established documentary forms,
+            particularly electronic records, where it may be difficult to determine whether
+            individual elements represented in separate bitstreams are record parts, records, or
+            record sets. For example, is a photograph represented independently in a bitstream
+            embedded in a text document a Record, or a Record Part ? Or is the same photograph
+            attached to an email, maintaining its independent representation, a Record or a Record
+            Part? When information is grouped for some purpose, for example, zip or tar “file
+            compression” for saving storage space, presents a further challenge. One file comprises
+            multiple bitstreams subjected to techniques that remove bits that can be losslessly
+            recovered when decompressed. Under what circumstances is such a compressed bitstream a
+            Record or a Record Set? Determining when an information object is a Record, Record Part,
+            or Record Set is based on perspective and judgement exercised in a particular context.
+            In one context, the Agent describing an information object may designate it a Record,
+            while another Agent in a different context may designate it a Record Part. Both
+            designations are supported by RiC, and the significance of the difference for users of
+            the records is ameliorated by the fact that attributes and relations employed in
+            describing each of the record entities are shared."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E02 (Record Resource
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RecordSet
+rico:RecordSet rdf:type owl:Class ;
+               rdfs:subClassOf rico:RecordResource ;
+               rdfs:comment """One or more records that are associated by categorization and/or
+            physical aggregation by the creator or other Agent."""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "Record Set"@en ;
+               <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Record Set is a kind of Record Resource. The Record members in
+            a Record Set may physically reside together, though physical proximity is not essential.
+            In a particular context, an Agent (e.g. administrator, records manager, archivist,
+            end-user, etc.) may select the Record members of a Record Set based on a shared
+            attribute or attributes, or a shared Relation or Relations. The grouping of the Records
+            serves a purpose or purposes specific to the context of the Agent. All Record members of
+            a Record Set may share the attribute of having been accumulated by the same Agent, or
+            all share the same Documentary Form Type and are created over time by the same Activity.
+            A Record Set may represent the act of classifying the Records in accordance with a
+            formal classification scheme that may be based on Activity, subject, organizational
+            structure, or other criteria; an act of archival arrangement (e.g. based on common
+            provenance); or some other selection and grouping that fulfils a particular purpose or
+            purposes (e.g. a classification that reflects or supports the purposes of a researcher).
+            By exception, some Records are brought together based on their not belonging in the
+            context of selection to other designated groups: a ‘Miscellaneous’ series, for example.
+            A Record Set accumulated by an Agent in the course of life or work Activity should be
+            kept in a manner that preserves context and evidential value. Records Sets may also
+            contain other Records Sets. Both a Record Set and a Record may simultaneously be a
+            member of more than one Record Set, and over the course of its existence, a Record Set
+            or Record may be a member of an indeterminate number of Record Sets in an indeterminate
+            number of contexts. Record Sets and Records contained within a Record Set may be ordered
+            into a sequence based on a common property or relation, or common properties or
+            relations (e.g. alphabetical by Agent or related Place name; chronological order by an
+            allocated Date); or some other criterion (e.g. an imposed order by
+            relevance)."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-E03 (Record Set
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RecordSetType
+rico:RecordSetType rdf:type owl:Class ;
+                   rdfs:subClassOf rico:Type ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty rico:isRecordSetTypeOf ;
+                                     owl:allValuesFrom rico:RecordSet
+                                   ] ;
+                   rdfs:comment "A broad categorization of the type of Record Set."@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "Record Set Type"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Four instances of Record Set Type are included for now in
+            RiC-O; they also are instances of skos:Concept and, as such, part of a SKOS vocabulary.
+            Record Set Type may also be used to categorize types of Record Set that have not
+            traditionally been considered archival, e.g. search result list."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A36 (Record Set Type
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#RepresentationType
+rico:RepresentationType rdf:type owl:Class ;
+                        rdfs:subClassOf rico:Type ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty rico:isRepresentationTypeOf ;
+                                          owl:allValuesFrom rico:Instantiation
+                                        ] ;
+                        rdfs:comment """Categorization of the method of recording the content type of a
+            Record Resource."""@en ;
+                        rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                        rdfs:label "Representation Type"@en ;
+                        <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#scopeNote> """Representation Type can be unmediated (which allows humans to
+            receive the message communicated without an intermediation of a device) and mediated
+            (which needs a device to decode the message). A lot of contemporary mediated types are
+            digital. Each Representation Type may present specific features: bit rate for audio,
+            resolution for digital images, encoding format for video etc. Depending of the type,
+            properties may thus be needed to describe their characteristics. Not be confused with
+            Content Type or Carrier Type since the form of representation can be independent of the
+            communication or carrier."""@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A37 (Representation Type
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Rule
+rico:Rule rdf:type owl:Class .
+
+
+###  https://www.ica.org/standards/RiC/ontology#SingleDate
+rico:SingleDate rdf:type owl:Class ;
+                rdfs:subClassOf rico:Date ;
+                rdfs:comment """Chronological information associated with an entity that
+            contributes to its identification and contextualization, related to a single point in
+            time."""@en ;
+                rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                rdfs:label "Single Date"@en ;
+                rico:RiCCMCorrespondingComponent """Corresponds to RiC-E19 (SingleDate
+            entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Thing
+rico:Thing rdf:type owl:Class .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Type
+rico:Type rdf:type owl:Class ;
+          rdfs:subClassOf rico:Concept ;
+          rdfs:comment """A superclass for any category of some thing. A type
+            characterizes an entity."""@en ;
+          rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+          rdfs:label "Type"@en .
+
+
+###  https://www.wikidata.org/wiki/Q12737077
+xml:Q12737077 rdf:type owl:Class ;
+              rdfs:label "occupation"@en .
+
+
+###  https://www.wikidata.org/wiki/Q5
+xml:Q5 rdf:type owl:Class ;
+       rdfs:label "human"@en .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://culturaitalia.it/pico/thesaurus/4.1#abitazioni
+<http://culturaitalia.it/pico/thesaurus/4.1#abitazioni> rdf:type owl:NamedIndividual ;
+                                                        owl:sameAs itdt:residential ;
+                                                        rdfs:label "abitazioni"@it ,
+                                                                   "dwellings"@en .
+
+
+###  http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali
+<http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali> rdf:type owl:NamedIndividual ;
+                                                                 owl:sameAs itdt:industrialAndArtisanal ;
+                                                                 rdfs:label "edifici industriali"@it ,
+                                                                            "industrial buildings"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#ProjectScales
+itdt:ProjectScales rdf:type owl:NamedIndividual ,
+                            <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                   rdfs:label "Project Scales"@en ,
+                              "Scale di Progetto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#agricultural
+itdt:agricultural rdf:type owl:NamedIndividual ,
+                           itdt:FunctionalBuildingType ,
+                           <http://www.w3.org/2004/02/skos/core#Concept> ;
+                  rdfs:label "agricola"@it ,
+                             "agricultural"@en ;
+                  <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#architecturalDesign
+itdt:architecturalDesign rdf:type owl:NamedIndividual ,
+                                  itdt:ProjectScale ,
+                                  <http://www.w3.org/2004/02/skos/core#Concept> ;
+                         rdfs:label "architectural design"@en ,
+                                    "progettazione architettonica"@it ;
+                         <http://www.w3.org/2004/02/skos/core#inScheme> itdt:ProjectScales .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#blockAppartmentBuilding
+itdt:blockAppartmentBuilding rdf:type owl:NamedIndividual ,
+                                      itdt:FormalBuildingType ,
+                                      <http://www.w3.org/2004/02/skos/core#Concept> ;
+                             rdfs:label "block appartment building"@en ,
+                                        "casa a blocco"@it ;
+                             <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#commercial
+itdt:commercial rdf:type owl:NamedIndividual ,
+                         itdt:FunctionalBuildingType ,
+                         <http://www.w3.org/2004/02/skos/core#Concept> ;
+                rdfs:label "commercial"@en ,
+                           "commerciale"@it ;
+                <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#courtyardHouse
+itdt:courtyardHouse rdf:type owl:NamedIndividual ,
+                             itdt:FormalBuildingType ,
+                             <http://www.w3.org/2004/02/skos/core#Concept> ;
+                    rdfs:label "casa a corte"@it ,
+                               "courtyard house"@en ;
+                    <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#executive
+itdt:executive rdf:type owl:NamedIndividual ,
+                        itdt:FunctionalBuildingType ,
+                        <http://www.w3.org/2004/02/skos/core#Concept> ;
+               rdfs:label "direzionale"@it ,
+                          "executive"@en ;
+               <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#formalBuildingTypes
+itdt:formalBuildingTypes rdf:type owl:NamedIndividual ,
+                                  <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                         rdfs:label "Formal Building Types"@en ,
+                                    "Tipologia edilizia"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#functionalBuildingTypes
+itdt:functionalBuildingTypes rdf:type owl:NamedIndividual ,
+                                      <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                             rdfs:label "Destinazioni d'uso"@it ,
+                                        "Functional Building Types"@en .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#generalPlanning
+itdt:generalPlanning rdf:type owl:NamedIndividual ,
+                              itdt:ProjectScale ,
+                              <http://www.w3.org/2004/02/skos/core#Concept> ;
+                     rdfs:label "general planning"@en ,
+                                "pianificazione generale"@it ;
+                     <http://www.w3.org/2004/02/skos/core#inScheme> itdt:ProjectScales .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#guardRailHouses
+itdt:guardRailHouses rdf:type owl:NamedIndividual ,
+                              itdt:FormalBuildingType ,
+                              <http://www.w3.org/2004/02/skos/core#Concept> ;
+                     rdfs:label "casa a ballatoio"@it ,
+                                "guard rail house"@en ;
+                     <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#implementationPlanning
+itdt:implementationPlanning rdf:type owl:NamedIndividual ,
+                                     itdt:ProjectScale ,
+                                     <http://www.w3.org/2004/02/skos/core#Concept> ;
+                            rdfs:label "implementation planning"@en ,
+                                       "pianificazione attuativa"@it ;
+                            <http://www.w3.org/2004/02/skos/core#inScheme> itdt:ProjectScales .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#industrialAndArtisanal
+itdt:industrialAndArtisanal rdf:type owl:NamedIndividual ,
+                                     itdt:FunctionalBuildingType ,
+                                     <http://www.w3.org/2004/02/skos/core#Concept> ;
+                            rdfs:label "industrial and artisanal"@en ,
+                                       "industriale e artigianale"@it ;
+                            <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#interiorDesign
+itdt:interiorDesign rdf:type owl:NamedIndividual ,
+                             itdt:ProjectScale ,
+                             <http://www.w3.org/2004/02/skos/core#Concept> ;
+                    rdfs:label "interior and industrial design"@en ,
+                               "progettazione di interni e design industriale"@it ;
+                    <http://www.w3.org/2004/02/skos/core#inScheme> itdt:ProjectScales .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#isolatedHouse
+itdt:isolatedHouse rdf:type owl:NamedIndividual ,
+                            itdt:FormalBuildingType ,
+                            <http://www.w3.org/2004/02/skos/core#Concept> ;
+                   rdfs:label "casa isolata"@it ,
+                              "isolated house"@en ;
+                   <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#multiFamilyHouse
+itdt:multiFamilyHouse rdf:type owl:NamedIndividual ,
+                               itdt:FormalBuildingType ,
+                               <http://www.w3.org/2004/02/skos/core#Concept> ;
+                      rdfs:label "multifamily house"@en ,
+                                 "palazzina plurifamiliare"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#projectRoles
+itdt:projectRoles rdf:type owl:NamedIndividual ,
+                           <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                  rdfs:label "Project Roles"@en ,
+                             "Ruoli professionali in progetto"@it .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#publicOrOfPublicInterest
+itdt:publicOrOfPublicInterest rdf:type owl:NamedIndividual ,
+                                       itdt:FunctionalBuildingType ,
+                                       <http://www.w3.org/2004/02/skos/core#Concept> ;
+                              rdfs:label "pubblica o di interesso pubblico"@it ,
+                                         "public or of public interest"@en ;
+                              <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#residential
+itdt:residential rdf:type owl:NamedIndividual ,
+                          itdt:FunctionalBuildingType ,
+                          <http://www.w3.org/2004/02/skos/core#Concept> ;
+                 rdfs:label "residential"@en ,
+                            "residenziale"@it ;
+                 <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#restorationOrRenovation
+itdt:restorationOrRenovation rdf:type owl:NamedIndividual ,
+                                      itdt:ProjectScale ,
+                                      <http://www.w3.org/2004/02/skos/core#Concept> ;
+                             rdfs:label "restauro"@it ,
+                                        "restoration or renovation"@en ;
+                             <http://www.w3.org/2004/02/skos/core#inScheme> itdt:ProjectScales .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#rowAppartmentBuilding
+itdt:rowAppartmentBuilding rdf:type owl:NamedIndividual ,
+                                    itdt:FormalBuildingType ,
+                                    <http://www.w3.org/2004/02/skos/core#Concept> ;
+                           rdfs:label "casa in linea"@it ,
+                                      "row appartment building"@en ;
+                           owl:sameAs "http://vocab.getty.edu/aat/300005672" ;
+                           <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#terracedHouse
+itdt:terracedHouse rdf:type owl:NamedIndividual ,
+                            itdt:FormalBuildingType ,
+                            <http://www.w3.org/2004/02/skos/core#Concept> ;
+                   rdfs:label "casa a schiera"@it ,
+                              "terraced house"@en ;
+                   owl:sameAs "http://vocab.getty.edu/page/aat/300132989" ;
+                   <http://www.w3.org/2004/02/skos/core#definition> "Formal type of residential building that applies to houses that are composed by  a series of housing units joined side by side, but not having any other dwellings nor above nor below."@en ,
+                                                                    "Tipologia dell'edilizia residenziale generata dall'aggregazione in serie di più unità abitative collegati con un muro in comune, ma senza altre unità ne sopra ne sotto."@it ;
+                   <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#touristic
+itdt:touristic rdf:type owl:NamedIndividual ,
+                        itdt:FunctionalBuildingType ,
+                        <http://www.w3.org/2004/02/skos/core#Concept> ;
+               rdfs:label "touristic"@en ,
+                          "turistica"@it ;
+               <http://www.w3.org/2004/02/skos/core#inScheme> itdt:functionalBuildingTypes .
+
+
+###  http://www.semanticweb.org/daria/dt_archive#towerAppartmentBuilding
+itdt:towerAppartmentBuilding rdf:type owl:NamedIndividual ,
+                                      itdt:FormalBuildingType ,
+                                      <http://www.w3.org/2004/02/skos/core#Concept> ;
+                             rdfs:label "casa a torre"@it ,
+                                        "tower appartment building"@en ;
+                             owl:sameAs "http://vocab.getty.edu/aat/300004811" ;
+                             <http://www.w3.org/2004/02/skos/core#inScheme> itdt:formalBuildingTypes .
+
+
+###  https://www.ica.org/standards/RiC/vocabularies/documentaryFormTypes
+<https://www.ica.org/standards/RiC/vocabularies/documentaryFormTypes> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                                      dc:creator """International Coucil on Archives Expert Group on Archival
+            Description (ICA EGAD)"""@en ;
+                                                                      dc:title """International Council on Archives Records in Contexts Vocabulary for
+            Documentary Form Types"""@en ;
+                                                                      rdfs:label "Documentary Form Types"@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#definition> """A vocabulary that includes documentary form
+            types"""@en .
+
+
+###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes
+<https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                                dc:creator """International Coucil on Archives Expert Group on Archival
+            Description (ICA EGAD)"""@en ;
+                                                                dc:title """International Council on Archives Records in Contexts Vocabulary for
+            Record Set Types"""@en ;
+                                                                rdfs:label "Record Set Types"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#definition> "A vocabulary on Record Set types"@en .
+
+
+###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File
+<https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                     rdfs:label "file"@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#definition> """An organized unit of documents grouped together either for
+            current use by the creator or in the process of archival arrangement, because they
+            relate to the same subject, activity, or transaction. A file is usually the basic unit
+            within a record series. (From ICA ISAD(G))"""@en ;
+                                                                     <http://www.w3.org/2004/02/skos/core#inScheme> <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> ;
+                                                                     <http://www.w3.org/2004/02/skos/core#prefLabel> "file"@en .
+
+
+###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds
+<https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                      rdfs:label "fonds"@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#definition> """The whole of the records, regardless of form or medium,
+            organically created and/or accumulated and used by a particular person, family, or
+            corporate body in the course of that creator's activities and functions. (From ICA
+            ISAD(G))"""@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#inScheme> <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> ;
+                                                                      <http://www.w3.org/2004/02/skos/core#prefLabel> "fonds"@en .
+
+
+###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series
+<https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                       rdfs:label "series"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#definition> """Documents arranged in accordance with a filing system or
+            maintained as a unit because they result from the same accumulation or filing process,
+            or the same activity; have a particular form; or because of some other relationship
+            arising out of their creation, receipt, or use. A series is also known as a records
+            series. (From ICA ISAD(G))"""@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> ;
+                                                                       <http://www.w3.org/2004/02/skos/core#prefLabel> "series"@en .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( itdt:AcceptancePhase
+                itdt:AnalysisPhase
+                itdt:CreativePhase
+                itdt:ExecutionPhase
+                itdt:FollowUpPhase
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( itdt:BidPhase
+                itdt:ConstructionPhase
+                itdt:PermitStage
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( itdt:ConciseIdeaStage
+                itdt:DevelopmentStage
+                itdt:SetupStage
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( itdt:GraphicRecord
+                itdt:Model
+                itdt:WrittenRecord
+              )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( itdt:agricultural
+                        itdt:commercial
+                        itdt:executive
+                        itdt:industrialAndArtisanal
+                        itdt:publicOrOfPublicInterest
+                        itdt:residential
+                        itdt:touristic
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( itdt:blockAppartmentBuilding
+                        itdt:courtyardHouse
+                        itdt:guardRailHouses
+                        itdt:isolatedHouse
+                        itdt:rowAppartmentBuilding
+                        itdt:terracedHouse
+                        itdt:towerAppartmentBuilding
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( itdt:blockAppartmentBuilding
+                        itdt:courtyardHouse
+                        itdt:multiFamilyHouse
+                        itdt:rowAppartmentBuilding
+                        itdt:terracedHouse
+                        itdt:towerAppartmentBuilding
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( itdt:industrialAndArtisanal
+                        itdt:residential
+                      )
+] .
+
+
+[ rdf:type owl:AllDifferent ;
+  owl:distinctMembers ( itdt:isolatedHouse
+                        itdt:multiFamilyHouse
+                      )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
