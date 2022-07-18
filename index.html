@@ -252,10 +252,16 @@ The main concept of the ontology is the Architectural Project, which is seen fro
 </section>
 <section id="overview">
     <h2>Overview</h2>
-        <div class="figure">
-        <div><img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/ric_extension.png" alt="Sub-classes and properties implemented" style="width:600px;">Pictures say 1,000 words</div>
-        <div class="caption"><strong>Figure 1:</strong> Implemented sub-classes and sub/properties of RiC-O.</div>
+    <p>ITDT Ontology is named after the short name of the archive it was used to describe (ITaly Dino Tamburini). The ontology extends classes and properties of <a href="https://www.ica.org/standards/RiC/ontology">Records In Contexts Ontology</a> by <a href="https://www.ica.org/en">International Council on Archives</a> 
+        to provide means for semantic description of typical records found in architectural archives and architectural projects. If you are familiar with RiC-O or RiC-CM, the Fig.1 summarizes the extension. This documentation includes both ITDT entities and imported RiC-O entities.
+    </p>
+    <div class="figure">
+        <div><img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/ric_extension.png" alt="Sub-classes and properties implemented" style="width:800px;"></div>
+        <div class="caption"><strong>Figure 1:</strong> Implemented sub-classes and sub-properties of RiC-O.</div>
     </div>
+    <p>
+        The class <a href="#ArchitecturalRecord">Architectural Record</a> extends generic class <a href="#Record">rico:Record</a> and it is superclass for classes that aggregate architectural records based on their content type, such as <a href="#WorkingDrawing">Working Drawing</a>, <a href="#ArchitectualPhotogaph">Architectural Photograph</a> or <a href="#PhysicalModel">Physical Model</a>
+    </p>
 </section>
   <section id="classes">
     <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
@@ -270,7 +276,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#ArchitecturalRecord">Architectural Record</a></li>
         <li><a href="#Article">Article</a></li>
         <li><a href="#BidStage">Bid Stage</a></li>
-        <li><a href="#CarpentaryPlan">Carpentary Plan</a></li>
+        <li><a href="#CarpentryPlan">Carpentry Plan</a></li>
         <li><a href="#Concept">Concept</a></li>
         <li><a href="#Concept1">Concept</a></li>
         <li><a href="#ConceptScheme">ConceptScheme</a></li>
@@ -280,7 +286,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#ConstructionStage">Construction Stage</a></li>
         <li><a href="#ContextPhotograph">Context Photograph</a></li>
         <li><a href="#CorporateBody">Corporate Body</a></li>
-        <li><a href="#Creativephase">Creative phase</a></li>
+        <li><a href="#CreativePhase">Creative phase</a></li>
         <li><a href="#Date">Date</a></li>
         <li><a href="#DateRange">Date Range</a></li>
         <li><a href="#DateSet">Date Set</a></li>
@@ -294,7 +300,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#ExteriorPhotograph">Exterior Photograph</a></li>
         <li><a href="#Family">Family</a></li>
         <li><a href="#FloorPlan">Floor Plan</a></li>
-        <li><a href="#Follow-upPhase">Follow-up Phase</a></li>
+        <li><a href="#FollowUpPhase">Follow-up Phase</a></li>
         <li><a href="#FormalBuildingType">Formal Building Type</a></li>
         <li><a href="#FoundationPlan">Foundation Plan</a></li>
         <li><a href="#FunctionalBuildingType">Functional Building Type</a></li>
@@ -339,62 +345,118 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#human">human</a></li>
         <li><a href="#Q12737077">occupation</a></li>
     </ul>
-    <div class="entity class" id="Concept">
-        <h3>Concept<sup title="class" class="sup-c">c</sup></h3>
+    <h2>Custom classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <div class="entity class" id="ArchitecturalRecord">
+        <h3>Architectural Record<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ConceptScheme">
-        <h3>ConceptScheme<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>http://www.w3.org/2004/02/skos/core#ConceptScheme</code></td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="AcceptancePhase">
-        <h3>Acceptance Phase<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>The fourth phase of the project  that marks the end of construction works during which the building is accepted by an architect and then by a client.</p>
+                    <p>A record that documents creative and project activity of an architect or an architect firm.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Record">rico:Record</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord">GraphicalRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="AnalysisPhase">
-        <h3>Analysis Phase<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="GraphicalRecord">
+        <h3>Graphical record<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>The firsrt phase of the project during which an architect analyses the requirements (the laws and regulations to respect), the material conditions (the budget, building materials and technics) and the construction site (the natural or urban context) for the future project:</p>
+                    <p>A document that contains images or designs created in the process of designing or constructing an architectural project.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="WrittenRecord">
+        <h3>Written Record<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Document that use natural language for communication, with writings on it, created in the process of designing or construction of an architectural project.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Report">Report</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Letter">Letter</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Article">Article</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Invitation">Invitation</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Model">
+        <h3>Model<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Model</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Architectural record  that visualises architectural projects in three dimensions, often including a representation of the surrounding site or context.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#VirtualModel">VirtualModel</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel">PhysicalModel</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -415,16 +477,16 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicRecord">GraphicRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord">GraphicalRecord</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#DesignDrawing">DesignDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#ConceptualDrawing">ConceptualDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#PresentationDrawing">PresentationDrawing</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -440,27 +502,614 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Architectural record that uses photography as a principal documentary form, photographies that have architecture as a main subject.</p>
+                    <p>Architectural record that uses photography as a principal documentary form, photographs that have architecture as a main subject.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicRecord">GraphicRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord">GraphicalRecord</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph">ContextPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph">InteriorPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#DetailPhotograph">DetailPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#ExteriorPhotograph">ExteriorPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph">InteriorPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#ProcessPhotograph">ProcessPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph">ContextPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
+    <div class="entity class" id="Report">
+        <h3>Report<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Report</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Descriptive document submitted, together with drawings, by an architect to regulating bodies to obtain permission for building or as a part of documents for an architectural competition.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Article">
+        <h3>Article<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Article</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Literary composition prepared for publication as an independent portion of a magazine or newspaper</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Invitation">
+        <h3>Invitation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Invitation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Printed or written expression requesting a person's company at a certain event at a given time and place.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/tiff025_1_bis_inv.jpg" alt="Example of invitation" style="width:300px;">
+                </td>
+            </tr>            
+        </table>
+    </div>
+    <div class="entity class" id="Letter">
+        <h3>Letter<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Letter</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Pieces of correspondence, sent and delivered.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="VirtualModel">
+        <h3>Virtual Model<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#VirtualModel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Architectural models made using software.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="PhysicalModel">
+        <h3>Physical Model<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Architectural model in physical form.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/tiff195_bis_inv.jpg" alt="Example of physical model" style="width:300px;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ConceptualDrawing">
+        <h3>Conceptual Drawing<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConceptualDrawing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Small-scale, free-hand drawings which give an idea of the design of the building project or express forms of the building project in symbolic way</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DesignDrawing">
+        <h3>Design Drawing<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DesignDrawing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawings that refine conceptual drawings and are usually prepared using instruments</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Rendering">
+        <h3>Rendering<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PresentationDrawing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawings that imagine the appearance of the complete project and are prepared with shading, color, and perspective to win the client's approval, they often suggest vegetation, people and vehicles to bring image to life</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/tiff023_2_bis_inv.jpg" alt="Example of physical model" style="width:300px;">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="WorkingDrawing">
+        <h3>Working Drawing<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A small to medium scale drawing that give a complete graphic representation of the architect’s plans at a scale that is readable but that still shows little detail.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FloorPlan">FloorPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Section">Section</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan">GeneralPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Elevation">Elevation</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ConstructionDrawing">
+        <h3>Construction Drawing<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing that is used to communicate information about buildings, specifically the mechanics of their construction, and used by the team tasked with erecting an edifice.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan">FoundationPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan">StructuralPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan">InteriorSystemsPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan">CarpentryPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan">InteriorDesignPlan</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan">FurniturePlan</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ContextPhotograph">
+        <h3>Context Photograph<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Photograph  that is taken by an architect in the stage of conceptual design or after the submission of the work and may include depictions of the construction site or surroundings.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ProcessPhotograph">
+        <h3>Process Photograph<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProcessPhotograph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Photograph that depicts demolition or construction works of a building and taken to document internal structures of the building or to accompany the intermediate report of the construction works.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ExteriorPhotograph">
+        <h3>Exterior Photograph<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ExteriorPhotograph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Photograph that communicates the distribution of spaces of a building visible from outside.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InteriorPhotograph">
+        <h3>Interior Photograph<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Photograph that depicts the internal volumes distribution o a building or a room, interior design and furniture.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DetailPhotograph">
+        <h3>Detail Photograph<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DetailPhotograph</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Photograph that depicts external or internal decorations of the building or particular construction solutions, usually shot with close-up.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="GeneralPlan">
+        <h3>General Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Overall plan, usually graphic and drawn on a small scale, into which the details of other specific plans are fitted.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Elevation">
+        <h3>Elevation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Elevation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing or work in another medium showing the arrangement of vertical elements of a building, either exterior or interior, as a direct projection to a vertical plane.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="entity class" id="Section">
+        <h3>Section<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Section</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Orthographic drawing or work in another media depicting a building, object, or site as if cut through and exposed at one specific plane.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="FloorPlan">
+        <h3>Floor Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FloorPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing or work in another two-dimensional medium that represent a horizontal section through a building taken above a floor to diagrammatically illustrate the enclosing walls, interior spaces, doors, and windows of a building.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="FoundationPlan">
+        <h3>Foundation Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Plan that illustrate the configuration and location of the foundation, which comprises the supporting elements of a building, located primarily below ground level, that transmit building loads to the soil or rock underneath.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="StructuralPlan">
+        <h3>Structural Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing or work in another medium, often prepared by an engineer, that is  concerned with the load-carrying members of a structure, the plan outline the size and types of materials to be used and the general demands for connections.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InteriorSystemsPlan">
+        <h3>Interior Systems Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawings or works in another medium, often made by an engineer, that indicate the location of utilities, including water supply lines, fire hydrants, sewage disposal lines, and other utilities. As part of the construction process, these plans are generally required for submission to local authorities.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InteriorDesignPlan">
+        <h3>Interior Design Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Plan that describes the design of interiors of homes or other buildings, including placement of furniture, accessories, aesthetic or decorative schemes, and spatial arrangements.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CarpentryPlan">
+        <h3>Carpentry Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing that illustrates door and windows frames and fixtures for a building.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="FurniturePlan">
+        <h3>Furniture Plan<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Drawing that indicates the precise location of each piece of furnishing for internal space of a building.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>  
+    
+
     <div class="entity class" id="ArchitecturalProject">
         <h3>Architectural Project<sup title="class" class="sup-c">c</sup></h3>
         <table>
@@ -496,842 +1145,21 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType">hasFunctionalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#hasProjectScale">hasProjectScale</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase">hasOrHadProjectPhase</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFormalBuildingType">hasFormalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase">hasOrHadProjectPhase</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType">hasFunctionalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy">isCommissionedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf">isFunctionalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf">isCommissionerOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf">isProjectScaleOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf">isFormalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf">isOrWasProjectPhaseOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ArchitecturalRecord">
-        <h3>Architectural Record<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>A record that documents creative and projectual activity of an architect or an architect firm.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Record">rico:Record</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GraphicRecord">GraphicRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Article">
-        <h3>Article<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Article</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Literary composition prepared for publication as an independent portion of a magazine or newspaper</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="BidStage">
-        <h3>Bid Stage<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#BidPhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The second stage of the execution phase of the project that has a goal to choose contractors and suppliers.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="CarpentaryPlan">
-        <h3>Carpentary Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawing that illustrates door and windows frames and fixtures for a building.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ConceptualDrawing">
-        <h3>Conceptual Drawing<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConceptualDrawing</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Small-scale, free-hand drawings which give an idea of the design of the building project or express forms of the building project in symbolic way</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ConciseIdeaStage">
-        <h3>Concise Idea Stage<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The second stage of the creative phase during which an architect formulates a concise idea of the future building starting from a primary solid, a composition of spaces, an analogy or a metonymy and develops the idea from general vision to particular details, or vice versa .  During this stage, architects decide a formal typology of the future building. The documents and drawings resulting from this stage are conceptual and design drawings and are often equal to the papers submitted for design competition.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ConstructionDrawing">
-        <h3>Construction Drawing<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawing that is used to communicate information about buildings, specifically the mechanics of their construction, and used by the team tasked with erecting an edifice.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan">StructuralPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan">InteriorSystemsPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan">FoundationPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan">InteriorDesignPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan">CarpentryPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan">FurniturePlan</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ConstructionStage">
-        <h3>Construction Stage<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConstructionPhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The third and the last stage of the execution phase that has a goal to construct the designed building or to complete other works.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ContextPhotograph">
-        <h3>Context Photograph<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Photograph  that is taken by an architect in the stage of conceptual design or after the submission of the work and may include depictions of the construction site or surroundings.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Creativephase">
-        <h3>Creative phase<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#CreativePhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The second phase of the project during which an architect conceives and develops an idea for future building.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage">DevelopmentStage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#SetupStage">SetupStage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage">ConciseIdeaStage</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="DesignDrawing">
-        <h3>Design Drawing<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DesignDrawing</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawings that refine conceptual drawings and are usually prepared using instruments</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="DetailPhotograph">
-        <h3>Detail Photograph<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DetailPhotograph</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Photograph that depicts external or internal decorations of the building or particular construction solutions, usually shot with close-up.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="DevelopmentStage">
-        <h3>Development Stage<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The final stage of the creative phase during which the concise idea evolves into a morphological scheme, where the quantity of necessary spaces is defined along with their elementary shape, position and relative size. The architect develops a scheme of spaces and volumes and produces consistent floor plans, sections, elevations and three-dimensional drawings. In this stage, an architect also produces drawings that verify geometrical consistency of the project.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Elevation">
-        <h3>Elevation<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Elevation</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawing or work in another medium showing the arrangement of vertical elements of a building, either exterior or interior, as a direct projection to a vertical plane.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ExecutionPhase">
-        <h3>Execution Phase<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The third phase of the architectural project that has a goal to construct the designed building or to carry out other architectural work defined during the previous phase.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#BidPhase">BidPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#PermitStage">PermitStage</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionPhase">ConstructionPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ExteriorPhotograph">
-        <h3>Exterior Photograph<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ExteriorPhotograph</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Photograph that communicates the distribution of spaces of a building visible from outside.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="FloorPlan">
-        <h3>Floor Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FloorPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawing or work in another two-dimensional medium that represent a horizontal section through a building taken above a floor to diagramatically illustrate the enclosing walls, interior spaces, doors, and windows of a building.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Follow-upPhase">
-        <h3>Follow-up Phase<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artefact, such as consultation for any arised problems, decorative works, renovations, communication with media, owners of the building and administrative offices.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="FormalBuildingType">
-        <h3>Formal Building Type<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://dmikhaylova.github.io/itdt_ontology
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Categorization of the architectural project with respect to model of formal characteristics and organisation of internal spaces of the building that is meant to be designed and developed by the project.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Example</th>
-                <td>
-                    <pre>
-                      courtyard house
-                    </pre>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf">isFormalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFormalBuildingType">hasFormalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="FoundationPlan">
-        <h3>Foundation Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Plan that illustrate the configuration and location of the foundation, which comprises the supporting elements of a building, located primarily below ground level, that transmit building loads to the soil or rock underneath.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="FunctionalBuildingType">
-        <h3>Functional Building Type<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://dmikhaylova.github.io/itdt_ontology
-                </td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Categorization of the architectural project with respect to the intended function or use of the building that the project designs and develops.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Example</th>
-                <td>
-                    <pre>
-                      edificio per culto
-                    </pre>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf">isFunctionalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject">ArchitecturalProject</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf">isProjectScaleOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf">isFunctionalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType">hasFunctionalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="FurniturePlan">
-        <h3>Furniture Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawing that indicates the precise location of each piece of furnishing for internal space of a building.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="GeneralPlan">
-        <h3>General Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Overall plan, usually graphic and drawn on a small scale, into which the details of other specific plans are fitted.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Graphicalrecord">
-        <h3>Graphical record<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#GraphicRecord</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>A document that contains images or designs created in the process of designing or constructing an architectural project.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="InteriorDesignPlan">
-        <h3>Interior Design Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Plan that describes the design of interiors of homes or other buildings, including placement of furniture, accessories, aesthetic or decorative schemes, and spatial arrangements.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="InteriorPhotograph">
-        <h3>Interior Photograph<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Photograph that depicts the internal volumes distribution o a building or a room, interior design and furniture.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="InteriorSystemsPlan">
-        <h3>Interior Systems Plan<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawings or works in another medium, often made by an engineer, that indicate the location of utilities, including water supply lines, fire hydrants, sewage disposal lines, and other utilities. As part of the construction process, these plans are generally required for submission to local authorities.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Invitation">
-        <h3>Invitation<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Invitation</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Printed or written expression requesting a person's company at a certain event at a given time and place.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Letter">
-        <h3>Letter<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Letter</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Pieces of correspondence, sent and delivered.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Model">
-        <h3>Model<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Model</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Architectural record  that visualises architectural projects in three dimensions, often including a representation of the surrounding site or context.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#VirtualModel">VirtualModel</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel">PhysicalModel</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="PermitStage">
-        <h3>Permit Stage<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PermitStage</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>The first stage of the executive phase during which an architect develops further the idea and prepares a set of drawings and written documents to receive building permit.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="PhysicalModel">
-        <h3>Physical Model<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Architectural model in physical form.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="Rendering">
-        <h3>Rendering<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PresentationDrawing</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Drawings that imagine the appearance of the complete project and are prepared with shading, color, and perspective to win the client's approval, they ofte suggest vegetation, people and vehicles to bring image to life</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ProcessPhotograph">
-        <h3>Process Photograph<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProcessPhotograph</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Photograph that depicts demolition or construction works of a building and taken to document internal structures of the building or to accompany the intermediate report of the construction works.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph">ArchitecturalPhotograph</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf">isFormalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf">isCommissionerOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1359,15 +1187,15 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Restrictions</th>
                 <td>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectRole">hasOrHadProjectRole</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectRole">ProjectRole</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadParticipant">rico:hasOrHadParticipant</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://www.ica.org/standards/RiC/ontology#Agent">rico:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf">isOrWasProjectParticipationOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 ()<br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadParticipant">rico:hasOrHadParticipant</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://www.ica.org/standards/RiC/ontology#Agent">rico:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf">isOrWasProjectParticipationOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectRole">hasOrHadProjectRole</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf">isOrWasProjectParticipationOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -1375,55 +1203,6 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <td>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHasProjectParticipation">hasOrHasProjectParticipation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectRoleOf">isOrWasProjectRoleOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="entity class" id="ProjectPhase">
-        <h3>Project Phase<sup title="class" class="sup-c">c</sup></h3>
-        <table>
-            <tr>
-                <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase</code></td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>
-                    <p>Phase of the architectural project, the set of activities within the project usually performed with a particluar goal.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Super-classes</th>
-                <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Activity">rico:Activity</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Restrictions</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf">isOrWasProjectPhaseOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject">ArchitecturalProject</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase">FollowUpPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase">AcceptancePhase</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase">AnalysisPhase</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In domain of</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf">isOrWasProjectPhaseOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>In range of</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase">hasOrHadProjectPhase</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1461,91 +1240,172 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity class" id="ProjectScale">
-        <h3>Project Scale<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="ProjectPhase">
+        <h3>Project Phase<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProjectScale</code></td>
-            </tr>
-            <tr>
-                <th>Is Defined By</th>
-                <td>
-                    https://dmikhaylova.github.io/itdt_ontology
-                </td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Categorisation of the project in respect of the the area affected by its intervention, where the largest scale project affects a part of territory and the smallest affects only an object.</p>
-                </td>
-            </tr>
-            <tr>
-                <th>Example</th>
-                <td>
-                    <pre>
-                      design industriale
-                    </pre>
+                    <p>Phase of the architectural project, the set of activities within the project usually performed with a particular goal.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Activity">rico:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf">isOrWasProjectPhaseOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject">ArchitecturalProject</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase">AnalysisPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase">AcceptancePhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase">FollowUpPhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf">isProjectScaleOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf">isOrWasProjectPhaseOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasProjectScale">hasProjectScale</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase">hasOrHadProjectPhase</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Report">
-        <h3>Report<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="AnalysisPhase">
+        <h3>Analysis Phase<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Report</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Descriptive document submitted, together with drawings, by an architect to regulating bodies to obtain permission for building or as a part of documents for an architectural competition.</p>
+                    <p>The first phase of the project during which an architect analyses the requirements (the laws and regulations to respect), the material conditions (the budget, building materials and techniques) and the construction site (the natural or urban context) for the future project:</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord">WrittenRecord</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="Section">
-        <h3>Section<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="CreativePhase">
+        <h3>Creative Phase<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#Section</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#CreativePhase</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Orthographic drawing or work in another media depicting a building, object, or site as if cut through and exposed at one specific plane.</p>
+                    <p>The second phase of the project during which an architect conceives and develops an idea for future building.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing">WorkingDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#SetupStage">SetupStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage">ConciseIdeaStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage">DevelopmentStage</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ExecutionPhase">
+        <h3>Execution Phase<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The third phase of the architectural project that has a goal to construct the designed building or to carry out other architectural work defined during the previous phase.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#PermitStage">PermitStage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#BidPhase">BidPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionPhase">ConstructionPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AcceptancePhase">
+        <h3>Acceptance Phase<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The fourth phase of the project  that marks the end of construction works during which the building is accepted by an architect and then by a client.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="FollowUpPhase">
+        <h3>Follow-up Phase<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artifact, such as consultation for any problems, decorative works, renovations, communication with media, owners of the building and administrative offices.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase">ProjectPhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1570,109 +1430,287 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 </td>
             </tr>
         </table>
-    </div>
-    <div class="entity class" id="StructuralPlan">
-        <h3>Structural Plan<sup title="class" class="sup-c">c</sup></h3>
+    </div> 
+    <div class="entity class" id="ConciseIdeaStage">
+        <h3>Concise Idea Stage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Drawing or work in another medium, often prepared by an engineer, that is  concerned with the load-carrying members of a structure, the plan outline the size and types of materials to be used and the general demands for connections.</p>
+                    <p>The second stage of the creative phase during which an architect formulates a concise idea of the future building starting from a primary solid, a composition of spaces, an analogy or a metonymy and develops the idea from general vision to particular details, or vice versa .  During this stage, architects decide a formal typology of the future building. The documents and drawings resulting from this stage are conceptual and design drawings and are often equal to the papers submitted for design competition.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing">ConstructionDrawing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="VirtualModel">
-        <h3>Virtual Model<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="DevelopmentStage">
+        <h3>Development Stage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#VirtualModel</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Architectural models made using software.</p>
+                    <p>The final stage of the creative phase during which the concise idea evolves into a morphological scheme, where the quantity of necessary spaces is defined along with their elementary shape, position and relative size. The architect develops a scheme of spaces and volumes and produces consistent floor plans, sections, elevations and three-dimensional drawings. In this stage, an architect also produces drawings that verify geometrical consistency of the project.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Model">Model</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#CreativePhase">CreativePhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="WorkingDrawing">
-        <h3>Working Drawing<sup title="class" class="sup-c">c</sup></h3>
+    <div class="entity class" id="PermitStage">
+        <h3>Permit Stage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#PermitStage</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>A small to medium scale drawing that give a complete graphic representation of the architect’s plans at a scale that is readable but that still shows little detail.</p>
+                    <p>The first stage of the executive phase during which an architect develops further the idea and prepares a set of drawings and written documents to receive building permit.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing">ArchitecturalDrawing</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Elevation">Elevation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FloorPlan">FloorPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan">GeneralPlan</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Section">Section</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
-    <div class="entity class" id="WrittenRecord">
-        <h3>Written Record<sup title="class" class="sup-c">c</sup></h3>
+    
+    <div class="entity class" id="BidStage">
+        <h3>Bid Stage<sup title="class" class="sup-c">c</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
-                <td><code>https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord</code></td>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#BidPhase</code></td>
             </tr>
             <tr>
                 <th>Description</th>
                 <td>
-                    <p>Document that use natural language for communication, with writings on it, created in the process of designing or construction of an architectural project.</p>
+                    <p>The second stage of the execution phase of the project that has a goal to choose contractors and suppliers.</p>
                 </td>
             </tr>
             <tr>
                 <th>Super-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord">ArchitecturalRecord</a><sup class="sup-c" title="class">c</sup><br/>
-                </td>
-            </tr>
-            <tr>
-                <th>Sub-classes</th>
-                <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Invitation">Invitation</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Article">Article</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Letter">Letter</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#Report">Report</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
     </div>
+    <div class="entity class" id="ConstructionStage">
+        <h3>Construction Stage<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ConstructionPhase</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The third and the last stage of the execution phase that has a goal to construct the designed building or to complete other works.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase">ExecutionPhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div> 
+
+    <div class="entity class" id="ProjectScale">
+        <h3>Project Scale<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#ProjectScale</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    https://dmikhaylova.github.io/itdt_ontology
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Categorisation of the project in respect of the area affected by its intervention, where the largest scale project affects a part of territory and the smallest affects only an object.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+                      progettazione architettonica
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf">isProjectScaleOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasProjectScale">hasProjectScale</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="entity class" id="FormalBuildingType">
+        <h3>Formal Building Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    https://dmikhaylova.github.io/itdt_ontology
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Categorization of the architectural project with respect to model of formal characteristics and organisation of internal spaces of the building that is meant to be designed and developed by the project.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+                      roman theater
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf">isFormalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFormalBuildingType">hasFormalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="entity class" id="FunctionalBuildingType">
+        <h3>Functional Building Type<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType</code></td>
+            </tr>
+            <tr>
+                <th>Is Defined By</th>
+                <td>
+                    https://dmikhaylova.github.io/itdt_ontology
+                </td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Categorization of the architectural project with respect to the intended function or use of the building that the project designs and develops.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Example</th>
+                <td>
+                    <pre>
+                      school building
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Type">rico:Type</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Restrictions</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf">isFunctionalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">only</span> <a href="https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject">ArchitecturalProject</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf">isFunctionalBuildingTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType">hasFunctionalBuildingType</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>Imported classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+
+
+    <div class="entity class" id="Concept">
+        <h3>Concept<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#Concept</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ConceptScheme">
+        <h3>ConceptScheme<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://www.w3.org/2004/02/skos/core#ConceptScheme</code></td>
+            </tr>
+        </table>
+    </div>
+    
+        
     <div class="entity class" id="Activity">
         <h3>Activity<sup title="class" class="sup-c">c</sup></h3>
         <table>
@@ -1802,27 +1840,27 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#performsOrPerformed">rico:performsOrPerformed</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isCreatorOf">rico:isCreatorOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isAgentAssociatedWithAgent">rico:isAgentAssociatedWithAgent</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf">isCommissionerOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadController">rico:hasOrHadController</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadAuthorityOver">rico:hasOrHadAuthorityOver</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isOrWasControllerOf">rico:isOrWasControllerOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isAgentAssociatedWithAgent">rico:isAgentAssociatedWithAgent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#performsOrPerformed">rico:performsOrPerformed</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isProvenanceOf">rico:isProvenanceOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isCreatorOf">rico:isCreatorOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadController">rico:hasOrHadController</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isOrWasControllerOf">rico:isOrWasControllerOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isAgentAssociatedWithAgent">rico:isAgentAssociatedWithAgent</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasUnderAuthorityOf">rico:isOrWasUnderAuthorityOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasProvenance">rico:hasProvenance</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy">isCommissionedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasCreator">rico:hasCreator</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isOrWasPerformedBy">rico:isOrWasPerformedBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadController">rico:hasOrHadController</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy">isCommissionedBy</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasUnderAuthorityOf">rico:isOrWasUnderAuthorityOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isAgentAssociatedWithAgent">rico:isAgentAssociatedWithAgent</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1934,28 +1972,28 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Sub-classes</th>
                 <td>
                     <a href="https://www.ica.org/standards/RiC/ontology#DateSet">rico:DateSet</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#SingleDate">rico:SingleDate</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#DateRange">rico:DateRange</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#SingleDate">rico:SingleDate</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isBirthDateOf">rico:isBirthDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isDateAssociatedWith">rico:isDateAssociatedWith</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isDeathDateOf">rico:isDeathDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isEndDateOf">rico:isEndDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isBeginningDateOf">rico:isBeginningDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isEndDateOf">rico:isEndDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isBirthDateOf">rico:isBirthDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasBirthDate">rico:hasBirthDate</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasDeathDate">rico:hasDeathDate</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasEndDate">rico:hasEndDate</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithDate">rico:isAssociatedWithDate</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasBeginningDate">rico:hasBeginningDate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasDeathDate">rico:hasDeathDate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithDate">rico:isAssociatedWithDate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasEndDate">rico:hasEndDate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasBirthDate">rico:hasBirthDate</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -1990,8 +2028,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Restrictions</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasBeginningDate">rico:hasBeginningDate</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://www.ica.org/standards/RiC/ontology#SingleDate">rico:SingleDate</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasEndDate">rico:hasEndDate</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://www.ica.org/standards/RiC/ontology#SingleDate">rico:SingleDate</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasBeginningDate">rico:hasBeginningDate</a><sup class="sup-op" title="object property">op</sup> <span class="cardinality">max</span> 1 <a href="https://www.ica.org/standards/RiC/ontology#SingleDate">rico:SingleDate</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2126,8 +2164,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation">ProjectParticipation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#Activity">rico:Activity</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation">ProjectParticipation</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -2141,9 +2179,9 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasParticipantIn">rico:isOrWasParticipantIn</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithEvent">rico:isAssociatedWithEvent</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#resultsOrResultedFrom">rico:resultsOrResultedFrom</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasParticipantIn">rico:isOrWasParticipantIn</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2207,8 +2245,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Family">rico:Family</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#CorporateBody">rico:CorporateBody</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Family">rico:Family</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
@@ -2301,23 +2339,23 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationOf">rico:isInstantiationOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasDerivedInstantiation">rico:hasDerivedInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#instantiationExtent">rico:instantiationExtent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationOf">rico:isInstantiationOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasRepresentationType">rico:hasRepresentationType</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#instantiationStructure">rico:instantiationStructure</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationAssociatedWithInstantiation">rico:isInstantiationAssociatedWithInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isDerivedFromInstantiation">rico:isDerivedFromInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#instantiationStructure">rico:instantiationStructure</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasRepresentationType">rico:hasRepresentationType</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#instantiationExtent">rico:instantiationExtent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationAssociatedWithInstantiation">rico:isInstantiationAssociatedWithInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isDerivedFromInstantiation">rico:isDerivedFromInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasInstantiation">rico:hasInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasDerivedInstantiation">rico:hasDerivedInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isRepresentationTypeOf">rico:isRepresentationTypeOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasDerivedInstantiation">rico:hasDerivedInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasInstantiation">rico:hasInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationAssociatedWithInstantiation">rico:isInstantiationAssociatedWithInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2368,17 +2406,17 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasLeaderOf">rico:isOrWasLeaderOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasBirthDate">rico:hasBirthDate</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasLeaderOf">rico:isOrWasLeaderOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasDeathDate">rico:hasDeathDate</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isDeathDateOf">rico:isDeathDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadLeader">rico:hasOrHadLeader</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isBirthDateOf">rico:isBirthDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadLeader">rico:hasOrHadLeader</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isDeathDateOf">rico:isDeathDateOf</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
         </table>
@@ -2587,23 +2625,23 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>In domain of</th>
                 <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#recordResourceStructure">rico:recordResourceStructure</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#recordResourceExtent">rico:recordResourceExtent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#describesOrDescribed">rico:describesOrDescribed</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadSubject">rico:hasOrHadSubject</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#scopeAndContent">rico:scopeAndContent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadMainSubject">rico:hasOrHadMainSubject</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasInstantiation">rico:hasInstantiation</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#recordResourceExtent">rico:recordResourceExtent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isRecordResourceAssociatedWithRecordResource">rico:isRecordResourceAssociatedWithRecordResource</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#recordResourceStructure">rico:recordResourceStructure</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadSubject">rico:hasOrHadSubject</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#describesOrDescribed">rico:describesOrDescribed</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#scopeAndContent">rico:scopeAndContent</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In range of</th>
                 <td>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasSubjectOf">rico:isOrWasSubjectOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#isOrWasDescribedBy">isOrWasDescribedBy</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isOrWasMainSubjectOf">rico:isOrWasMainSubjectOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationOf">rico:isInstantiationOf</a><sup class="sup-op" title="object property">op</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasSubjectOf">rico:isOrWasSubjectOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#isRecordResourceAssociatedWithRecordResource">rico:isRecordResourceAssociatedWithRecordResource</a><sup class="sup-op" title="object property">op</sup><br/>
                 </td>
             </tr>
@@ -2842,24 +2880,24 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Sub-classes</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Instantiation">rico:Instantiation</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectRole">ProjectRole</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Date">rico:Date</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Place">rico:Place</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#Event">rico:Event</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Instantiation">rico:Instantiation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#RecordResource">rico:RecordResource</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#Agent">rico:Agent</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#Concept">rico:Concept</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#RecordResource">rico:RecordResource</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Date">rico:Date</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Event">rico:Event</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#Place">rico:Place</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#RecordPart">rico:RecordPart</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
             <tr>
                 <th>In domain of</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasPartOf">rico:isOrWasPartOf</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithPlace">rico:isAssociatedWithPlace</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadCategory">rico:hasOrHadCategory</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#identifier">rico:identifier</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithPlace">rico:isAssociatedWithPlace</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isOrWasPartOf">rico:isOrWasPartOf</a><sup class="sup-op" title="object property">op</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#name">rico:name</a><sup class="sup-dp" title="datatype property">dp</sup><br/>
                 </td>
             </tr>
@@ -2903,10 +2941,10 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Sub-classes</th>
                 <td>
                     <a href="https://www.ica.org/standards/RiC/ontology#RecordSetType">rico:RecordSetType</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectScale">ProjectScale</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType">FormalBuildingType</a><sup class="sup-c" title="class">c</sup><br/>
-                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#RepresentationType">rico:RepresentationType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#ProjectScale">ProjectScale</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType">FormalBuildingType</a><sup class="sup-c" title="class">c</sup><br/>
                     <a href="https://www.ica.org/standards/RiC/ontology#DocumentaryFormType">rico:DocumentaryFormType</a><sup class="sup-c" title="class">c</sup><br/>
                 </td>
             </tr>
@@ -3039,7 +3077,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#isinstanceof">is instance of</a></li>
         <li><a href="#SIUSAarchivecreatorpersonID">SIUSA archive creator person ID</a></li>
         <li><a href="#educatedat">educated at</a></li>
-        <li><a href="#familyname">family name</a></li>
+        <li><a href="#cognome">cognome</a></li>
         <li><a href="#givenname">given name</a></li>
         <li><a href="#notablework">notable work</a></li>
     </ul>
@@ -3170,7 +3208,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Description</th>
                 <td>
-                    Collega Partecipazione in progetto ad un Ruolo professionale in progetto che l'Agente ha avuto nel Progetto architettonico.
+                    Connects Project Participation with the Project Role the Agent had in the Architectural Project.
                 </td>
             </tr>
             <tr>
@@ -3326,7 +3364,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Description</th>
                 <td>
-                    Connects an Agent to an Architectural project that they commisioned.
+                    Connects an Agent to an Architectural project that they commissioned.
                 </td>
             </tr>
             <tr>
@@ -3524,7 +3562,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Description</th>
                 <td>
-                    Collega una Partecipazione in progetto  ad un Ruolo professionale in progetto con la quale un Agente ha partecipato in un Progetto architettonico, collegati con la stessa Partecipazione in progetto.
+                    Connects a Project Participation to a Project Role with which an Agent participated in a Architectural project connected by the same Project Participation.
                 </td>
             </tr>
             <tr>
@@ -5209,8 +5247,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#followsInTime">rico:followsInTime</a><sup class="sup-op" title="object property">op</sup>
                     <a href="https://www.ica.org/standards/RiC/ontology#isInstantiationAssociatedWithInstantiation">rico:isInstantiationAssociatedWithInstantiation</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="https://www.ica.org/standards/RiC/ontology#followsInTime">rico:followsInTime</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -5479,8 +5517,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Super-properties</th>
                 <td>
                     <a href="https://www.ica.org/standards/RiC/ontology#isOrWasPartOf">rico:isOrWasPartOf</a><sup class="sup-op" title="object property">op</sup>
-                    <a href="https://www.ica.org/standards/RiC/ontology#isPlaceAssociatedWith">rico:isPlaceAssociatedWith</a><sup class="sup-op" title="object property">op</sup>
                     <a href="https://www.ica.org/standards/RiC/ontology#isAssociatedWithPlace">rico:isAssociatedWithPlace</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="https://www.ica.org/standards/RiC/ontology#isPlaceAssociatedWith">rico:isPlaceAssociatedWith</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -5520,8 +5558,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             <tr>
                 <th>Super-properties</th>
                 <td>
-                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadSubordinate">rico:hasOrHadSubordinate</a><sup class="sup-op" title="object property">op</sup>
                     <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadAuthorityOver">rico:hasOrHadAuthorityOver</a><sup class="sup-op" title="object property">op</sup>
+                    <a href="https://www.ica.org/standards/RiC/ontology#hasOrHadSubordinate">rico:hasOrHadSubordinate</a><sup class="sup-op" title="object property">op</sup>
                 </td>
             </tr>
             <tr>
@@ -6313,8 +6351,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity property" id="familyname">
-        <h3>family name<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="cognome">
+        <h3>cognome<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -6406,7 +6444,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      closed as awaiting conservation treatment
+                      closed under data protection legislation
                     </pre>
                 </td>
             </tr>
@@ -6450,7 +6488,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      Freely usable without restrictions
+                      The record cannot be copied using warm light copying machines or
+            photographed using flashlight.
                     </pre>
                 </td>
             </tr>
@@ -6586,7 +6625,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      SNAC ID: 83847206
+                      ISNI : 0000000073572182
                     </pre>
                 </td>
             </tr>
@@ -6639,7 +6678,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      The book register has 345 written leaves.
+                      Size of PDF-file: 1.5 MB
                     </pre>
                 </td>
             </tr>
@@ -6736,8 +6775,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      Digital copy of the Pomarius archival inventory from
-            1575
+                      Sketch Map of the Qatar Peninsula
                     </pre>
                 </td>
             </tr>
@@ -6891,8 +6929,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      The series have the files arranged according to the alphabetical
-            order of the places concerned.
+                      The record has 2 appendixes, comprising a full account of the
+            income from car taxes and real estate taxes.
                     </pre>
                 </td>
             </tr>
@@ -6946,9 +6984,9 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <th>Example</th>
                 <td>
                     <pre>
-                      Letter from Vlad the Impaler (Dracula) to the Council of
-            Kronstadt asking them to send military support against the Ottomans, within the
-            framework of their alliance treaty.
+                      Se hace referencia a construcción del Gran Hotel, iniciada en
+            1899 bajo el nombre de Casa Celestino. Tras su interrupción en 1902, continuó la obra ya
+            con su nombre actual.
                     </pre>
                 </td>
             </tr>
@@ -7203,37 +7241,37 @@ The main concept of the ontology is the Architectural Project, which is seen fro
   <section id="namedindividuals">
     <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <ul class="hlist">
-        <li><a href="#Destinazionid'uso">Destinazioni d'uso</a></li>
         <li><a href="#DocumentaryFormTypes">Documentary Form Types</a></li>
         <li><a href="#FormalBuildingTypes">Formal Building Types</a></li>
+        <li><a href="#FunctionalBuildingTypes">Functional Building Types</a></li>
         <li><a href="#ProjectRoles">Project Roles</a></li>
+        <li><a href="#ProjectScales">Project Scales</a></li>
         <li><a href="#RecordSetTypes">Record Set Types</a></li>
-        <li><a href="#ScalediProgetto">Scale di Progetto</a></li>
         <li><a href="#agricultural">agricultural</a></li>
         <li><a href="#architecturaldesign">architectural design</a></li>
         <li><a href="#blockappartmentbuilding">block appartment building</a></li>
-        <li><a href="#casaaballatoio">casa a ballatoio</a></li>
-        <li><a href="#casaaschiera">casa a schiera</a></li>
-        <li><a href="#casaatorre">casa a torre</a></li>
         <li><a href="#commercial">commercial</a></li>
         <li><a href="#courtyardhouse">courtyard house</a></li>
-        <li><a href="#direzionale">direzionale</a></li>
         <li><a href="#dwellings">dwellings</a></li>
+        <li><a href="#executive">executive</a></li>
         <li><a href="#file">file</a></li>
         <li><a href="#fonds">fonds</a></li>
+        <li><a href="#generalplanning">general planning</a></li>
+        <li><a href="#guardrailhouse">guard rail house</a></li>
+        <li><a href="#implementationplanning">implementation planning</a></li>
         <li><a href="#industrialandartisanal">industrial and artisanal</a></li>
         <li><a href="#industrialbuildings">industrial buildings</a></li>
+        <li><a href="#interiorandindustrialdesign">interior and industrial design</a></li>
         <li><a href="#isolatedhouse">isolated house</a></li>
-        <li><a href="#palazzinaplurifamiliare">palazzina plurifamiliare</a></li>
-        <li><a href="#pianificazioneattuativa">pianificazione attuativa</a></li>
-        <li><a href="#pianificazionegenerale">pianificazione generale</a></li>
-        <li><a href="#progettazionediinterniedesignindustriale">progettazione di interni e design industriale</a></li>
-        <li><a href="#pubblicaodiinteressopubblico">pubblica o di interesso pubblico</a></li>
+        <li><a href="#multifamilyhouse">multifamily house</a></li>
+        <li><a href="#publicorofpublicinterest">public or of public interest</a></li>
         <li><a href="#residential">residential</a></li>
-        <li><a href="#restauro">restauro</a></li>
+        <li><a href="#restorationorrenovation">restoration or renovation</a></li>
         <li><a href="#rowappartmentbuilding">row appartment building</a></li>
         <li><a href="#series">series</a></li>
-        <li><a href="#turistica">turistica</a></li>
+        <li><a href="#terracedhouse">terraced house</a></li>
+        <li><a href="#touristic">touristic</a></li>
+        <li><a href="#towerappartmentbuilding">tower appartment building</a></li>
     </ul>
     <div class="entity named_individual" id="dwellings">
         <h3>dwellings<sup title="named individual" class="sup-ni">ni</sup></h3>
@@ -7275,8 +7313,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="ScalediProgetto">
-        <h3>Scale di Progetto<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="ProjectScales">
+        <h3>Project Scales<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7310,6 +7348,12 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300004895">http://vocab.getty.edu/aat/300004895</a>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity named_individual" id="architecturaldesign">
@@ -7367,6 +7411,12 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300005147">http://vocab.getty.edu/aat/300005147</a>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity named_individual" id="courtyardhouse">
@@ -7388,8 +7438,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="direzionale">
-        <h3>direzionale<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="executive">
+        <h3>executive<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7425,8 +7475,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="Destinazionid'uso">
-        <h3>Destinazioni d'uso<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="FunctionalBuildingTypes">
+        <h3>Functional Building Types<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7443,8 +7493,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="pianificazionegenerale">
-        <h3>pianificazione generale<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="generalplanning">
+        <h3>general planning<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7462,8 +7512,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="casaaballatoio">
-        <h3>casa a ballatoio<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="guardrailhouse">
+        <h3>guard rail house<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7481,8 +7531,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="pianificazioneattuativa">
-        <h3>pianificazione attuativa<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="implementationplanning">
+        <h3>implementation planning<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7517,10 +7567,16 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300121918">http://vocab.getty.edu/aat/300121918</a>
+                </td>
+            </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="progettazionediinterniedesignindustriale">
-        <h3>progettazione di interni e design industriale<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="interiorandindustrialdesign">
+        <h3>interior and industrial design<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7557,8 +7613,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="palazzinaplurifamiliare">
-        <h3>palazzina plurifamiliare<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="multifamilyhouse">
+        <h3>multifamily house<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7594,8 +7650,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </dd>
         </table>
     </div>
-    <div class="entity named_individual" id="pubblicaodiinteressopubblico">
-        <h3>pubblica o di interesso pubblico<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="publicorofpublicinterest">
+        <h3>public or of public interest<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7611,6 +7667,12 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300008059">http://vocab.getty.edu/aat/300008059</a>
+                </td>
+            </tr>
         </table>
     </div>
     <div class="entity named_individual" id="residential">
@@ -7630,10 +7692,16 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300257729">http://vocab.getty.edu/aat/300257729</a>
+                </td>
+            </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="restauro">
-        <h3>restauro<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="restorationorrenovation">
+        <h3>restoration or renovation<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7676,8 +7744,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="casaaschiera">
-        <h3>casa a schiera<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="terracedhouse">
+        <h3>terraced house<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7701,8 +7769,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="turistica">
-        <h3>turistica<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="touristic">
+        <h3>touristic<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
@@ -7718,10 +7786,16 @@ The main concept of the ontology is the Architectural Project, which is seen fro
                 <a href="http://www.w3.org/2004/02/skos/core#Concept">skos:Concept</a><br/>
                 <a href="https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType">FunctionalBuildingType</a><br/>
             </dd>
+            <tr>
+                <th>Same As</th>
+                <td>
+                    <a href="http://vocab.getty.edu/aat/300164125">http://vocab.getty.edu/aat/300164125</a>
+                </td>
+            </tr>
         </table>
     </div>
-    <div class="entity named_individual" id="casaatorre">
-        <h3>casa a torre<sup title="named individual" class="sup-ni">ni</sup></h3>
+    <div class="entity named_individual" id="towerappartmentbuilding">
+        <h3>tower appartment building<sup title="named individual" class="sup-ni">ni</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
