@@ -45,6 +45,10 @@ dcterms:contributor rdf:type owl:AnnotationProperty .
 owl:sameAs rdf:type owl:AnnotationProperty .
 
 
+###  http://www.w3.org/2004/02/skos/core#broader
+<http://www.w3.org/2004/02/skos/core#broader> rdf:type owl:AnnotationProperty .
+
+
 ###  http://www.w3.org/2004/02/skos/core#changeNote
 <http://www.w3.org/2004/02/skos/core#changeNote> rdf:type owl:AnnotationProperty .
 
@@ -59,6 +63,10 @@ owl:sameAs rdf:type owl:AnnotationProperty .
 
 ###  http://www.w3.org/2004/02/skos/core#inScheme
 <http://www.w3.org/2004/02/skos/core#inScheme> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrower
+<http://www.w3.org/2004/02/skos/core#narrower> rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#prefLabel
@@ -1221,8 +1229,28 @@ wd:Property:P800 rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
+###  https://dmikhaylova.github.io/itdt_ontology#exists
+:exists rdf:type owl:DatatypeProperty ;
+        rdfs:domain :ArchitecturalProject ;
+        rdfs:range xsd:boolean ;
+        rdfs:comment "Information about existence of the work carried out by an architectural project on the moment of the description."@en ;
+        rdfs:label "exists"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#wasCarriedOut
+:wasCarriedOut rdf:type owl:DatatypeProperty ;
+               rdfs:domain :ArchitecturalProject ;
+               rdfs:range xsd:boolean ;
+               rdfs:comment "Information about whether an architectural project was carried out (e.g. the building was built, the restoration works were completed) or not."@en ;
+               rdfs:label "was carried out"@en .
+
+
 ###  https://dmikhaylova.github.io/itdt_ontology/#arrangement
-:arrangement rdf:type owl:DatatypeProperty .
+:arrangement rdf:type owl:DatatypeProperty ;
+             rdfs:domain rico:RecordSet ;
+             rdfs:range rdfs:Literal ;
+             rdfs:comment "Information about the arrangement of records in a record set. Corresponds to the 3.4.1 of ISAD(G)."@en ;
+             rdfs:label "arrangement"@en .
 
 
 ###  https://www.ica.org/standards/RiC/ontology#conditionsOfAccess
@@ -1760,7 +1788,7 @@ rico:title rdf:type owl:DatatypeProperty ;
 ###  https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase
 :FollowUpPhase rdf:type owl:Class ;
                rdfs:subClassOf :ProjectPhase ;
-               rdfs:comment "The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artifact, such as consultation for any problems, decorative works, renovations, communication with media, owners of the building and administrative offices."@en ;
+               rdfs:comment "The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artefact, such as consultation for any problems, decorative works, renovations, communication with media, owners of the building and administrative offices."@en ;
                rdfs:label "Follow-up Phase"@en .
 
 
@@ -2488,15 +2516,120 @@ wd:Q5 rdf:type owl:Class ;
 
 ###  http://culturaitalia.it/pico/thesaurus/4.1#abitazioni
 <http://culturaitalia.it/pico/thesaurus/4.1#abitazioni> rdf:type owl:NamedIndividual ;
-                                                        owl:sameAs :residential ;
+                                                        owl:sameAs :residentialUse ;
                                                         rdfs:label "abitazioni"@it ,
                                                                    "dwellings"@en .
 
 
 ###  http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali
 <http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali> rdf:type owl:NamedIndividual ;
-                                                                 owl:sameAs :industrialAndArtisanal ;
+                                                                 owl:sameAs :industrialUse ;
                                                                  rdfs:label "industrial buildings"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#artisanalLaboratory
+:artisanalLaboratory rdf:type owl:NamedIndividual ,
+                              :FunctionalBuildingType ;
+                     rdfs:label "artisanal laboratories"@en ;
+                     <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#bank
+:bank rdf:type owl:NamedIndividual ,
+               :FunctionalBuildingType ;
+      rdfs:label "banks"@en ;
+      <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#fair
+:fair rdf:type owl:NamedIndividual ,
+               :FunctionalBuildingType ;
+      rdfs:label "fair or exibition"@en ;
+      <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#hotel
+:hotel rdf:type owl:NamedIndividual ,
+                :FunctionalBuildingType ;
+       rdfs:label "hotels"@en ;
+       <http://www.w3.org/2004/02/skos/core#broader> :touristicUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#industry
+:industry rdf:type owl:NamedIndividual ,
+                   :FunctionalBuildingType ;
+          rdfs:comment "industrial structures"@en ;
+          <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#insurance
+:insurance rdf:type owl:NamedIndividual ,
+                    :FunctionalBuildingType ;
+           rdfs:label "insuarance buildings"@en ;
+           <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#market
+:market rdf:type owl:NamedIndividual ,
+                 :FunctionalBuildingType ;
+        rdfs:label "markets"@en ;
+        <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#officePrivate
+:officePrivate rdf:type owl:NamedIndividual ,
+                        :FunctionalBuildingType ;
+               rdfs:label "private offices"@en ;
+               <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#officeService
+:officeService rdf:type owl:NamedIndividual ,
+                        :FunctionalBuildingType ;
+               rdfs:label "offices of service companies"@en ;
+               <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#researchCenter
+:researchCenter rdf:type owl:NamedIndividual ,
+                         :FunctionalBuildingType ;
+                rdfs:label "research centres"@en ;
+                <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#residence
+:residence rdf:type owl:NamedIndividual ,
+                    :FunctionalBuildingType ;
+           rdfs:label "touristic residences"@en ;
+           <http://www.w3.org/2004/02/skos/core#broader> :touristicUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#restaurant
+:restaurant rdf:type owl:NamedIndividual ,
+                     :FunctionalBuildingType ;
+            rdfs:label "restaurants"@en ;
+            <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#shop
+:shop rdf:type owl:NamedIndividual ,
+               :FunctionalBuildingType ;
+      rdfs:label "shops"@en ;
+      <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#warehouse
+:warehouse rdf:type owl:NamedIndividual ,
+                    :FunctionalBuildingType ;
+           rdfs:label "warehouses"@en ;
+           <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#workshop
+:workshop rdf:type owl:NamedIndividual ,
+                   :FunctionalBuildingType ;
+          rdfs:label "workshops"@en ;
+          <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectScales
@@ -2505,13 +2638,13 @@ wd:Q5 rdf:type owl:Class ;
                rdfs:label "Project Scales"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#agricultural
-:agricultural rdf:type owl:NamedIndividual ,
-                       <http://www.w3.org/2004/02/skos/core#Concept> ,
-                       :FunctionalBuildingType ;
-              rdfs:label "agricultural"@en ;
-              owl:sameAs "http://vocab.getty.edu/aat/300004895" ;
-              <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#agriculturalUse
+:agriculturalUse rdf:type owl:NamedIndividual ,
+                          <http://www.w3.org/2004/02/skos/core#Concept> ,
+                          :FunctionalBuildingType ;
+                 rdfs:label "agricultural use"@en ;
+                 owl:sameAs "http://vocab.getty.edu/aat/300004895" ;
+                 <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#architecturalDesign
@@ -2530,13 +2663,13 @@ wd:Q5 rdf:type owl:Class ;
                          <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#commercial
-:commercial rdf:type owl:NamedIndividual ,
-                     <http://www.w3.org/2004/02/skos/core#Concept> ,
-                     :FunctionalBuildingType ;
-            rdfs:label "commercial"@en ;
-            owl:sameAs "http://vocab.getty.edu/aat/300005147" ;
-            <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#commercialUse
+:commercialUse rdf:type owl:NamedIndividual ,
+                        <http://www.w3.org/2004/02/skos/core#Concept> ,
+                        :FunctionalBuildingType ;
+               rdfs:label "commercial use"@en ;
+               owl:sameAs "http://vocab.getty.edu/aat/300005147" ;
+               <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#courtyardHouse
@@ -2547,12 +2680,12 @@ wd:Q5 rdf:type owl:Class ;
                 <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#executive
-:executive rdf:type owl:NamedIndividual ,
-                    <http://www.w3.org/2004/02/skos/core#Concept> ,
-                    :FunctionalBuildingType ;
-           rdfs:label "executive"@en ;
-           <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#executiveUse
+:executiveUse rdf:type owl:NamedIndividual ,
+                       <http://www.w3.org/2004/02/skos/core#Concept> ,
+                       :FunctionalBuildingType ;
+              rdfs:label "executive use"@en ;
+              <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes
@@ -2593,13 +2726,13 @@ wd:Q5 rdf:type owl:Class ;
                         <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#industrialAndArtisanal
-:industrialAndArtisanal rdf:type owl:NamedIndividual ,
-                                 <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                 :FunctionalBuildingType ;
-                        rdfs:label "industrial and artisanal"@en ;
-                        owl:sameAs "http://vocab.getty.edu/aat/300121918" ;
-                        <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#industrialUse
+:industrialUse rdf:type owl:NamedIndividual ,
+                        <http://www.w3.org/2004/02/skos/core#Concept> ,
+                        :FunctionalBuildingType ;
+               rdfs:label "industrial and artisanal use"@en ;
+               owl:sameAs "http://vocab.getty.edu/aat/300121918" ;
+               <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#interiorDesign
@@ -2631,22 +2764,22 @@ wd:Q5 rdf:type owl:Class ;
               rdfs:label "Project Roles"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#publicOrOfPublicInterest
-:publicOrOfPublicInterest rdf:type owl:NamedIndividual ,
-                                   <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                   :FunctionalBuildingType ;
-                          rdfs:label "public or of public interest"@en ;
-                          owl:sameAs "http://vocab.getty.edu/aat/300008059" ;
-                          <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#publicUse
+:publicUse rdf:type owl:NamedIndividual ,
+                    <http://www.w3.org/2004/02/skos/core#Concept> ,
+                    :FunctionalBuildingType ;
+           rdfs:label "public use"@en ;
+           owl:sameAs "http://vocab.getty.edu/aat/300008059" ;
+           <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#residential
-:residential rdf:type owl:NamedIndividual ,
-                      <http://www.w3.org/2004/02/skos/core#Concept> ,
-                      :FunctionalBuildingType ;
-             rdfs:label "residential"@en ;
-             owl:sameAs "http://vocab.getty.edu/aat/300257729" ;
-             <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#residentialUse
+:residentialUse rdf:type owl:NamedIndividual ,
+                         <http://www.w3.org/2004/02/skos/core#Concept> ,
+                         :FunctionalBuildingType ;
+                rdfs:label "residential use"@en ;
+                owl:sameAs "http://vocab.getty.edu/aat/300257729" ;
+                <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#restorationOrRenovation
@@ -2676,13 +2809,13 @@ wd:Q5 rdf:type owl:Class ;
                <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#touristic
-:touristic rdf:type owl:NamedIndividual ,
-                    <http://www.w3.org/2004/02/skos/core#Concept> ,
-                    :FunctionalBuildingType ;
-           rdfs:label "touristic"@en ;
-           owl:sameAs "http://vocab.getty.edu/aat/300164125" ;
-           <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+###  https://dmikhaylova.github.io/itdt_ontology/#touristicUse
+:touristicUse rdf:type owl:NamedIndividual ,
+                       <http://www.w3.org/2004/02/skos/core#Concept> ,
+                       :FunctionalBuildingType ;
+              rdfs:label "touristic use"@en ;
+              owl:sameAs "http://vocab.getty.edu/aat/300164125" ;
+              <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#towerAppartmentBuilding
@@ -2793,13 +2926,13 @@ wd:Q5 rdf:type owl:Class ;
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :agricultural
-                        :commercial
-                        :executive
-                        :industrialAndArtisanal
-                        :publicOrOfPublicInterest
-                        :residential
-                        :touristic
+  owl:distinctMembers ( :agriculturalUse
+                        :commercialUse
+                        :executiveUse
+                        :industrialUse
+                        :publicUse
+                        :residentialUse
+                        :touristicUse
                       )
 ] .
 
@@ -2828,8 +2961,8 @@ wd:Q5 rdf:type owl:Class ;
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :industrialAndArtisanal
-                        :residential
+  owl:distinctMembers ( :industrialUse
+                        :residentialUse
                       )
 ] .
 
