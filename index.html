@@ -233,9 +233,9 @@
     </dl>
     <h2>Description</h2>
     <div id="description">
-        <p>The ITDT ontology is an extension of RiC-O (https://www.ica.org/standards/RiC/ontology) created to describe the architectural records of the Italian architect and engineer Dino Tamburini. 
-The ontology provides sub-classes of the class rico:Record for description of architectural graphical documents. 
-The main concept of the ontology is the Architectural Project, which is seen from three different perspectives: that of file, that of knowledge process and that of potential built work.</p>
+        <p>The ITDT ontology is an extension of <a href="https://www.ica.org/standards/RiC/ontology">Records in Contexts Ontology</a>, a standard for publishing 
+        linked open dataset of archival records. ITDT was created to describe the architectural records of the Italian architect and engineer Dino Tamburini. 
+        The main concept of the ontology is the Architectural Project, which is seen from three different perspectives: that of file, that of knowledge process and that of potential built work.</p>
     </div>
 </section>
 <section id="toc">
@@ -252,15 +252,22 @@ The main concept of the ontology is the Architectural Project, which is seen fro
 </section>
 <section id="overview">
     <h2>Overview</h2>
-    <p>ITDT Ontology is named after the short name of the archive it was used to describe (ITaly Dino Tamburini). The ontology extends classes and properties of <a href="https://www.ica.org/standards/RiC/ontology">Records In Contexts Ontology</a> by <a href="https://www.ica.org/en">International Council on Archives</a> 
-        to provide means for semantic description of typical records found in architectural archives and architectural projects. If you are familiar with RiC-O or RiC-CM, the Fig.1 summarizes the extension. This documentation includes both ITDT entities and imported RiC-O entities.
+    <p>ITDT Ontology is named after the letter code of the archive it was used to describe (ITaly Dino Tamburini). The ontology extends classes and properties of <a href="https://www.ica.org/standards/RiC/ontology">RIC-Ontology</a> by <a href="https://www.ica.org/en">International Council on Archives</a> 
+        to provide means for semantic description of typical records found in architectural archives and architectural projects. 
+        If you are familiar with RiC-O or RiC-CM, the Fig.1 summarizes the extension. The ontology also reuse entities from Wikidata, SKOS and OWL. 
     </p>
     <div class="figure">
-        <div><img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/ric_extension.png" alt="Sub-classes and properties implemented" style="width:800px;"></div>
+        <div><img src="https://raw.githubusercontent.com/dmikhaylova/itdt_ontology/main/images/ric_extension.png" alt="Sub-classes and properties implemented" style="width:700px;"></div>
         <div class="caption"><strong>Figure 1:</strong> Implemented sub-classes and sub-properties of RiC-O.</div>
     </div>
     <p>
-        The class <a href="#ArchitecturalRecord">Architectural Record</a> extends generic class <a href="#Record">rico:Record</a> and it is superclass for classes that aggregate architectural records based on their content type, such as <a href="#WorkingDrawing">Working Drawing</a>, <a href="#ArchitectualPhotogaph">Architectural Photograph</a> or <a href="#PhysicalModel">Physical Model</a>
+        The class <a href="#ArchitecturalRecord">Architectural Record</a> extends generic class <a href="#Record">rico:Record</a> and it is superclass for classes that aggregate architectural records based on their content type, 
+        such as <a href="#WorkingDrawing">Working Drawing</a>, <a href="#ArchitectualPhotogaph">Architectural Photograph</a> or <a href="#PhysicalModel">Physical Model.</a>
+        The class <a href="#ArchitecturalProject">Architectural Project</a>, a subclass of <a href="#Activity">rico:Activity</a> is implemented for the description of the 
+        knowledge process carried out by an architect. Project may be further described as having particular <a href="#ArchitecturalPhase">Project Phase</a>, collaborators and their roles 
+        in different phases or in overall project may be annotated with the use of ternary relation class <a href="#ProjectParticipation">Project Participation</a>. Architectual project, thought as potential
+        built-work, may be categorised by a <a href="#FormalBuildingType">Formal Building Type</a> and a <a href="#FunctionalBuildingType">Functional Building Type</a>, some named individuals were created as an example.
+        The named individuals are mapped, where possible, to the <a href="https://www.getty.edu/research/tools/vocabularies/aat/">Art and Architecture Thesaurus</a>.
     </p>
 </section>
   <section id="classes">
@@ -345,7 +352,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#human">human</a></li>
         <li><a href="#Q12737077">occupation</a></li>
     </ul>
-    <h2>Custom classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <h2>ITDT classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
     <div class="entity class" id="ArchitecturalRecord">
         <h3>Architectural Record<sup title="class" class="sup-c">c</sup></h3>
         <table>
@@ -3131,7 +3138,7 @@ The main concept of the ontology is the Architectural Project, which is seen fro
         <li><a href="#isinstanceof">is instance of</a></li>
         <li><a href="#SIUSAarchivecreatorpersonID">SIUSA archive creator person ID</a></li>
         <li><a href="#educatedat">educated at</a></li>
-        <li><a href="#cognome">cognome</a></li>
+        <li><a href="#familyName">family name</a></li>
         <li><a href="#givenname">given name</a></li>
         <li><a href="#notablework">notable work</a></li>
     </ul>
@@ -6405,8 +6412,8 @@ The main concept of the ontology is the Architectural Project, which is seen fro
             </tr>
         </table>
     </div>
-    <div class="entity property" id="cognome">
-        <h3>cognome<sup title="object property" class="sup-op">op</sup></h3>
+    <div class="entity property" id="familyName">
+        <h3>family name<sup title="object property" class="sup-op">op</sup></h3>
         <table>
             <tr>
                 <th>URI</th>
