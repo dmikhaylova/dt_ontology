@@ -1,11 +1,12 @@
-@prefix : <https://dmikhaylova.github.io/itdt_ontology/#> .
+@prefix : <https://dmikhaylova.github.io/itdt_ontology#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix wd: <https://www.wikidata.org/wiki/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix itdt: <http://www.semanticweb.org/daria/dt_archive#> .
+@prefix foaf: <https://xmlns.com/foaf/spec/#> .
+@prefix itdt: <https://dmikhaylova.github.io/itdt_ontology#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix rico: <https://www.ica.org/standards/RiC/ontology#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
@@ -89,146 +90,182 @@ rico:closeTo rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
+###  http://xmlns.com/foaf/0.1/familyName
+<http://xmlns.com/foaf/0.1/familyName> rdf:type owl:ObjectProperty .
+
+
+###  http://xmlns.com/foaf/0.1/givenName
+<http://xmlns.com/foaf/0.1/givenName> rdf:type owl:ObjectProperty .
+
+
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasFormalBuildingType
-:hasFormalBuildingType rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf rico:hasOrHadCategory ;
-                       owl:inverseOf :isFormalBuildingTypeOf ;
-                       rdfs:domain :ArchitecturalProject ;
-                       rdfs:range :FormalBuildingType ;
-                       rdfs:comment "Connects an Architectural Project to its Formal Building Type."@en ;
-                       rdfs:label "has formal building type"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasFormalBuildingType> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:subPropertyOf rico:hasOrHadCategory ;
+                                                                     owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf> ;
+                                                                     rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                     rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                     rdfs:comment "Collega un Progetto architettonico alla sua tipologia edilizia formale."@it ,
+                                                                                  "Connects an Architectural Project to its Formal Building Type."@en ;
+                                                                     rdfs:label "ha tipologia edilizia formale"@it ,
+                                                                                "has formal building type"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType
-:hasFunctionalBuildingType rdf:type owl:ObjectProperty ;
-                           rdfs:subPropertyOf rico:hasOrHadCategory ;
-                           owl:inverseOf :isFunctionalBuildingTypeOf ;
-                           rdfs:domain :ArchitecturalProject ;
-                           rdfs:range :FunctionalBuildingType ;
-                           rdfs:comment "Connects an Architectural Project to its Functional Building Type."@en ;
-                           rdfs:label "has functional building type"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasFunctionalBuildingType> rdf:type owl:ObjectProperty ;
+                                                                         rdfs:subPropertyOf rico:hasOrHadCategory ;
+                                                                         owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf> ;
+                                                                         rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                         rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                         rdfs:comment "Collega un Progetto architettonico alla sua Destinazione d'uso."@it ,
+                                                                                      "Connects an Architectural Project to its Functional Building Type."@en ;
+                                                                         rdfs:label "ha destinazione d'uso"@it ,
+                                                                                    "has functional building type"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase
-:hasOrHadProjectPhase rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf rico:hasOrHadPart ;
-                      owl:inverseOf :isOrWasProjectPhaseOf ;
-                      rdfs:domain :ArchitecturalProject ;
-                      rdfs:range :ProjectPhase ;
-                      rdfs:comment "Connects an Architectural Project to its Project Phase"@en ;
-                      rdfs:label "has or had project phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf rico:hasOrHadPart ;
+                                                                    owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf> ;
+                                                                    rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                    rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                                    rdfs:comment "Collega un Progetto Architettonico alla sua Fase di progetto"@it ,
+                                                                                 "Connects an Architectural Project to its Project Phase"@en ;
+                                                                    rdfs:label "ha o ha avuto fase di progetto"@it ,
+                                                                               "has or had project phase"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectRole
-:hasOrHadProjectRole rdf:type owl:ObjectProperty ;
-                     rdfs:subPropertyOf rico:isRelatedTo ;
-                     owl:inverseOf :isOrWasProjectRoleOf ;
-                     rdfs:domain :ProjectParticipation ;
-                     rdfs:range :ProjectRole ;
-                     rdfs:comment "Connects Project Participation with the Project Role the Agent had in the Architectural Project."@en ;
-                     rdfs:label "has or had project role"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectRole> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf rico:isRelatedTo ;
+                                                                   owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectRoleOf> ;
+                                                                   rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation> ;
+                                                                   rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                                                                   rdfs:comment "Collega Partecipazione in progetto ad un Ruolo professionale in progetto che l'Agente ha avuto nel Progetto architettonico."@it ,
+                                                                                "Connects Project Participation with the Project Role the Agent had in the Architectural Project."@en ;
+                                                                   rdfs:label "ha o ha avuto ruolo professionale in progetto"@it ,
+                                                                              "has or had project role"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasOrHasProjectParticipation
-:hasOrHasProjectParticipation rdf:type owl:ObjectProperty ;
-                              rdfs:subPropertyOf rico:isEventAssociatedWith ;
-                              owl:inverseOf :isOrWasProjectParticipationOf ;
-                              rdfs:domain rico:Activity ;
-                              rdfs:range :ProjectParticipation ;
-                              rdfs:comment "Connects an Architectural Project o Project Phase to a Project Participation."@en ;
-                              rdfs:label "has or had project participation"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasOrHasProjectParticipation> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:subPropertyOf rico:isEventAssociatedWith ;
+                                                                            owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf> ;
+                                                                            rdfs:domain rico:Activity ;
+                                                                            rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation> ;
+                                                                            rdfs:comment "Collega un Progetto architettonico o una Fase di progetto ad una Partecipazione in progetto"@it ,
+                                                                                         "Connects an Architectural Project o Project Phase to a Project Participation."@en ;
+                                                                            rdfs:label "ha o ha avuto partecipazione in progetto"@it ,
+                                                                                       "has or had project participation"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#hasProjectScale
-:hasProjectScale rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf rico:hasOrHadCategory ;
-                 owl:inverseOf :isProjectScaleOf ;
-                 rdfs:domain :ArchitecturalProject ;
-                 rdfs:range :ProjectScale ;
-                 rdfs:comment "Connects an Architectural Project to its Project Scale"@en ;
-                 rdfs:label "has project scale"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#hasProjectScale> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf rico:hasOrHadCategory ;
+                                                               owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf> ;
+                                                               rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                               rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                               rdfs:comment "Collega un Progetto architettonico alla sua Scala di progetto."@it ,
+                                                                            "Connects an Architectural Project to its Project Scale"@en ;
+                                                               rdfs:label "ha scala di progetto"@it ,
+                                                                          "has project scale"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy
-:isCommissionedBy rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf rico:hasProvenance ;
-                  owl:inverseOf :isCommissionerOf ;
-                  rdfs:domain :ArchitecturalProject ;
-                  rdfs:range rico:Agent ;
-                  rdfs:comment "Connects an Architectural Project to an Agent that commissioned its realisation."@en ;
-                  rdfs:label "is commissioned by"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf rico:hasProvenance ;
+                                                                owl:inverseOf <https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf> ;
+                                                                rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                rdfs:range rico:Agent ;
+                                                                rdfs:comment "Collega un Progetto architettonico con l'Agente che lo ha commissionato."@it ,
+                                                                             "Connects an Architectural Project to an Agent that commissioned its realisation."@en ;
+                                                                rdfs:label "commissionato da"@it ,
+                                                                           "is commissioned by"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf
-:isCommissionerOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf rico:isProvenanceOf ;
-                  rdfs:domain rico:Agent ;
-                  rdfs:range :ArchitecturalProject ;
-                  rdfs:comment "Connects an Agent to an Architectural project that they commissioned."@en ;
-                  rdfs:label "is commissioner of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isCommissionerOf> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf rico:isProvenanceOf ;
+                                                                rdfs:domain rico:Agent ;
+                                                                rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                rdfs:comment "Collega un Agente ad un Progetto architettonico che egli ha commissionato."@it ,
+                                                                             "Connects an Agent to an Architectural project that they commissioned."@en ,
+                                                                             "ha commissionato"@it ;
+                                                                rdfs:label "is commissioner of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf
-:isFormalBuildingTypeOf rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf rico:isOrWasCategoryOf ;
-                        rdfs:domain :FormalBuildingType ;
-                        rdfs:range :ArchitecturalProject ;
-                        rdfs:comment "Connects a Formal Building Type to an Architectural Project that it categorises."@en ;
-                        rdfs:label "is formal building type of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isFormalBuildingTypeOf> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                                                                      rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                      rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                      rdfs:comment "Collega una Tipologia edilizia formale al Progetto Architettonico che essa classifica."@it ,
+                                                                                   "Connects a Formal Building Type to an Architectural Project that it categorises."@en ;
+                                                                      rdfs:label "e' tipoligia edilizia formale di"@it ,
+                                                                                 "is formal building type of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf
-:isFunctionalBuildingTypeOf rdf:type owl:ObjectProperty ;
-                            rdfs:subPropertyOf rico:isOrWasCategoryOf ;
-                            rdfs:domain :FunctionalBuildingType ;
-                            rdfs:range :ArchitecturalProject ;
-                            rdfs:comment "Connects a Functional Building Type to an Architectural Project that it categorises."@en ;
-                            rdfs:label "is functional building type of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                                                                          rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                          rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                          rdfs:comment "Collega una Destinazione d'uso ad un Progetto architettonico che essa classifica."@it ,
+                                                                                       "Connects a Functional Building Type to an Architectural Project that it categorises."@en ;
+                                                                          rdfs:label "e' destinazione d'uso di"@it ,
+                                                                                     "is functional building type of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isOrWasDescribedBy
-:isOrWasDescribedBy rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf rico:isOrWasSubjectOf ;
-                    owl:inverseOf rico:describesOrDescribed ;
-                    rdfs:range rico:RecordResource ;
-                    rdfs:comment "inverse of describes or described"@en ;
-                    rdfs:label "is or was described by"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isOrWasDescribedBy> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf rico:isOrWasSubjectOf ;
+                                                                  owl:inverseOf rico:describesOrDescribed ;
+                                                                  rdfs:range rico:RecordResource ;
+                                                                  rdfs:comment "inverse of describes or described"@en ;
+                                                                  rdfs:label "is or was described by"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf
-:isOrWasProjectParticipationOf rdf:type owl:ObjectProperty ;
-                               rdfs:subPropertyOf rico:isAssociatedWithEvent ;
-                               rdfs:domain :ProjectParticipation ;
-                               rdfs:range rico:Activity ;
-                               rdfs:comment "Connects Project Participation to an Architectural Project or to a Project Phase in which an Agent participated with a specific Project Role"@en ;
-                               rdfs:label "is or was project participation of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:subPropertyOf rico:isAssociatedWithEvent ;
+                                                                             rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation> ;
+                                                                             rdfs:range rico:Activity ;
+                                                                             rdfs:comment "Collega una Partecipazione in progetto con un Progetto architettonico o con una Fase di progetto nella quale un Agente ha partecipato con un particolare Ruolo professionale in progetto"@it ,
+                                                                                          "Connects Project Participation to an Architectural Project or to a Project Phase in which an Agent participated with a specific Project Role"@en ;
+                                                                             rdfs:label "e' o e' stata patecipazione di"@it ,
+                                                                                        "is or was project participation of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf
-:isOrWasProjectPhaseOf rdf:type owl:ObjectProperty ;
-                       rdfs:subPropertyOf rico:isOrWasPartOf ;
-                       rdfs:domain :ProjectPhase ;
-                       rdfs:range :ArchitecturalProject ;
-                       rdfs:comment "Connects a Project Phase to an Architectural Project of which it was part."@en ;
-                       rdfs:label "is or was project phase of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:subPropertyOf rico:isOrWasPartOf ;
+                                                                     rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                                     rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                     rdfs:comment "Collega una Fase di progetto ad un Progetto architettonico di cui faceva parte."@it ,
+                                                                                  "Connects a Project Phase to an Architectural Project of which it was part."@en ;
+                                                                     rdfs:label "e' o e' stata una fase di progetto di"@it ,
+                                                                                "is or was project phase of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectRoleOf
-:isOrWasProjectRoleOf rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf rico:isRelatedTo ;
-                      rdfs:domain :ProjectRole ;
-                      rdfs:range :ProjectParticipation ;
-                      rdfs:comment "Connects a Project Participation to a Project Role with which an Agent participated in a Architectural project connected by the same Project Participation."@en ;
-                      rdfs:label "is or was project role of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectRoleOf> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf rico:isRelatedTo ;
+                                                                    rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                                                                    rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation> ;
+                                                                    rdfs:comment "Collega un Ruolo professionale in progetto con la quale un Agente ha partecipato in un Progetto architettonico ad una Partecipazione in progetto."@it ,
+                                                                                 "Connects a Project Role with which an Agent participated in a Architectural project to a Project Participation, to which the same Project is connected."@en ;
+                                                                    rdfs:label "e' o e' stato ruolo professionale di"@it ,
+                                                                               "is or was project role of"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf
-:isProjectScaleOf rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf rico:isOrWasCategoryOf ;
-                  rdfs:domain :ProjectScale ;
-                  rdfs:range :ArchitecturalProject ;
-                  rdfs:comment "Connects a Project Scale to an Architectural Project that it categorises."@en ;
-                  rdfs:label "is project scale of"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#isProjectScaleOf> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf rico:isOrWasCategoryOf ;
+                                                                rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                                rdfs:range <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                                rdfs:comment "Collega una Scala di progetto ad un Progetto architettonico che essa classifica."@it ,
+                                                                             "Connects a Project Scale to an Architectural Project that it categorises."@en ;
+                                                                rdfs:label "e' una scala di progetto di"@it ,
+                                                                           "is project scale of"@en .
 
 
 ###  https://www.ica.org/standards/RiC/ontology#containsOrContained
@@ -293,7 +330,7 @@ rico:documents rdf:type owl:ObjectProperty ;
                            ] ;
                rdfs:range rico:Activity ;
                owl:propertyChainAxiom ( rico:documents
-                                        :isOrWasProjectPhaseOf
+                                        <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf>
                                       ) ;
                rdfs:comment """Connects a Record Resource or an Instantiation to the Activity
             that generates the Record Resource or Instantiation."""@en ;
@@ -1159,98 +1196,73 @@ rico:RiCCMCorrespondingComponent """RiC-R061 ('results or resulted in'
             relation)"""@en .
 
 
-###  https://www.wikidata.org/wiki/Property:P106
-wd:Property:P106 rdf:type owl:ObjectProperty ;
-                 rdfs:label "occupation"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P166
-wd:Property:P166 rdf:type owl:ObjectProperty ;
-                 rdfs:label "award received"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P18
-wd:Property:P18 rdf:type owl:ObjectProperty ;
-                rdfs:label "image"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P2031
-wd:Property:P2031 rdf:type owl:ObjectProperty ;
-                  rdfs:label "work period (start)"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P31
-wd:Property:P31 rdf:type owl:ObjectProperty ;
-                rdfs:label "is instance of"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P6715
-wd:Property:P6715 rdf:type owl:ObjectProperty ;
-                  rdfs:label "SIUSA archive creator person ID"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P69
-wd:Property:P69 rdf:type owl:ObjectProperty ;
-                rdfs:label "educated at"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P734
-wd:Property:P734 rdf:type owl:ObjectProperty ;
-                 rdfs:label "cognome"@it ,
-                            "family name"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P735
-wd:Property:P735 rdf:type owl:ObjectProperty ;
-                 rdfs:label "given name"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:P800
-wd:Property:P800 rdf:type owl:ObjectProperty ;
-                 rdfs:label "notable work"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:1066
-<https://www.wikidata.org/wiki/Property:1066> rdf:type owl:ObjectProperty ;
-                                              rdfs:label "student of"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:2032
-<https://www.wikidata.org/wiki/Property:2032> rdf:type owl:ObjectProperty ;
-                                              rdfs:label "work period (end)"@en .
-
-
-###  https://www.wikidata.org/wiki/Property:26
-<https://www.wikidata.org/wiki/Property:26> rdf:type owl:ObjectProperty ;
-                                            rdfs:label "spouse"@en .
-
-
 #################################################################
 #    Data properties
 #################################################################
 
-###  https://dmikhaylova.github.io/itdt_ontology#exists
-:exists rdf:type owl:DatatypeProperty ;
-        rdfs:domain :ArchitecturalProject ;
-        rdfs:range xsd:boolean ;
-        rdfs:comment "Information about existence of the work carried out by an architectural project on the moment of the description."@en ;
-        rdfs:label "exists"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#authorSource
+<https://dmikhaylova.github.io/itdt_ontology/#authorSource> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf rico:descriptiveNote ;
+                                                            rdfs:comment "Informazione sulla fonte per la definizione della paternità dell'oggetto."@it ,
+                                                                         "Source of information for authorship."@en ;
+                                                            rdfs:label "fonte per paternità"@it ,
+                                                                       "source for authorship"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#wasCarriedOut
-:wasCarriedOut rdf:type owl:DatatypeProperty ;
-               rdfs:domain :ArchitecturalProject ;
-               rdfs:range xsd:boolean ;
-               rdfs:comment "Information about whether an architectural project was carried out (e.g. the building was built, the restoration works were completed) or not."@en ;
-               rdfs:label "was carried out"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#contentSource
+<https://dmikhaylova.github.io/itdt_ontology/#contentSource> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:subPropertyOf rico:descriptiveNote ;
+                                                             rdfs:comment "Informazione sulla fonte per la definizione degli ambiti e del contenuto dell'oggetto."@it ,
+                                                                          "Source of information for scope and content"@en ;
+                                                             rdfs:label "fonte per ambiti e contenuto"@it ,
+                                                                        "source for scope and content"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#arrangement
-:arrangement rdf:type owl:DatatypeProperty ;
-             rdfs:domain rico:RecordSet ;
-             rdfs:range rdfs:Literal ;
-             rdfs:comment "Information about the arrangement of records in a record set. Corresponds to the 3.4.1 of ISAD(G)."@en ;
-             rdfs:label "arrangement"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#dateSource
+<https://dmikhaylova.github.io/itdt_ontology/#dateSource> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:subPropertyOf rico:descriptiveNote ;
+                                                          rdfs:comment "Informazione sulla fonte per la definizione della datazione dell'oggetto."@it ,
+                                                                       "Source of information for dating."@en ;
+                                                          rdfs:label "fonte per datazione"@it ,
+                                                                     "source for dating"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#exists
+<https://dmikhaylova.github.io/itdt_ontology/#exists> rdf:type owl:DatatypeProperty ;
+                                                      rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                      rdfs:range xsd:boolean ;
+                                                      rdfs:comment "Information about existence of the work carried out by an architectural project on the moment of the description."@en ,
+                                                                   "Informazione sull'esistenza del lavoro svolto secondo il progetto architettonico nel momento della descrizione."@it ;
+                                                      rdfs:label "esiste"@it ,
+                                                                 "exists"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#wasCarriedOut
+<https://dmikhaylova.github.io/itdt_ontology/#wasCarriedOut> rdf:type owl:DatatypeProperty ;
+                                                             rdfs:domain <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> ;
+                                                             rdfs:range xsd:boolean ;
+                                                             rdfs:comment "Information about whether an architectural project was carried out (e.g. the building was built, the restoration works were completed) or not."@en ,
+                                                                          "Informazione sul fatto di completamento del progetto architettonico (se l'edificio è stato costruito, se i lavori del restauro sono stati eseguiti)."@it ;
+                                                             rdfs:label "e' stato realizzato"@it ,
+                                                                        "was carried out"@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#certainty
+rico:certainty rdf:type owl:DatatypeProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( rico:Date
+                                           rico:Event
+                                           rico:Relation
+                                         )
+                           ] ;
+               rdfs:range rdfs:Literal ;
+               rdfs:comment """Qualifies the level of certitude of the accuracy of a Date, an
+            Event or a Relation."""@en ;
+               rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+               rdfs:label "certainty"@en ;
+               <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A06 (Certainty
+            attribute)"""@en .
 
 
 ###  https://www.ica.org/standards/RiC/ontology#conditionsOfAccess
@@ -1312,6 +1324,22 @@ rico:RiCCMCorrespondingComponent """Corresponds to RiC-A09 (Conditions of Use
             attribute)"""@en .
 
 
+###  https://www.ica.org/standards/RiC/ontology#dateStandard
+rico:dateStandard rdf:type owl:DatatypeProperty ;
+                  rdfs:subPropertyOf rico:referenceSystem ;
+                  rdfs:domain rico:Date ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment """Identifier of the standard of the Normalized
+            date."""@en ;
+                  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                  rdfs:label "date standard"@en ;
+                  <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "IETF"@en ,
+                                              "ISO8601"@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A14 (Date Standard
+            attribute)"""@en .
+
+
 ###  https://www.ica.org/standards/RiC/ontology#descriptiveNote
 rico:descriptiveNote rdf:type owl:DatatypeProperty ;
                      rdfs:range rdfs:Literal ;
@@ -1320,6 +1348,22 @@ rico:descriptiveNote rdf:type owl:DatatypeProperty ;
                      rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
                      rdfs:label "descriptive note"@en ;
                      rico:RiCCMCorrespondingComponent """Corresponds to RiC-A16 (Descriptive Note
+            attribute)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#expressedDate
+rico:expressedDate rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf rico:textualValue ;
+                   rdfs:domain rico:Date ;
+                   rdfs:range rdfs:Literal ;
+                   rdfs:comment "Natural language expression of a Date."@en ;
+                   rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                   rdfs:label "expressed date"@en ;
+                   <http://www.w3.org/2004/02/skos/core#changeNote> [ ] ;
+<http://www.w3.org/2004/02/skos/core#example> "1925-1966"@en ,
+                                              "October 24th, 1999"@en ,
+                                              "The Sunday before Christmas"@en ;
+rico:RiCCMCorrespondingComponent """Corresponds to RiC-A19 (Expressed Date
             attribute)"""@en .
 
 
@@ -1532,6 +1576,16 @@ rico:RiCCMCorrespondingComponent """Specialization of RiC-A40 (Structure
             attribute)"""@en .
 
 
+###  https://www.ica.org/standards/RiC/ontology#referenceSystem
+rico:referenceSystem rdf:type owl:DatatypeProperty ;
+                     rdfs:domain rico:Thing ;
+                     rdfs:range rdfs:Literal ;
+                     rdfs:comment """Framework or standard used to represent an
+            information."""@en ;
+                     rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                     rdfs:label "reference system"@en .
+
+
 ###  https://www.ica.org/standards/RiC/ontology#scopeAndContent
 rico:scopeAndContent rdf:type owl:DatatypeProperty ;
                      rdfs:domain rico:RecordResource ;
@@ -1589,6 +1643,20 @@ rico:RiCCMCorrespondingComponent """Corresponds to RiC-A40 (Structure
             attribute)"""@en .
 
 
+###  https://www.ica.org/standards/RiC/ontology#textualValue
+rico:textualValue rdf:type owl:DatatypeProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( rico:Appellation
+                                              rico:Date
+                                              rico:Extent
+                                            )
+                              ] ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "A textual expression of an Appellation or Date."@en ;
+                  rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
+                  rdfs:label "textual value"@en .
+
+
 ###  https://www.ica.org/standards/RiC/ontology#title
 rico:title rdf:type owl:DatatypeProperty ;
            rdfs:subPropertyOf rico:name ;
@@ -1621,403 +1689,555 @@ rico:title rdf:type owl:DatatypeProperty ;
 <http://www.w3.org/2004/02/skos/core#ConceptScheme> rdf:type owl:Class .
 
 
+###  http://xmlns.com/foaf/0.1/Organization
+<http://xmlns.com/foaf/0.1/Organization> rdf:type owl:Class ;
+                                         owl:equivalentClass rico:CorporateBody .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+<http://xmlns.com/foaf/0.1/Person> rdf:type owl:Class ;
+                                   owl:equivalentClass rico:Person .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#CompetitionNotice
+itdt:CompetitionNotice rdf:type owl:Class ;
+                       rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> ;
+                       rdfs:comment "A text published by public or private initiators of an architectural competition with information about requirements for the building and its parts, the designated area for construction, the conditions of the competition, the jury, the selection procedure."@en ,
+                                    "Un testo pubblicato dagli iniziatori dei concorsi di architettura, pubblici o privati, che contengono le informazione sui requisiti per l’edificio e le sue parti, l’area disegnata per la costruzione, le condizioni del concorso, la giuria, la procedura di selezione."@it ;
+                       rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                       rdfs:label "Bando di concorso"@it ,
+                                  "Competition Notice"@en .
+
+
 ###  https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase
-:AcceptancePhase rdf:type owl:Class ;
-                 rdfs:subClassOf :ProjectPhase ;
-                 rdfs:comment "The fourth phase of the project  that marks the end of construction works during which the building is accepted by an architect and then by a client."@en ;
-                 rdfs:label "Acceptance Phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                               rdfs:comment "La quarta fase del progetto che delinea la conclusione dei lavori di costruzione durante la quale l'edificio (o un'altra opera) viene accettata dall'architetto e poi dal cliente."@it ,
+                                                                            "The fourth phase of the project  that marks the end of construction works during which the building is accepted by an architect and then by a client."@en ;
+                                                               rdfs:label "Acceptance Phase"@en ,
+                                                                          "Fase di accettazione"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase
-:AnalysisPhase rdf:type owl:Class ;
-               rdfs:subClassOf :ProjectPhase ;
-               rdfs:comment "The first phase of the project during which an architect analyses the requirements (the laws and regulations to respect), the material conditions (the budget, building materials and techniques) and the construction site (the natural or urban context) for the future project:"@en ;
-               rdfs:label "Analysis Phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                             rdfs:comment "La prima fase del progetto architettonico durante la quale l'architetto analizza i requisiti per il progetto (le leggi e i regolamenti da rispettare), le condizioni materiali (il budget, i materiali e techniche costruttivi) e il sito della costruzione (il contesto naturale o urbano)."@it ,
+                                                                          "The first phase of the project during which an architect analyses the requirements (the laws and regulations to respect), the material conditions (the budget, building materials and techniques) and the construction site (the natural or urban context) for the future project:"@en ;
+                                                             rdfs:label "Analysis Phase"@en ,
+                                                                        "Fase analitica"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing
-:ArchitecturalDrawing rdf:type owl:Class ;
-                      rdfs:subClassOf :GraphicalRecord ;
-                      rdfs:comment "A drawing for architectural project or a drawing of architecture"@en ;
-                      rdfs:label "Architectural Drawing"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord> ;
+                                                                    rdfs:comment "A drawing for architectural project or a drawing of architecture"@en ,
+                                                                                 "Disegno creato per un progetto architettonico o disegno di un opera di architettura."@it ;
+                                                                    rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                    rdfs:label "Architectural Drawing"@en ,
+                                                                               "Disegno di architettura"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph
-:ArchitecturalPhotograph rdf:type owl:Class ;
-                         rdfs:subClassOf :GraphicalRecord ;
-                         rdfs:comment "Architectural record that uses photography as a principal documentary form, photographs that have architecture as a main subject."@en ;
-                         rdfs:label "Architectural Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord> ;
+                                                                       rdfs:comment "Architectural record that uses photography as a principal documentary form, photographs that have architecture as a main subject."@en ,
+                                                                                    "Documento di architettura che usa la fotografia come la sua forma documentaria primaria, fotografie che ritraggono opere di architettura."@it ;
+                                                                       rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                       rdfs:label "Architectural Photograph"@en ,
+                                                                                  "Fotografia di architettura"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject
-:ArchitecturalProject rdf:type owl:Class ;
-                      rdfs:subClassOf rico:Activity ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :isCommissionedBy ;
-                                        owl:allValuesFrom rico:Agent
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :hasOrHadProjectPhase ;
-                                        owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                        owl:onClass :ProjectPhase
-                                      ] ;
-                      rdfs:comment "Artistic concepts comprising proposed undertakings or creations in architecture, or for the actual carrying out of such proposals. An activity carried out to design and/or construct a building."@en ;
-                      rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
-                      rdfs:label "Architectural Project"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf rico:Activity ,
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#isCommissionedBy> ;
+                                                                                      owl:allValuesFrom rico:Agent
+                                                                                    ] ,
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectPhase> ;
+                                                                                      owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                      owl:onClass <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase>
+                                                                                    ] ;
+                                                                    rdfs:comment "Artistic concepts comprising proposed undertakings or creations in architecture, or for the actual carrying out of such proposals. An activity carried out to design and/or construct a building."@en ,
+                                                                                 "Concetti artistici, impegni o creazioni proposti nell'architettura, realizzazione di queste proposte. Un'attività svolta per progettare e/o costruire un edificio."@it ;
+                                                                    rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
+                                                                    rdfs:label "Architectural Project"@en ,
+                                                                               "Progetto architettonico"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord
-:ArchitecturalRecord rdf:type owl:Class ;
-                     rdfs:subClassOf rico:Record ;
-                     rdfs:comment "A record that documents creative and project activity of an architect or an architect firm."@en ;
-                     rdfs:label "Architectural Record"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf rico:Record ;
+                                                                   rdfs:comment "A record that documents creative and project activity of an architect or an architect firm."@en ,
+                                                                                "Documento, testimonio dell'attività creativa, progettuale o manageriale di un architetto, ingegnere o uno studio di architettura."@it ;
+                                                                   rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@it ;
+                                                                   rdfs:label "Architectural Record"@en ,
+                                                                              "Documento di architettura"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Article
-:Article rdf:type owl:Class ;
-         rdfs:subClassOf :WrittenRecord ;
-         rdfs:comment "Literary composition prepared for publication as an independent portion of a magazine or newspaper"@en ;
-         rdfs:label "Article"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Article> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> ;
+                                                       rdfs:comment "Literary composition prepared for publication as an independent portion of a magazine or newspaper"@en ,
+                                                                    "Scritto di un giornale o di una rivista, che tratti un particolare argomento legato all'architettura."@it ;
+                                                       rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                       rdfs:label "Article"@en ,
+                                                                  "Articolo"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#BidPhase
-:BidPhase rdf:type owl:Class ;
-          rdfs:subClassOf :ExecutionPhase ;
-          rdfs:comment "The second stage of the execution phase of the project that has a goal to choose contractors and suppliers."@en ;
-          rdfs:label "Bid Stage"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#BidStage
+<https://dmikhaylova.github.io/itdt_ontology/#BidStage> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase> ;
+                                                        rdfs:comment "Il secondo stadio della fase esecutiva che ha lo scopo di trovare i fornitori e i contraenti."@it ,
+                                                                     "The second stage of the execution phase of the project that has a goal to choose contractors and suppliers."@en ;
+                                                        rdfs:label "Bid Stage"@en ,
+                                                                   "Stadio di appalto"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan
-:CarpentryPlan rdf:type owl:Class ;
-               rdfs:subClassOf :ConstructionDrawing ;
-               rdfs:comment "Drawing that illustrates door and windows frames and fixtures for a building."@en ;
-               rdfs:label "Carpentry Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#CarpentryPlan> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                             rdfs:comment "Drawing that illustrates door and windows frames and fixtures for a building."@en ,
+                                                                          "Un disegno costruttivo creato per illustrare gli infissi e i serramenti di un edificio."@it ;
+                                                             rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                             rdfs:label "Carpentry Plan"@en ,
+                                                                        "Piano di infissi"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ConceptualDrawing
-:ConceptualDrawing rdf:type owl:Class ;
-                   rdfs:subClassOf :ArchitecturalDrawing ;
-                   rdfs:comment "Small-scale, free-hand drawings which give an idea of the design of the building project or express forms of the building project in symbolic way"@en ;
-                   rdfs:label "Conceptual Drawing"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ConceptualDrawing> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> ;
+                                                                 rdfs:comment "Small-scale, free-hand drawings which give an idea of the design of the building project or express forms of the building project in symbolic way"@en ,
+                                                                              "Un disegno in piccola scala (1:500 - 1:200) eseguito a mano libera che presenta l’idea del progetto o esprime le forme del progetto architettonico in modo simbolico."@it ;
+                                                                 rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                 rdfs:label "Conceptual Drawing"@en ,
+                                                                            "Schizzo"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage
-:ConciseIdeaStage rdf:type owl:Class ;
-                  rdfs:subClassOf :CreativePhase ;
-                  rdfs:comment "The second stage of the creative phase during which an architect formulates a concise idea of the future building starting from a primary solid, a composition of spaces, an analogy or a metonymy and develops the idea from general vision to particular details, or vice versa .  During this stage, architects decide a formal typology of the future building. The documents and drawings resulting from this stage are conceptual and design drawings and are often equal to the papers submitted for design competition."@en ;
-                  rdfs:label "Concise Idea Stage"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#CreativePhase> ;
+                                                                rdfs:comment "Il secondo stadio della fase creativa durante la quale l'architetto crea un'idea sintetica del futuro edificio, partendo da un solido primario, una combinazione dei spazi, dai materiali, da un'anologia o una metonimia e la sviluppa o a partire dalla visione d'insieme verso i particolari o vice versa. In questo stadio di solito produce i schizzi e i disegni."@it ,
+                                                                             "The second stage of the creative phase during which an architect formulates a concise idea of the future building starting from a primary solid, a composition of spaces, an analogy or a metonymy and develops the idea from general vision to particular details, or vice versa .  During this stage, architects decide a formal typology of the future building. The documents and drawings resulting from this stage are conceptual and design drawings and are often equal to the papers submitted for design competition."@en ;
+                                                                rdfs:label "Concise Idea Stage"@en ,
+                                                                           "Stadio di idea sintetica"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing
-:ConstructionDrawing rdf:type owl:Class ;
-                     rdfs:subClassOf :ArchitecturalDrawing ;
-                     rdfs:comment "Drawing that is used to communicate information about buildings, specifically the mechanics of their construction, and used by the team tasked with erecting an edifice."@en ;
-                     rdfs:label "Construction Drawing"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> ;
+                                                                   rdfs:comment "Drawing that is used to communicate information about buildings, specifically the mechanics of their construction, and used by the team tasked with erecting an edifice."@en ,
+                                                                                "Una rappresentazione grafica in grande scala (1:50 - 1:10) realizzata per costruire un edificio o un altro progetto architettonico e usata dai costruttori direttamente nel cantiere o per chiedere le offerte dagli appaltatori."@it ;
+                                                                   rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                   rdfs:label "Construction Drawing"@en ,
+                                                                              "Disegno costruttivo"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#ConstructionPhase
-:ConstructionPhase rdf:type owl:Class ;
-                   rdfs:subClassOf :ExecutionPhase ;
-                   rdfs:comment "The third and the last stage of the execution phase that has a goal to construct the designed building or to complete other works."@en ;
-                   rdfs:label "Construction Stage"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#ConstructionStage
+<https://dmikhaylova.github.io/itdt_ontology/#ConstructionStage> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase> ;
+                                                                 rdfs:comment "Il terzo e l'ultimo stadio della fase esecutiva che ha lo scopo di costruire l'edificio o completare gli altri lavori definiti."@it ,
+                                                                              "The third and the last stage of the execution phase that has a goal to construct the designed building or to complete other works."@en ;
+                                                                 rdfs:label "Construction Stage"@en ,
+                                                                            "Stadio di costruzione"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph
-:ContextPhotograph rdf:type owl:Class ;
-                   rdfs:subClassOf :ArchitecturalPhotograph ;
-                   rdfs:comment "Photograph  that is taken by an architect in the stage of conceptual design or after the submission of the work and may include depictions of the construction site or surroundings."@en ;
-                   rdfs:label "Context Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ContextPhotograph> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> ;
+                                                                 rdfs:comment "Photograph  that is taken by an architect in the stage of conceptual design or after the submission of the work and may include depictions of the construction site or surroundings."@en ,
+                                                                              "Un’immagine realizzata da un architetto durante lo stadio della progettazione concettuale per documentare l'area della futura costruzione di un edificio o dintorni, oppure per rappresentare l’edificio costruito nel suo contesto"@it ;
+                                                                 rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                 rdfs:label "Context Photograph"@en ,
+                                                                            "Fotografia di contesto"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#CreativePhase
-:CreativePhase rdf:type owl:Class ;
-               rdfs:subClassOf :ProjectPhase ;
-               rdfs:comment "The second phase of the project during which an architect conceives and develops an idea for future building."@en ;
-               rdfs:label "Creative Phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#CreativePhase> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                             rdfs:comment "La seconda fase del progetto nella quale l'architetto concepisce e sviluppa l'idea progettuale per il futuro edificio (o altra creazione)."@it ,
+                                                                          "The second phase of the project during which an architect conceives and develops an idea for future building."@en ;
+                                                             rdfs:label "Creative Phase"@en ,
+                                                                        "Fase creativa"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#DesignDrawing
-:DesignDrawing rdf:type owl:Class ;
-               rdfs:subClassOf :ArchitecturalDrawing ;
-               rdfs:comment "Drawings that refine conceptual drawings and are usually prepared using instruments"@en ;
-               rdfs:label "Design Drawing"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#DesignDrawing> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> ;
+                                                             rdfs:comment "Drawings that refine conceptual drawings and are usually prepared using instruments"@en ,
+                                                                          "Una rappresentazione grafica in piccola scala (1:500 - 1:200) generalmente preparata con gli strumenti grafici, che riporta una versione raffinata ed elaborata del progetto concettuale."@it ;
+                                                             rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                             rdfs:label "Design Drawing"@en ,
+                                                                        "Disegno"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#DetailPhotograph
-:DetailPhotograph rdf:type owl:Class ;
-                  rdfs:subClassOf :ArchitecturalPhotograph ;
-                  rdfs:comment "Photograph that depicts external or internal decorations of the building or particular construction solutions, usually shot with close-up."@en ;
-                  rdfs:label "Detail Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#DetailPhotograph> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> ;
+                                                                rdfs:comment "Fotografia che rappresenta dettagli costruttivi o decorativi di un edificio, spesso realizzata con primissimo piano."@it ,
+                                                                             "Photograph that depicts external or internal decorations of the building or particular construction solutions, usually shot with close-up."@en ;
+                                                                rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                rdfs:label "Detail Photograph"@en ,
+                                                                           "Fotografia di dettagli"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage
-:DevelopmentStage rdf:type owl:Class ;
-                  rdfs:subClassOf :CreativePhase ;
-                  rdfs:comment "The final stage of the creative phase during which the concise idea evolves into a morphological scheme, where the quantity of necessary spaces is defined along with their elementary shape, position and relative size. The architect develops a scheme of spaces and volumes and produces consistent floor plans, sections, elevations and three-dimensional drawings. In this stage, an architect also produces drawings that verify geometrical consistency of the project."@en ;
-                  rdfs:label "Development Stage"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#CreativePhase> ;
+                                                                rdfs:comment "L'ultimo stadio della fase creativa durante il quale l'idea sintetica del progetto si sviluppa nello schema morfologico che stabilisce la quantità dei spazi neccessari e la loro posizione, grandezza e forma elementare. L'architetto poi produce uno schema volumetrico-spaziale, una conformazione complessiva dell'edificio attraverso un convincente sistema di corrispondenze tra piante, sezioni, prospetti e immagini tridimensionali. In questo stadio l'architetto può produrre i disegni per verificare la coerenza geometrica del progetto."@it ,
+                                                                             "The final stage of the creative phase during which the concise idea evolves into a morphological scheme, where the quantity of necessary spaces is defined along with their elementary shape, position and relative size. The architect develops a scheme of spaces and volumes and produces consistent floor plans, sections, elevations and three-dimensional drawings. In this stage, an architect also produces drawings that verify geometrical consistency of the project."@en ;
+                                                                rdfs:label "Development Stage"@en ,
+                                                                           "Stadio di sviluppo"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Elevation
-:Elevation rdf:type owl:Class ;
-           rdfs:subClassOf :WorkingDrawing ;
-           rdfs:comment "Drawing or work in another medium showing the arrangement of vertical elements of a building, either exterior or interior, as a direct projection to a vertical plane."@en ;
-           rdfs:label "Elevation"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Elevation> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing> ;
+                                                         rdfs:comment "Drawing or work in another medium showing the arrangement of vertical elements of a building, either exterior or interior, as a direct projection to a vertical plane."@en ,
+                                                                      "Una rappresentazione grafica della superficie esterna o interna di un edificio o di un elemento architettonico in proiezione ortogonale."@it ;
+                                                         rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                         rdfs:label "Elevation"@en ,
+                                                                    "Prospetto"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology/#ExecutionPhase
-:ExecutionPhase rdf:type owl:Class ;
-                rdfs:subClassOf :ProjectPhase ;
-                rdfs:comment "The third phase of the architectural project that has a goal to construct the designed building or to carry out other architectural work defined during the previous phase."@en ;
-                rdfs:label "Execution Phase"@en .
+###  https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase
+<https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                              rdfs:comment "La terza fase del progetto architettonico che ha lo scopo di costruire l'edificio progettato o realizzare altri lavori definiti nella fase precedente."@it ,
+                                                                           "The third phase of the architectural project that has a goal to construct the designed building or to carry out other architectural work defined during the previous phase."@en ;
+                                                              rdfs:label "Executive Phase"@en ,
+                                                                         "Fase esecutiva"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ExteriorPhotograph
-:ExteriorPhotograph rdf:type owl:Class ;
-                    rdfs:subClassOf :ArchitecturalPhotograph ;
-                    rdfs:comment "Photograph that communicates the distribution of spaces of a building visible from outside."@en ;
-                    rdfs:label "Exterior Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ExteriorPhotograph> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> ;
+                                                                  rdfs:comment "Photograph that communicates the distribution of spaces of a building visible from outside."@en ,
+                                                                               "Una fotografia realizzata per comunicare la distribuzione degli spazi dell'edificio visti dall'esterno."@it ;
+                                                                  rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                  rdfs:label "Exterior Photograph"@en ,
+                                                                             "Fotografia di esterni"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FloorPlan
-:FloorPlan rdf:type owl:Class ;
-           rdfs:subClassOf :WorkingDrawing ;
-           rdfs:comment "Drawing or work in another two-dimensional medium that represent a horizontal section through a building taken above a floor to diagrammatically illustrate the enclosing walls, interior spaces, doors, and windows of a building."@en ;
-           rdfs:label "Floor Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FloorPlan> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing> ;
+                                                         rdfs:comment "Drawing or work in another two-dimensional medium that represent a horizontal section through a building taken above a floor to diagrammatically illustrate the enclosing walls, interior spaces, doors, and windows of a building."@en ,
+                                                                      "Elaborato grafico, una sezione ottenuta mediante un piano orizzontale passante a un determinato livello, e la rappresentazione, mediante proiezione ortogonale su di esso, degli elementi non intersicati dal piano stesso: spazi interni, porte, finestre."@it ;
+                                                         rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                         rdfs:label "Floor Plan"@en ,
+                                                                    "Pianta"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase
-:FollowUpPhase rdf:type owl:Class ;
-               rdfs:subClassOf :ProjectPhase ;
-               rdfs:comment "The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artefact, such as consultation for any problems, decorative works, renovations, communication with media, owners of the building and administrative offices."@en ;
-               rdfs:label "Follow-up Phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> ;
+                                                             rdfs:comment "L'ultima fase del progetto spesso spostata nel tempo indefinitivamente durante la quale si eseguino gli interventi successivi sull'edificio o un'alra opera (risoluzione dei problemi sorti, lavori decorativi, ripristino e restauro, communicazioni con i media, i clienti e la pubblica amministrazione)."@it ,
+                                                                          "The last phase of architectural project, often delayed indefinitely in time, that may include further interventions by an architect in the life of artefact, such as consultation for any problems, decorative works, renovations, communication with media, owners of the building and administrative offices."@en ;
+                                                             rdfs:label "Fase di follow-up"@it ,
+                                                                        "Follow-up Phase"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType
-:FormalBuildingType rdf:type owl:Class ;
-                    rdfs:subClassOf rico:Type ;
-                    rdfs:comment "Categorization of the architectural project with respect to model of formal characteristics and organisation of internal spaces of the building that is meant to be designed and developed by the project."@en ;
-                    rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
-                    rdfs:label "Formal Building Type"@en ;
-                    <http://www.w3.org/2004/02/skos/core#example> "casa a ballatoio"@it ,
-                                                                  "courtyard house"@en ,
-                                                                  "roman theater"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf rico:Type ;
+                                                                  rdfs:comment "Categorization of the architectural project with respect to model of formal characteristics and organisation of internal spaces of the building that is meant to be designed and developed by the project."@en ,
+                                                                               "Categorizzazione di un edificio o di un progetto di esso nel rispetto delle caratteristiche formali nell'organizzazione degli spazi interni."@it ;
+                                                                  rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
+                                                                  rdfs:label "Formal Building Type"@en ,
+                                                                             "Tipologia edilizia formale"@it ;
+                                                                  <http://www.w3.org/2004/02/skos/core#example> "casa a ballatoio"@it ,
+                                                                                                                "courtyard house"@en ,
+                                                                                                                "roman theater"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan
-:FoundationPlan rdf:type owl:Class ;
-                rdfs:subClassOf :ConstructionDrawing ;
-                rdfs:comment "Plan that illustrate the configuration and location of the foundation, which comprises the supporting elements of a building, located primarily below ground level, that transmit building loads to the soil or rock underneath."@en ;
-                rdfs:label "Foundation Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FoundationPlan> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                              rdfs:comment "Plan that illustrate the configuration and location of the foundation, which comprises the supporting elements of a building, located primarily below ground level, that transmit building loads to the soil or rock underneath."@en ,
+                                                                           "Un disegno costruttivo realizzato per illustrare la configurazione della fondazione di un edificio, generalmente collocata sotto terra."@it ;
+                                                              rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                              rdfs:label "Foundation Plan"@en ,
+                                                                         "Piano di fondazione"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType
-:FunctionalBuildingType rdf:type owl:Class ;
-                        rdfs:subClassOf rico:Type ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :isFunctionalBuildingTypeOf ;
-                                          owl:allValuesFrom :ArchitecturalProject
-                                        ] ;
-                        rdfs:comment "Categorization of the architectural project with respect to the intended function or use of the building that the project designs and develops."@en ;
-                        rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
-                        rdfs:label "Functional Building Type"@en ;
-                        <http://www.w3.org/2004/02/skos/core#example> "edificio per culto"@it ,
-                                                                      "school building"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf rico:Type ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#isFunctionalBuildingTypeOf> ;
+                                                                                        owl:allValuesFrom <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject>
+                                                                                      ] ;
+                                                                      rdfs:comment "Categorization of the architectural project with respect to the intended function or use of the building that the project designs and develops."@en ,
+                                                                                   "Categorizzazione di un edificio o di un progetto di esso nel rispetto della sua destinazione d'uso, una funzione primaria che svolge."@it ;
+                                                                      rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
+                                                                      rdfs:label "Destinazione d'uso"@it ,
+                                                                                 "Functional Building Type"@en ;
+                                                                      <http://www.w3.org/2004/02/skos/core#example> "edificio per culto"@it ,
+                                                                                                                    "school building"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan
-:FurniturePlan rdf:type owl:Class ;
-               rdfs:subClassOf :ConstructionDrawing ;
-               rdfs:comment "Drawing that indicates the precise location of each piece of furnishing for internal space of a building."@en ;
-               rdfs:label "Furniture Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#FurniturePlan> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                             rdfs:comment "Drawing that indicates the precise location of each piece of furnishing for internal space of a building."@en ,
+                                                                          "Un disegno costruttivo realizzato per illustrare la collocazione di ogni dettaglio di arredamento all'interno di un edificio."@it ;
+                                                             rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                             rdfs:label "Furniture Plan"@en ,
+                                                                        "Schema di arredamento"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan
-:GeneralPlan rdf:type owl:Class ;
-             rdfs:subClassOf :WorkingDrawing ;
-             rdfs:comment "Overall plan, usually graphic and drawn on a small scale, into which the details of other specific plans are fitted."@en ;
-             rdfs:label "General Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#GeneralPlan> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing> ;
+                                                           rdfs:comment "Overall plan, usually graphic and drawn on a small scale, into which the details of other specific plans are fitted."@en ,
+                                                                        "Una rappresentazione grafica piana, in scala piccola, di un oggetto o di una superficie eseguita mediante una proiezione ortogonale, generalmente raffigura l’area destinata alla costruzione."@it ;
+                                                           rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                           rdfs:label "General Plan"@en ,
+                                                                      "Planimetria"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord
-:GraphicalRecord rdf:type owl:Class ;
-                 rdfs:subClassOf :ArchitecturalRecord ;
-                 rdfs:comment "A document that contains images or designs created in the process of designing or constructing an architectural project."@en ;
-                 rdfs:label "Graphical record"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord> ;
+                                                               rdfs:comment "A document that contains images or designs created in the process of designing or constructing an architectural project."@en ,
+                                                                            "Documento contenente immagini o disegni per la communicazione visuale creato nel processo di progettazione o di costruzione di un progetto architettonico."@it ;
+                                                               rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@it ;
+                                                               rdfs:label "Documento grafico"@it ,
+                                                                          "Graphical Record"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan
-:InteriorDesignPlan rdf:type owl:Class ;
-                    rdfs:subClassOf :ConstructionDrawing ;
-                    rdfs:comment "Plan that describes the design of interiors of homes or other buildings, including placement of furniture, accessories, aesthetic or decorative schemes, and spatial arrangements."@en ;
-                    rdfs:label "Interior Design Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#InteriorDesignPlan> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                                  rdfs:comment "Plan that describes the design of interiors of homes or other buildings, including placement of furniture, accessories, aesthetic or decorative schemes, and spatial arrangements."@en ,
+                                                                               "Un disegno costruttivo realizzato da un architetto o un ingegnere per comunicare design degli interni di una casa o un edificio, compreso schemi decorativi, collocazione di arredi e mobili, illuminazione."@it ;
+                                                                  rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                  rdfs:label "Interior Design Plan"@en ,
+                                                                             "Schema di disegno di interni"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph
-:InteriorPhotograph rdf:type owl:Class ;
-                    rdfs:subClassOf :ArchitecturalPhotograph ;
-                    rdfs:comment "Photograph that depicts the internal volumes distribution o a building or a room, interior design and furniture."@en ;
-                    rdfs:label "Interior Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#InteriorPhotograph> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> ;
+                                                                  rdfs:comment "Photograph that depicts the internal volumes distribution o a building or a room, interior design and furniture."@en ,
+                                                                               "Una fotografia realizzata per comunicare la distribuzione dei volumi interni di un edificio o di una stanza, design degli interni e/o arredamento."@it ;
+                                                                  rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                  rdfs:label "Fotografia di interni"@it ,
+                                                                             "Interior Photograph"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan
-:InteriorSystemsPlan rdf:type owl:Class ;
-                     rdfs:subClassOf :ConstructionDrawing ;
-                     rdfs:comment "Drawings or works in another medium, often made by an engineer, that indicate the location of utilities, including water supply lines, fire hydrants, sewage disposal lines, and other utilities. As part of the construction process, these plans are generally required for submission to local authorities."@en ;
-                     rdfs:label "Interior Systems Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#InteriorSystemsPlan> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                                   rdfs:comment "Drawings or works in another medium, often made by an engineer, that indicate the location of utilities, including water supply lines, fire hydrants, sewage disposal lines, and other utilities. As part of the construction process, these plans are generally required for submission to local authorities."@en ,
+                                                                                "Un piano costruttivo realizzato da un ingegnere per indicare la collocazione degli impianti interni di un edificio: idraulico, della luce, del gas. Questi disegni sono abitualmente consegnati nell’insieme dei documenti necessari per ricevere il permesso di costruire un edificio."@it ;
+                                                                   rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                   rdfs:label "Interior Systems Plan"@en ,
+                                                                              "Piano d'impianti interni"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Invitation
-:Invitation rdf:type owl:Class ;
-            rdfs:subClassOf :WrittenRecord ;
-            rdfs:comment "Printed or written expression requesting a person's company at a certain event at a given time and place."@en ;
-            rdfs:label "Invitation"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Invitation> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> ;
+                                                          rdfs:comment "Biglietto d’invito, qualsiasi cartoncino o foglio, scritto o stampato, che contiene una richiesta di partecipazione di una persona ad un evento."@it ,
+                                                                       "Printed or written expression requesting a person's company at a certain event at a given time and place."@en ;
+                                                          rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                          rdfs:label "Invitation"@en ,
+                                                                     "Invito"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Letter
-:Letter rdf:type owl:Class ;
-        rdfs:subClassOf :WrittenRecord ;
-        rdfs:comment "Pieces of correspondence, sent and delivered."@en ;
-        rdfs:label "Letter"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Letter> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> ;
+                                                      rdfs:comment "Comunicazione scritta che un agente indirizza a un’altro, più spesso spedita e ricevuta."@it ,
+                                                                   "Pieces of correspondence, sent and delivered."@en ;
+                                                      rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                      rdfs:label "Letter"@en ,
+                                                                 "Lettera"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Model
-:Model rdf:type owl:Class ;
-       rdfs:subClassOf :ArchitecturalRecord ;
-       rdfs:comment "Architectural record  that visualises architectural projects in three dimensions, often including a representation of the surrounding site or context."@en ;
-       rdfs:label "Model"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Model> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord> ;
+                                                     rdfs:comment "Architectural record  that visualises architectural projects in three dimensions, often including a representation of the surrounding site or context."@en ,
+                                                                  "Documento di architettura, rapresentazione di un progetto architettonico in tre dimensioni, raffigura spesso l'area circostante e il contesto."@it ;
+                                                     rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                     rdfs:label "Model"@en ,
+                                                                "Modello"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#PermitStage
-:PermitStage rdf:type owl:Class ;
-             rdfs:subClassOf :ExecutionPhase ;
-             rdfs:comment "The first stage of the executive phase during which an architect develops further the idea and prepares a set of drawings and written documents to receive building permit."@en ;
-             rdfs:label "Permit Stage"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#PermitStage> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase> ;
+                                                           rdfs:comment "Il primo stadio della fase escutiva del progetto durante il quale l'architetto sviluppa ulteriormente l'idea progettuale e prepara gli elaborati grafici e i relazioni illustrativi per ricevere il permesso di costruire."@it ,
+                                                                        "The first stage of the executive phase during which an architect develops further the idea and prepares a set of drawings and written documents to receive building permit."@en ;
+                                                           rdfs:label "Permit Stage"@en ,
+                                                                      "Stadio di permesso per costruire"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel
-:PhysicalModel rdf:type owl:Class ;
-               rdfs:subClassOf :Model ;
-               rdfs:comment "Architectural model in physical form."@en ;
-               rdfs:label "Physical Model"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#PhysicalModel> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#Model> ;
+                                                             rdfs:comment "Architectural model in physical form."@en ,
+                                                                          "Modello architettonico fisico"@it ;
+                                                             rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                             rdfs:label "Modello fisico"@it ,
+                                                                        "Physical Model"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#PresentationDrawing
-:PresentationDrawing rdf:type owl:Class ;
-                     rdfs:subClassOf :ArchitecturalDrawing ;
-                     rdfs:comment "Drawings that imagine the appearance of the complete project and are prepared with shading, color, and perspective to win the client's approval, they often suggest vegetation, people and vehicles to bring image to life"@en ;
-                     rdfs:label "Rendering"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#PresentationDrawing> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> ;
+                                                                   rdfs:comment "Drawings that imagine the appearance of the complete project and are prepared with shading, color, and perspective to win the client's approval, they often suggest vegetation, people and vehicles to bring image to life"@en ,
+                                                                                "Un disegno in piccola scala (1:500 - 1:200) eseguito a mano o con l’ausilio di un software che rappresenta l’apparenza del progetto al completamento. I rendering, insieme agli elaborati grafici, sono spesso preparati e sottomessi alla valutazione per i concorsi di architettura."@it ;
+                                                                   rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                   rdfs:label "Rendering"@en ,
+                                                                              "Rendering"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProcessPhotograph
-:ProcessPhotograph rdf:type owl:Class ;
-                   rdfs:subClassOf :ArchitecturalPhotograph ;
-                   rdfs:comment "Photograph that depicts demolition or construction works of a building and taken to document internal structures of the building or to accompany the intermediate report of the construction works."@en ;
-                   rdfs:label "Process Photograph"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ProcessPhotograph> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalPhotograph> ;
+                                                                 rdfs:comment "Photograph that depicts demolition or construction works of a building and taken to document internal structures of the building or to accompany the intermediate report of the construction works."@en ,
+                                                                              "Una fotografia realizzata per documentare lavori di costruzione o demolizione di un edificio e la sua struttura interna, per esempio per accompagnare un rapporto intermedio sui lavori."@it ;
+                                                                 rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                                 rdfs:label "Fotografia di processo"@it ,
+                                                                            "Process Photograph"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation
-:ProjectParticipation rdf:type owl:Class ;
-                      rdfs:subClassOf rico:Event ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :hasOrHadProjectRole ;
-                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                        owl:onClass :ProjectRole
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :isOrWasProjectParticipationOf ;
-                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                        owl:onClass [ rdf:type owl:Class ;
-                                                      owl:unionOf ( :ArchitecturalProject
-                                                                    :ProjectPhase
-                                                                  )
-                                                    ]
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty rico:hasOrHadParticipant ;
-                                        owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
-                                        owl:onClass rico:Agent
-                                      ] ;
-                      rdfs:comment "This class creates ternary relation between Agent and Project, that they participate in with some particular Project role"@en ;
-                      rdfs:label "Project Participation"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ProjectParticipation> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf rico:Event ,
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#hasOrHadProjectRole> ;
+                                                                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                      owl:onClass <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole>
+                                                                                    ] ,
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectParticipationOf> ;
+                                                                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                      owl:onClass [ rdf:type owl:Class ;
+                                                                                                    owl:unionOf ( <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject>
+                                                                                                                  <https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase>
+                                                                                                                )
+                                                                                                  ]
+                                                                                    ] ,
+                                                                                    [ rdf:type owl:Restriction ;
+                                                                                      owl:onProperty rico:hasOrHadParticipant ;
+                                                                                      owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                                      owl:onClass rico:Agent
+                                                                                    ] ;
+                                                                    rdfs:comment "Questa classe crea una relazione ternaria tra un Agente e un Progetto architettonico, nel quale l'Agente partecipa con un Rulo professionale in progetto."@it ,
+                                                                                 "This class creates ternary relation between Agent and Project, that they participate in with some particular Project role"@en ;
+                                                                    rdfs:label "Partecipazione in progetto"@it ,
+                                                                               "Project Participation"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase
-:ProjectPhase rdf:type owl:Class ;
-              rdfs:subClassOf rico:Activity ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :isOrWasProjectPhaseOf ;
-                                owl:allValuesFrom :ArchitecturalProject
-                              ] ;
-              rdfs:comment "Phase of the architectural project, the set of activities within the project usually performed with a particular goal."@en ;
-              rdfs:label "Project Phase"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ProjectPhase> rdf:type owl:Class ;
+                                                            rdfs:subClassOf rico:Activity ,
+                                                                            [ rdf:type owl:Restriction ;
+                                                                              owl:onProperty <https://dmikhaylova.github.io/itdt_ontology/#isOrWasProjectPhaseOf> ;
+                                                                              owl:allValuesFrom <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalProject>
+                                                                            ] ;
+                                                            rdfs:comment "Fase del progetto architettonico, un insieme di attività all'interno del progetto svolto con un particolare scopo."@it ,
+                                                                         "Phase of the architectural project, the set of activities within the project usually performed with a particular goal."@en ;
+                                                            rdfs:label "Fase di progetto"@it ,
+                                                                       "Project Phase"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectRole
-:ProjectRole rdf:type owl:Class ;
-             rdfs:subClassOf rico:Thing ;
-             rdfs:comment "A role in architectural project performed by an architect or an engineer."@en ;
-             rdfs:label "Project Role"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> rdf:type owl:Class ;
+                                                           rdfs:subClassOf rico:Thing ;
+                                                           rdfs:comment "A role in architectural project performed by an architect or an engineer."@en ,
+                                                                        "Un ruolo all'interno di un progetto architettonico svolto da un architetto, un ingegnere o un altro specialista di settore edilizio."@it ;
+                                                           rdfs:label "Project Role"@en ,
+                                                                      "Ruolo professionale in progetto"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectScale
-:ProjectScale rdf:type owl:Class ;
-              rdfs:subClassOf rico:Type ;
-              rdfs:comment "Categorisation of the project in respect of the area affected by its intervention, where the largest scale project affects a part of territory and the smallest affects only an object."@en ;
-              rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
-              rdfs:label "Project Scale"@en ;
-              <http://www.w3.org/2004/02/skos/core#example> "design industriale"@it ,
-                                                            "general urban planning"@en ,
-                                                            "interior design"@en ,
-                                                            "progettazione architettonica"@it .
+<https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> rdf:type owl:Class ;
+                                                            rdfs:subClassOf rico:Type ;
+                                                            rdfs:comment "Categorisation of the project in respect of the area affected by its intervention, where the largest scale project affects a part of territory and the smallest affects only an object."@en ,
+                                                                         "Categorizzazione del progetto architettonico nel rispetto dell'area affetta dal suo intervento, dove la scala più grande riguarda una parte del territorio e quella più piccola un oggetto."@it ;
+                                                            rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology"@en ;
+                                                            rdfs:label "Project Scale"@en ,
+                                                                       "Scala di progetto"@it ;
+                                                            <http://www.w3.org/2004/02/skos/core#example> "design industriale"@it ,
+                                                                                                          "general urban planning"@en ,
+                                                                                                          "interior design"@en ,
+                                                                                                          "progettazione architettonica"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Report
-:Report rdf:type owl:Class ;
-        rdfs:subClassOf :WrittenRecord ;
-        rdfs:comment "Descriptive document submitted, together with drawings, by an architect to regulating bodies to obtain permission for building or as a part of documents for an architectural competition."@en ;
-        rdfs:label "Report"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Report> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> ;
+                                                      rdfs:comment "Descriptive document submitted, together with drawings, by an architect to regulating bodies to obtain permission for building or as a part of documents for an architectural competition."@en ,
+                                                                   "Un elaborato scritto, uno dei documenti preparati per un progetto architettonico con cui illustrare le caratteristiche funzionali dell’opera e individuare le principali criticità e le soluzioni da adottare."@it ;
+                                                      rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                      rdfs:label "Relazione"@it ,
+                                                                 "Report"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#Section
-:Section rdf:type owl:Class ;
-         rdfs:subClassOf :WorkingDrawing ;
-         rdfs:comment "Orthographic drawing or work in another media depicting a building, object, or site as if cut through and exposed at one specific plane."@en ;
-         rdfs:label "Section"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#Section> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing> ;
+                                                       rdfs:comment "Orthographic drawing or work in another media depicting a building, object, or site as if cut through and exposed at one specific plane."@en ;
+                                                       rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                       rdfs:label "Section"@en ,
+                                                                  "Sezione"@it ,
+                                                                  "Un'immagine ortografica con cui si presenta un edificio, un oggetto o un luogo nella sua struttura interna nel caso in cui esso sia tagliato da un piano specifico, può essere longitudinale (lungo l’asse principale) o trasversale (tagliato attraverso)"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#SetupStage
-:SetupStage rdf:type owl:Class ;
-            rdfs:subClassOf :CreativePhase ;
-            rdfs:comment "The first stage of the creative phase during which an architect translates the requirements for the building, often written in the form of a list of rooms and their intended functions, into a scheme, configuration of spaces connected to each other. The documents associated with this stage are often ideograms, such as a distribution scheme, that describes synthetically the relations and the necessary functions of contiguity of individual spaces that compose the building."@en ;
-            rdfs:label "Setup Stage"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#SetupStage> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#CreativePhase> ;
+                                                          rdfs:comment "Il primo stadio della fase creativa durante il quale l'architetto traduce i requisiti del progetto, spesso espressi come un elenco delle stanze nello schema degli spazi legati tra di loro. In questo stadio l'architetto può produrre i documenti nella forma di ideogrammi, per esempio uno schema distributivo, che sintetizza graficamente le relazioni e le necessità funzionali di contiguità tra i diversi ambienti che compongono l'edificio."@it ,
+                                                                       "The first stage of the creative phase during which an architect translates the requirements for the building, often written in the form of a list of rooms and their intended functions, into a scheme, configuration of spaces connected to each other. The documents associated with this stage are often ideograms, such as a distribution scheme, that describes synthetically the relations and the necessary functions of contiguity of individual spaces that compose the building."@en ;
+                                                          rdfs:label "Setup Stage"@en ,
+                                                                     "Stadio di impostazione"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan
-:StructuralPlan rdf:type owl:Class ;
-                rdfs:subClassOf :ConstructionDrawing ;
-                rdfs:comment "Drawing or work in another medium, often prepared by an engineer, that is  concerned with the load-carrying members of a structure, the plan outline the size and types of materials to be used and the general demands for connections."@en ;
-                rdfs:label "Structural Plan"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#StructuralPlan> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ConstructionDrawing> ;
+                                                              rdfs:comment "Drawing or work in another medium, often prepared by an engineer, that is  concerned with the load-carrying members of a structure, the plan outline the size and types of materials to be used and the general demands for connections."@en ,
+                                                                           "Un disegno costruttivo, o un'altra rappresentazione grafica realizzata da un ingegnere per descrivere le strutture portanti di un edificio"@it ;
+                                                              rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                              rdfs:label "Piano di strutture portanti"@it ,
+                                                                         "Structural Plan"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#VirtualModel
-:VirtualModel rdf:type owl:Class ;
-              rdfs:subClassOf :Model ;
-              rdfs:comment "Architectural models made using software."@en ;
-              rdfs:label "Virtual Model"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#VirtualModel> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#Model> ;
+                                                            rdfs:comment "Architectural models made using software."@en ,
+                                                                         "Modello architettonico creato con l'uso di software"@it ;
+                                                            rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                            rdfs:label "Modello virtuale"@it ,
+                                                                       "Virtual Model"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing
-:WorkingDrawing rdf:type owl:Class ;
-                rdfs:subClassOf :ArchitecturalDrawing ;
-                rdfs:comment "A small to medium scale drawing that give a complete graphic representation of the architect’s plans at a scale that is readable but that still shows little detail."@en ;
-                rdfs:label "Working Drawing"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#WorkingDrawing> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalDrawing> ;
+                                                              rdfs:comment "A small to medium scale drawing that give a complete graphic representation of the architect’s plans at a scale that is readable but that still shows little detail."@en ;
+                                                              rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                              rdfs:label "Disegno di piccola o media scala creato per dare una rappresentazione completa di un progetto architettonico in tutte le sue parti ma che ancora non contiene i dettagli sufficienti per la costruzione. Tradizionalmente fa parte di progetto di massima."@it ,
+                                                                         "Elaborato grafico"@it ,
+                                                                         "Working Drawing"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord
-:WrittenRecord rdf:type owl:Class ;
-               rdfs:subClassOf :ArchitecturalRecord ;
-               rdfs:comment "Document that use natural language for communication, with writings on it, created in the process of designing or construction of an architectural project."@en ;
-               rdfs:label "Written Record"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <https://dmikhaylova.github.io/itdt_ontology/#ArchitecturalRecord> ;
+                                                             rdfs:comment "Document that use natural language for communication, with writings on it, created in the process of designing or construction of an architectural project."@en ,
+                                                                          "Documento creato nel processo di progettazione o costruzione di un progetto architettonico che usa come mezzo principale la comunicazione in lingua naturale e la scrittura."@it ;
+                                                             rdfs:isDefinedBy "https://dmikhaylova.github.io/itdt_ontology" ;
+                                                             rdfs:label "Documento scritto"@it ,
+                                                                        "Written Record"@en .
 
 
 ###  https://www.ica.org/standards/RiC/ontology#Activity
@@ -2073,6 +2293,10 @@ rico:Agent rdf:type owl:Class ;
             Group."""@en ;
 rico:RiCCMCorrespondingComponent """Corresponds to RiC-E07 (Agent
             entity)"""@en .
+
+
+###  https://www.ica.org/standards/RiC/ontology#Appellation
+rico:Appellation rdf:type owl:Class .
 
 
 ###  https://www.ica.org/standards/RiC/ontology#Concept
@@ -2193,6 +2417,10 @@ rico:closeTo """LODE Event class
             (http://linkedevents.org/ontology/#term-Event)"""@en .
 
 
+###  https://www.ica.org/standards/RiC/ontology#Extent
+rico:Extent rdf:type owl:Class .
+
+
 ###  https://www.ica.org/standards/RiC/ontology#Family
 rico:Family rdf:type owl:Class ;
             rdfs:subClassOf rico:Group ;
@@ -2278,7 +2506,6 @@ rico:closeTo "PREMIS Representation"@en .
 
 ###  https://www.ica.org/standards/RiC/ontology#Person
 rico:Person rdf:type owl:Class ;
-            owl:equivalentClass wd:Q5 ;
             rdfs:subClassOf rico:Agent ;
             rdfs:comment "A human being with a social identity or persona."@en ;
             rdfs:isDefinedBy <https://www.ica.org/standards/RiC/ontology> ;
@@ -2447,6 +2674,10 @@ rico:RiCCMCorrespondingComponent """Corresponds to RiC-A36 (Record Set Type
             attribute)"""@en .
 
 
+###  https://www.ica.org/standards/RiC/ontology#Relation
+rico:Relation rdf:type owl:Class .
+
+
 ###  https://www.ica.org/standards/RiC/ontology#RepresentationType
 rico:RepresentationType rdf:type owl:Class ;
                         rdfs:subClassOf rico:Type ,
@@ -2500,331 +2731,682 @@ rico:Type rdf:type owl:Class ;
           rdfs:label "Type"@en .
 
 
-###  https://www.wikidata.org/wiki/Q12737077
-wd:Q12737077 rdf:type owl:Class ;
-             rdfs:label "occupation"@en .
-
-
-###  https://www.wikidata.org/wiki/Q5
-wd:Q5 rdf:type owl:Class ;
-      rdfs:label "human"@en .
-
-
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://culturaitalia.it/pico/thesaurus/4.1#abitazioni
 <http://culturaitalia.it/pico/thesaurus/4.1#abitazioni> rdf:type owl:NamedIndividual ;
-                                                        owl:sameAs :residentialUse ;
+                                                        owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#residentialUse> ;
                                                         rdfs:label "abitazioni"@it ,
                                                                    "dwellings"@en .
 
 
 ###  http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali
 <http://culturaitalia.it/pico/thesaurus/4.1#edifici_industriali> rdf:type owl:NamedIndividual ;
-                                                                 owl:sameAs :industrialUse ;
-                                                                 rdfs:label "industrial buildings"@en .
+                                                                 owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#industrialUse> ;
+                                                                 rdfs:label "industria"@it ,
+                                                                            "industrial buildings"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#artisanalLaboratory
-:artisanalLaboratory rdf:type owl:NamedIndividual ,
-                              :FunctionalBuildingType ;
-                     rdfs:label "artisanal laboratories"@en ;
-                     <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+###  http://vocab.getty.edu/aat/300028569
+<http://vocab.getty.edu/aat/300028569> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#manuscript> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#bank
-:bank rdf:type owl:NamedIndividual ,
-               :FunctionalBuildingType ;
-      rdfs:label "banks"@en ;
-      <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+###  http://vocab.getty.edu/aat/300028577
+<http://vocab.getty.edu/aat/300028577> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#typescript> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#fair
-:fair rdf:type owl:NamedIndividual ,
-               :FunctionalBuildingType ;
-      rdfs:label "fair or exibition"@en ;
-      <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+###  http://vocab.getty.edu/aat/300033963
+<http://vocab.getty.edu/aat/300033963> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#collage> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#hotel
-:hotel rdf:type owl:NamedIndividual ,
-                :FunctionalBuildingType ;
-       rdfs:label "hotels"@en ;
-       <http://www.w3.org/2004/02/skos/core#broader> :touristicUse .
+###  http://vocab.getty.edu/aat/300033973
+<http://vocab.getty.edu/aat/300033973> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#drawing> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#industry
-:industry rdf:type owl:NamedIndividual ,
-                   :FunctionalBuildingType ;
-          rdfs:comment "industrial structures"@en ;
-          <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+###  http://vocab.getty.edu/aat/300046300
+<http://vocab.getty.edu/aat/300046300> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#photography> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#insurance
-:insurance rdf:type owl:NamedIndividual ,
-                    :FunctionalBuildingType ;
-           rdfs:label "insuarance buildings"@en ;
-           <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+###  http://vocab.getty.edu/aat/300164125
+<http://vocab.getty.edu/aat/300164125> rdf:type owl:NamedIndividual ;
+                                       owl:sameAs <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#market
-:market rdf:type owl:NamedIndividual ,
-                 :FunctionalBuildingType ;
-        rdfs:label "markets"@en ;
-        <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+###  https://dmikhaylova.github.io/itdt_ontology#archCompetition
+itdt:archCompetition rdf:type owl:NamedIndividual ,
+                              <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                     rdfs:label "architectural competition"@en ,
+                                "concorso architettonico"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#officePrivate
-:officePrivate rdf:type owl:NamedIndividual ,
-                        :FunctionalBuildingType ;
-               rdfs:label "private offices"@en ;
-               <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+###  https://dmikhaylova.github.io/itdt_ontology#cemeteries
+itdt:cemeteries rdf:type owl:NamedIndividual ,
+                         <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                rdfs:label "cemeteries"@en ,
+                           "cimiteri"@it ;
+                <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#officeService
-:officeService rdf:type owl:NamedIndividual ,
-                        :FunctionalBuildingType ;
-               rdfs:label "offices of service companies"@en ;
-               <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+###  https://dmikhaylova.github.io/itdt_ontology#collaborator
+itdt:collaborator rdf:type owl:NamedIndividual ,
+                           <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                  rdfs:label "collaborator"@en ,
+                             "collaboratore"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#researchCenter
-:researchCenter rdf:type owl:NamedIndividual ,
-                         :FunctionalBuildingType ;
-                rdfs:label "research centres"@en ;
-                <http://www.w3.org/2004/02/skos/core#broader> :executiveUse .
+###  https://dmikhaylova.github.io/itdt_ontology#constructionManager
+itdt:constructionManager rdf:type owl:NamedIndividual ,
+                                  <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                         rdfs:label "construction manager"@en ,
+                                    "direttore dei lavori"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#residence
-:residence rdf:type owl:NamedIndividual ,
-                    :FunctionalBuildingType ;
-           rdfs:label "touristic residences"@en ;
-           <http://www.w3.org/2004/02/skos/core#broader> :touristicUse .
+###  https://dmikhaylova.github.io/itdt_ontology#consultant
+itdt:consultant rdf:type owl:NamedIndividual ,
+                         <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                rdfs:label "consulente"@it ,
+                           "consultant"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#restaurant
-:restaurant rdf:type owl:NamedIndividual ,
-                     :FunctionalBuildingType ;
-            rdfs:label "restaurants"@en ;
-            <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+###  https://dmikhaylova.github.io/itdt_ontology#designer
+itdt:designer rdf:type owl:NamedIndividual ,
+                       <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+              rdfs:label "designer"@en ,
+                         "progettista"@it .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#shop
-:shop rdf:type owl:NamedIndividual ,
-               :FunctionalBuildingType ;
-      rdfs:label "shops"@en ;
-      <http://www.w3.org/2004/02/skos/core#broader> :commercialUse .
+###  https://dmikhaylova.github.io/itdt_ontology#draftsmen
+itdt:draftsmen rdf:type owl:NamedIndividual ,
+                        <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+               rdfs:label "disegnatore tecnico"@it ,
+                          "draftsmen"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#warehouse
-:warehouse rdf:type owl:NamedIndividual ,
-                    :FunctionalBuildingType ;
-           rdfs:label "warehouses"@en ;
-           <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+###  https://dmikhaylova.github.io/itdt_ontology#foreman
+itdt:foreman rdf:type owl:NamedIndividual ,
+                      <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+             rdfs:label "capocantiere"@it ,
+                        "construction foreman"@en .
 
 
-###  https://dmikhaylova.github.io/itdt_ontology#workshop
-:workshop rdf:type owl:NamedIndividual ,
-                   :FunctionalBuildingType ;
-          rdfs:label "workshops"@en ;
-          <http://www.w3.org/2004/02/skos/core#broader> :industrialUse .
+###  https://dmikhaylova.github.io/itdt_ontology#infrastructureDesigner
+itdt:infrastructureDesigner rdf:type owl:NamedIndividual ,
+                                     <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                            rdfs:label "Progettista di infrastrutture"@it ,
+                                       "infrastructures designer"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#intsystemDesigner
+itdt:intsystemDesigner rdf:type owl:NamedIndividual ,
+                                <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                       rdfs:label "internal systems designer"@en ,
+                                  "progettista impianti"@it .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#plannerStruct
+itdt:plannerStruct rdf:type owl:NamedIndividual ,
+                            <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                   rdfs:label "progettista strutturale"@it ,
+                              "structures designer"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology#projectArchitect
+itdt:projectArchitect rdf:type owl:NamedIndividual ,
+                               <https://dmikhaylova.github.io/itdt_ontology/#ProjectRole> ;
+                      rdfs:label "architetto"@it ,
+                                 "project architect"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#ProjectScales
-:ProjectScales rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-               rdfs:label "Project Scales"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                             rdfs:label "Project Scales"@en ,
+                                                                        "Scale di progetto"@it .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#administrative
+<https://dmikhaylova.github.io/itdt_ontology/#administrative> rdf:type owl:NamedIndividual ,
+                                                                       <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                              rdfs:label "technical and administrative buildings"@en ,
+                                                                         "tecnico e amministrativo"@it ;
+                                                              <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#agriculturalUse
-:agriculturalUse rdf:type owl:NamedIndividual ,
-                          <http://www.w3.org/2004/02/skos/core#Concept> ,
-                          :FunctionalBuildingType ;
-                 rdfs:label "agricultural use"@en ;
-                 owl:sameAs "http://vocab.getty.edu/aat/300004895" ;
-                 <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#agriculturalUse> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                        <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                               rdfs:label "agricola"@it ,
+                                                                          "agricultural use"@en ;
+                                                               owl:sameAs "http://vocab.getty.edu/aat/300004895" ;
+                                                               <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#architecturalDesign
-:architecturalDesign rdf:type owl:NamedIndividual ,
-                              <http://www.w3.org/2004/02/skos/core#Concept> ,
-                              :ProjectScale ;
-                     rdfs:label "architectural design"@en ;
-                     <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
+<https://dmikhaylova.github.io/itdt_ontology/#architecturalDesign> rdf:type owl:NamedIndividual ,
+                                                                            <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                            <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                                   rdfs:label "architectural design"@en ,
+                                                                              "progettazione architettonica"@it ;
+                                                                   <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#artisanalLaboratory
+<https://dmikhaylova.github.io/itdt_ontology/#artisanalLaboratory> rdf:type owl:NamedIndividual ,
+                                                                            <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                   rdfs:label "artisanal laboratories"@en ,
+                                                                              "laboratori artigiani"@it ;
+                                                                   <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#industrialUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#bank
+<https://dmikhaylova.github.io/itdt_ontology/#bank> rdf:type owl:NamedIndividual ,
+                                                             <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                    rdfs:label "banche"@it ,
+                                                               "banks"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#blockAppartmentBuilding
-:blockAppartmentBuilding rdf:type owl:NamedIndividual ,
-                                  <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                  :FormalBuildingType ;
-                         rdfs:label "block appartment building"@en ;
-                         <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#blockAppartmentBuilding> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                                <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                       rdfs:label "block appartment building"@en ,
+                                                                                  "casa a blocco"@it ;
+                                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#camping
+<https://dmikhaylova.github.io/itdt_ontology/#camping> rdf:type owl:NamedIndividual ,
+                                                                <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                       rdfs:label "campeggi"@it ,
+                                                                  "campings"@en ;
+                                                       <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#touristicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#cementery
+<https://dmikhaylova.github.io/itdt_ontology/#cementery> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "cementaries"@en ,
+                                                                    "cimiteri"@it ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#collage
+<https://dmikhaylova.github.io/itdt_ontology/#collage> rdf:type owl:NamedIndividual ,
+                                                                rico:DocumentaryFormType ;
+                                                       rdfs:label "collage"@en ,
+                                                                  "collage"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#commercialUse
-:commercialUse rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/2004/02/skos/core#Concept> ,
-                        :FunctionalBuildingType ;
-               rdfs:label "commercial use"@en ;
-               owl:sameAs "http://vocab.getty.edu/aat/300005147" ;
-               <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#commercialUse> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                             rdfs:label "commercial use"@en ,
+                                                                        "commerciale"@it ;
+                                                             owl:sameAs "http://vocab.getty.edu/aat/300005147" ;
+                                                             <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#courtyardHouse
-:courtyardHouse rdf:type owl:NamedIndividual ,
-                         <http://www.w3.org/2004/02/skos/core#Concept> ,
-                         :FormalBuildingType ;
-                rdfs:label "courtyard house"@en ;
-                <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#courtyardHouse> rdf:type owl:NamedIndividual ,
+                                                                       <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                       <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                              rdfs:label "casa a corte"@it ,
+                                                                         "courtyard house"@en ;
+                                                              <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#cult
+<https://dmikhaylova.github.io/itdt_ontology/#cult> rdf:type owl:NamedIndividual ,
+                                                             <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                    rdfs:label "culto"@it ,
+                                                               "religious buildings"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#drawing
+<https://dmikhaylova.github.io/itdt_ontology/#drawing> rdf:type owl:NamedIndividual ,
+                                                                rico:DocumentaryFormType ;
+                                                       rdfs:label "disegno"@it ,
+                                                                  "drawing"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#educationPrimary
+<https://dmikhaylova.github.io/itdt_ontology/#educationPrimary> rdf:type owl:NamedIndividual ,
+                                                                         <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                rdfs:label "istruzione di base"@it ,
+                                                                           "primary and secondary education buildings"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#educationTertiary
+<https://dmikhaylova.github.io/itdt_ontology/#educationTertiary> rdf:type owl:NamedIndividual ,
+                                                                          <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                 rdfs:label "istruzione superiore o scuola speciale"@it ,
+                                                                            "tertiary education buildings"@en ;
+                                                                 <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#enter
+<https://dmikhaylova.github.io/itdt_ontology/#enter> rdf:type owl:NamedIndividual ,
+                                                              <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                     rdfs:label "cultura e spettacolo"@it ,
+                                                                "culture and entertainment buildings"@en ;
+                                                     <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#executiveUse
-:executiveUse rdf:type owl:NamedIndividual ,
-                       <http://www.w3.org/2004/02/skos/core#Concept> ,
-                       :FunctionalBuildingType ;
-              rdfs:label "executive use"@en ;
-              <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#executiveUse> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                     <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                            rdfs:label "direzionale"@it ,
+                                                                       "executive use"@en ;
+                                                            <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#fair
+<https://dmikhaylova.github.io/itdt_ontology/#fair> rdf:type owl:NamedIndividual ,
+                                                             <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                    rdfs:label "esposizioni"@it ,
+                                                               "fairs or exibitions"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#commercialUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes
-:formalBuildingTypes rdf:type owl:NamedIndividual ,
-                              <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                     rdfs:label "Formal Building Types"@en ,
-                                "Tipologia edilizia"@it .
+<https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> rdf:type owl:NamedIndividual ,
+                                                                            <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                                   rdfs:label "Formal Building Types"@en ,
+                                                                              "Tipologia edilizia"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes
-:functionalBuildingTypes rdf:type owl:NamedIndividual ,
-                                  <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-                         rdfs:label "Destinazioni d'uso"@it ,
-                                    "Functional Building Types"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                                       rdfs:label "Destinazione d'uso"@it ,
+                                                                                  "Functional Building Types"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#generalPlanning
-:generalPlanning rdf:type owl:NamedIndividual ,
-                          <http://www.w3.org/2004/02/skos/core#Concept> ,
-                          :ProjectScale ;
-                 rdfs:label "general planning"@en ;
-                 <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
+<https://dmikhaylova.github.io/itdt_ontology/#generalPlanning> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                        <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                               rdfs:label "general planning"@en ,
+                                                                          "pianificazione generale"@it ;
+                                                               <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#guardRailHouses
-:guardRailHouses rdf:type owl:NamedIndividual ,
-                          <http://www.w3.org/2004/02/skos/core#Concept> ,
-                          :FormalBuildingType ;
-                 rdfs:label "guard rail house"@en ;
-                 <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#guardRailHouses> rdf:type owl:NamedIndividual ,
+                                                                        <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                        <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                               rdfs:label "casa a ballatoio"@it ,
+                                                                          "guard rail house"@en ;
+                                                               <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#health
+<https://dmikhaylova.github.io/itdt_ontology/#health> rdf:type owl:NamedIndividual ,
+                                                               <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                      rdfs:label "health structures"@en ,
+                                                                 "sanitario"@it ;
+                                                      <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#heliography
+<https://dmikhaylova.github.io/itdt_ontology/#heliography> rdf:type owl:NamedIndividual ,
+                                                                    rico:DocumentaryFormType ;
+                                                           rdfs:label "eliografia"@it ,
+                                                                      "heliography"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#hotel
+<https://dmikhaylova.github.io/itdt_ontology/#hotel> rdf:type owl:NamedIndividual ,
+                                                              <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                     rdfs:label "alberghi"@it ,
+                                                                "hotels"@en ;
+                                                     <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#touristicUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#implementationPlanning
-:implementationPlanning rdf:type owl:NamedIndividual ,
-                                 <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                 :ProjectScale ;
-                        rdfs:label "implementation planning"@en ;
-                        <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
+<https://dmikhaylova.github.io/itdt_ontology/#implementationPlanning> rdf:type owl:NamedIndividual ,
+                                                                               <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                               <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                                      rdfs:label "implementation planning"@en ,
+                                                                                 "pianificazione attuativa"@it ;
+                                                                      <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#industrialUse
-:industrialUse rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/2004/02/skos/core#Concept> ,
-                        :FunctionalBuildingType ;
-               rdfs:label "industrial and artisanal use"@en ;
-               owl:sameAs "http://vocab.getty.edu/aat/300121918" ;
-               <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#industrialUse> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                             rdfs:label "industrial and artisanal use"@en ,
+                                                                        "industriale e artigianale"@it ;
+                                                             owl:sameAs "http://vocab.getty.edu/aat/300121918" ;
+                                                             <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#industry
+<https://dmikhaylova.github.io/itdt_ontology/#industry> rdf:type owl:NamedIndividual ,
+                                                                 <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                        rdfs:label "industria"@it ,
+                                                                   "industrial structures"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#industrialUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#insurance
+<https://dmikhaylova.github.io/itdt_ontology/#insurance> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "assicurazioni"@it ,
+                                                                    "insuarance buildings"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#interiorDesign
-:interiorDesign rdf:type owl:NamedIndividual ,
-                         <http://www.w3.org/2004/02/skos/core#Concept> ,
-                         :ProjectScale ;
-                rdfs:label "interior and industrial design"@en ;
-                <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
+<https://dmikhaylova.github.io/itdt_ontology/#interiorDesign> rdf:type owl:NamedIndividual ,
+                                                                       <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                       <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                              rdfs:label "interior and industrial design"@en ,
+                                                                         "progettazione interni e design industriale"@it ;
+                                                              <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#isolatedHouse
-:isolatedHouse rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/2004/02/skos/core#Concept> ,
-                        :FormalBuildingType ;
-               rdfs:label "isolated house"@en ;
-               <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#isolatedHouse> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                             rdfs:label "casa isolata"@it ,
+                                                                        "isolated house"@en ;
+                                                             <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#manuscript
+<https://dmikhaylova.github.io/itdt_ontology/#manuscript> rdf:type owl:NamedIndividual ,
+                                                                   rico:DocumentaryFormType ;
+                                                          rdfs:label "manoscritto"@it ,
+                                                                     "manuscript"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#market
+<https://dmikhaylova.github.io/itdt_ontology/#market> rdf:type owl:NamedIndividual ,
+                                                               <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                      rdfs:label "markets"@en ,
+                                                                 "mercati"@it ;
+                                                      <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#commercialUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#multiFamilyHouse
-:multiFamilyHouse rdf:type owl:NamedIndividual ,
-                           <http://www.w3.org/2004/02/skos/core#Concept> ,
-                           :FormalBuildingType ;
-                  rdfs:label "multifamily house"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#multiFamilyHouse> rdf:type owl:NamedIndividual ,
+                                                                         <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                         <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                rdfs:label "multifamily house"@en ,
+                                                                           "palazzina plurifamiliare"@it .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#officePrivate
+<https://dmikhaylova.github.io/itdt_ontology/#officePrivate> rdf:type owl:NamedIndividual ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                             rdfs:label "private offices"@en ,
+                                                                        "uffici privati o studi professionali"@it ;
+                                                             <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#officeService
+<https://dmikhaylova.github.io/itdt_ontology/#officeService> rdf:type owl:NamedIndividual ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                             rdfs:label "offices of service companies"@en ,
+                                                                        "sedi di enti o società fornitrici di servizi"@it ;
+                                                             <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#parking
+<https://dmikhaylova.github.io/itdt_ontology/#parking> rdf:type owl:NamedIndividual ,
+                                                                <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                       rdfs:label "covered parkings"@en ,
+                                                                  "parcheggi coperti"@it ;
+                                                       <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#photography
+<https://dmikhaylova.github.io/itdt_ontology/#photography> rdf:type owl:NamedIndividual ,
+                                                                    rico:DocumentaryFormType ;
+                                                           rdfs:label "fotografia"@it ,
+                                                                      "photography"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#print
+<https://dmikhaylova.github.io/itdt_ontology/#print> rdf:type owl:NamedIndividual ,
+                                                              rico:DocumentaryFormType ;
+                                                     rdfs:label "print"@en ,
+                                                                "stampa"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#projectRoles
-:projectRoles rdf:type owl:NamedIndividual ,
-                       <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
-              rdfs:label "Project Roles"@en .
+<https://dmikhaylova.github.io/itdt_ontology/#projectRoles> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.w3.org/2004/02/skos/core#ConceptScheme> ;
+                                                            rdfs:label "Project Roles"@en ,
+                                                                       "Ruoli professionali"@it .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#publicUse
-:publicUse rdf:type owl:NamedIndividual ,
-                    <http://www.w3.org/2004/02/skos/core#Concept> ,
-                    :FunctionalBuildingType ;
-           rdfs:label "public use"@en ;
-           owl:sameAs "http://vocab.getty.edu/aat/300008059" ;
-           <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#publicUse> rdf:type owl:NamedIndividual ,
+                                                                  <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "pubblica o di pubblico interesse"@it ,
+                                                                    "public use"@en ;
+                                                         owl:sameAs "http://vocab.getty.edu/aat/300008059" ;
+                                                         <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#researchCenter
+<https://dmikhaylova.github.io/itdt_ontology/#researchCenter> rdf:type owl:NamedIndividual ,
+                                                                       <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                              rdfs:label "centri di ricerca"@it ,
+                                                                         "research centres"@en ;
+                                                              <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#executiveUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#residence
+<https://dmikhaylova.github.io/itdt_ontology/#residence> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "residenze turistiche alberghiere"@it ,
+                                                                    "touristic residences"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#touristicUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#residentialUse
-:residentialUse rdf:type owl:NamedIndividual ,
-                         <http://www.w3.org/2004/02/skos/core#Concept> ,
-                         :FunctionalBuildingType ;
-                rdfs:label "residential use"@en ;
-                owl:sameAs "http://vocab.getty.edu/aat/300257729" ;
-                <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#residentialUse> rdf:type owl:NamedIndividual ,
+                                                                       <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                       <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                              rdfs:label "residential use"@en ,
+                                                                         "residenziale"@it ;
+                                                              owl:sameAs "http://vocab.getty.edu/aat/300257729" ;
+                                                              <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#restArea
+<https://dmikhaylova.github.io/itdt_ontology/#restArea> rdf:type owl:NamedIndividual ,
+                                                                 <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                        rdfs:label "aree di sosta"@it ,
+                                                                   "rest areas"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#touristicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#restaurant
+<https://dmikhaylova.github.io/itdt_ontology/#restaurant> rdf:type owl:NamedIndividual ,
+                                                                   <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                          rdfs:label "restaurants"@en ,
+                                                                     "ristoro"@it ;
+                                                          <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#commercialUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#restorationOrRenovation
-:restorationOrRenovation rdf:type owl:NamedIndividual ,
-                                  <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                  :ProjectScale ;
-                         rdfs:label "restoration or renovation"@en ;
-                         <http://www.w3.org/2004/02/skos/core#inScheme> :ProjectScales .
+<https://dmikhaylova.github.io/itdt_ontology/#restorationOrRenovation> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                                <https://dmikhaylova.github.io/itdt_ontology/#ProjectScale> ;
+                                                                       rdfs:label "restauro"@it ,
+                                                                                  "restoration or renovation"@en ;
+                                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#ProjectScales> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#reversalFilm
+<https://dmikhaylova.github.io/itdt_ontology/#reversalFilm> rdf:type owl:NamedIndividual ,
+                                                                     rico:DocumentaryFormType ;
+                                                            rdfs:label "diapositivo"@it ,
+                                                                       "reversal film"@en .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#rowAppartmentBuilding
-:rowAppartmentBuilding rdf:type owl:NamedIndividual ,
-                                <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                :FormalBuildingType ;
-                       rdfs:label "row appartment building"@en ;
-                       owl:sameAs "http://vocab.getty.edu/aat/300005672" ;
-                       <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#rowAppartmentBuilding> rdf:type owl:NamedIndividual ,
+                                                                              <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                              <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                     rdfs:label "casa in linea"@it ,
+                                                                                "row appartment building"@en ;
+                                                                     owl:sameAs "http://vocab.getty.edu/aat/300005672" ;
+                                                                     <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#section
+<https://dmikhaylova.github.io/itdt_ontology/#section> rdf:type owl:NamedIndividual ,
+                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                rico:RecordSetType ;
+                                                       rdfs:label "section"@en ,
+                                                                  "sezione"@it ;
+                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#shop
+<https://dmikhaylova.github.io/itdt_ontology/#shop> rdf:type owl:NamedIndividual ,
+                                                             <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                    rdfs:label "negozi"@it ,
+                                                               "shops"@en ;
+                                                    <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#commercialUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#socialAssistance
+<https://dmikhaylova.github.io/itdt_ontology/#socialAssistance> rdf:type owl:NamedIndividual ,
+                                                                         <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                rdfs:label "assistenza sociale e sanitaria"@it ,
+                                                                           "social assistance buildings"@en ;
+                                                                <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#socialRecreational
+<https://dmikhaylova.github.io/itdt_ontology/#socialRecreational> rdf:type owl:NamedIndividual ,
+                                                                           <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                                  rdfs:label "social recreational structures"@en ,
+                                                                             "sociale e ricreativo"@it ;
+                                                                  <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#sport
+<https://dmikhaylova.github.io/itdt_ontology/#sport> rdf:type owl:NamedIndividual ,
+                                                              <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                     rdfs:label "sport structures"@en ,
+                                                                "sportivo"@it ;
+                                                     <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#subfile
+<https://dmikhaylova.github.io/itdt_ontology/#subfile> rdf:type owl:NamedIndividual ,
+                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                rico:RecordSetType ;
+                                                       rdfs:label "sottofascicolo"@it ,
+                                                                  "subfile"@en ;
+                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#techPlant
+<https://dmikhaylova.github.io/itdt_ontology/#techPlant> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "impianto tecnologico"@it ,
+                                                                    "technological plants"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#terracedHouse
-:terracedHouse rdf:type owl:NamedIndividual ,
-                        <http://www.w3.org/2004/02/skos/core#Concept> ,
-                        :FormalBuildingType ;
-               rdfs:label "terraced house"@en ;
-               owl:sameAs "http://vocab.getty.edu/page/aat/300132989" ;
-               <http://www.w3.org/2004/02/skos/core#definition> "Formal type of residential building that applies to houses that are composed by  a series of housing units joined side by side, but not having any other dwellings nor above nor below."@en ;
-               <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#terracedHouse> rdf:type owl:NamedIndividual ,
+                                                                      <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                      <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                             rdfs:label "casa a schiera"@it ,
+                                                                        "terraced house"@en ;
+                                                             owl:sameAs "http://vocab.getty.edu/page/aat/300132989" ;
+                                                             <http://www.w3.org/2004/02/skos/core#definition> "Formal type of residential building that applies to houses that are composed by  a series of housing units joined side by side, but not having any other dwellings nor above nor below."@en ;
+                                                             <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#touristicUse
-:touristicUse rdf:type owl:NamedIndividual ,
-                       <http://www.w3.org/2004/02/skos/core#Concept> ,
-                       :FunctionalBuildingType ;
-              rdfs:label "touristic use"@en ;
-              owl:sameAs "http://vocab.getty.edu/aat/300164125" ;
-              <http://www.w3.org/2004/02/skos/core#inScheme> :functionalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#touristicUse> rdf:type owl:NamedIndividual ,
+                                                                     <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                     <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                            rdfs:label "touristic use"@en ,
+                                                                       "turistico-ricettiva"@it ;
+                                                            owl:sameAs "http://vocab.getty.edu/aat/300164125" ;
+                                                            <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#functionalBuildingTypes> .
 
 
 ###  https://dmikhaylova.github.io/itdt_ontology/#towerAppartmentBuilding
-:towerAppartmentBuilding rdf:type owl:NamedIndividual ,
-                                  <http://www.w3.org/2004/02/skos/core#Concept> ,
-                                  :FormalBuildingType ;
-                         rdfs:label "tower appartment building"@en ;
-                         owl:sameAs "http://vocab.getty.edu/aat/300004811" ;
-                         <http://www.w3.org/2004/02/skos/core#inScheme> :formalBuildingTypes .
+<https://dmikhaylova.github.io/itdt_ontology/#towerAppartmentBuilding> rdf:type owl:NamedIndividual ,
+                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                                <https://dmikhaylova.github.io/itdt_ontology/#FormalBuildingType> ;
+                                                                       rdfs:label "casa a torre"@it ,
+                                                                                  "tower appartment building"@en ;
+                                                                       owl:sameAs "http://vocab.getty.edu/aat/300004811" ;
+                                                                       <http://www.w3.org/2004/02/skos/core#inScheme> <https://dmikhaylova.github.io/itdt_ontology/#formalBuildingTypes> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#tracingPaper
+<https://dmikhaylova.github.io/itdt_ontology/#tracingPaper> rdf:type owl:NamedIndividual ,
+                                                                     rico:DocumentaryFormType ;
+                                                            rdfs:label "lucido"@it ,
+                                                                       "tracing paper"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#transparancyFilm
+<https://dmikhaylova.github.io/itdt_ontology/#transparancyFilm> rdf:type owl:NamedIndividual ,
+                                                                         rico:DocumentaryFormType ;
+                                                                rdfs:label "transparancy film"@en ,
+                                                                           "transparancy film"@it .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#transport
+<https://dmikhaylova.github.io/itdt_ontology/#transport> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "transport structures"@en ,
+                                                                    "trasporti"@it ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#publicUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#typescript
+<https://dmikhaylova.github.io/itdt_ontology/#typescript> rdf:type owl:NamedIndividual ,
+                                                                   rico:DocumentaryFormType ;
+                                                          rdfs:label "dattiloscritto"@it ,
+                                                                     "typescript"@en .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#warehouse
+<https://dmikhaylova.github.io/itdt_ontology/#warehouse> rdf:type owl:NamedIndividual ,
+                                                                  <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                         rdfs:label "magazzini ed imprese edili"@it ,
+                                                                    "warehouses"@en ;
+                                                         <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#industrialUse> .
+
+
+###  https://dmikhaylova.github.io/itdt_ontology/#workshop
+<https://dmikhaylova.github.io/itdt_ontology/#workshop> rdf:type owl:NamedIndividual ,
+                                                                 <https://dmikhaylova.github.io/itdt_ontology/#FunctionalBuildingType> ;
+                                                        rdfs:label "officine e carrozzerie"@it ,
+                                                                   "workshops"@en ;
+                                                        <http://www.w3.org/2004/02/skos/core#broader> <https://dmikhaylova.github.io/itdt_ontology/#industrialUse> .
 
 
 ###  https://www.ica.org/standards/RiC/vocabularies/documentaryFormTypes
@@ -2852,7 +3434,8 @@ wd:Q5 rdf:type owl:Class ;
 
 ###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File
 <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#File> rdf:type owl:NamedIndividual ,
-                                                                              <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                              <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                              rico:RecordSetType ;
                                                                      rdfs:label "file"@en ;
                                                                      <http://www.w3.org/2004/02/skos/core#definition> """An organized unit of documents grouped together either for
             current use by the creator or in the process of archival arrangement, because they
@@ -2864,7 +3447,8 @@ wd:Q5 rdf:type owl:Class ;
 
 ###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds
 <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Fonds> rdf:type owl:NamedIndividual ,
-                                                                               <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                               <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                               rico:RecordSetType ;
                                                                       rdfs:label "fonds"@en ;
                                                                       <http://www.w3.org/2004/02/skos/core#definition> """The whole of the records, regardless of form or medium,
             organically created and/or accumulated and used by a particular person, family, or
@@ -2876,7 +3460,8 @@ wd:Q5 rdf:type owl:Class ;
 
 ###  https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series
 <https://www.ica.org/standards/RiC/vocabularies/recordSetTypes#Series> rdf:type owl:NamedIndividual ,
-                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ;
+                                                                                <http://www.w3.org/2004/02/skos/core#Concept> ,
+                                                                                rico:RecordSetType ;
                                                                        rdfs:label "series"@en ;
                                                                        <http://www.w3.org/2004/02/skos/core#definition> """Documents arranged in accordance with a filing system or
             maintained as a unit because they result from the same accumulation or filing process,
@@ -2892,84 +3477,84 @@ wd:Q5 rdf:type owl:Class ;
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AcceptancePhase
-                :AnalysisPhase
-                :CreativePhase
-                :ExecutionPhase
-                :FollowUpPhase
+  owl:members ( <https://dmikhaylova.github.io/itdt_ontology/#AcceptancePhase>
+                <https://dmikhaylova.github.io/itdt_ontology/#AnalysisPhase>
+                <https://dmikhaylova.github.io/itdt_ontology/#CreativePhase>
+                <https://dmikhaylova.github.io/itdt_ontology/#ExecutivePhase>
+                <https://dmikhaylova.github.io/itdt_ontology/#FollowUpPhase>
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :BidPhase
-                :ConstructionPhase
-                :PermitStage
+  owl:members ( <https://dmikhaylova.github.io/itdt_ontology/#BidStage>
+                <https://dmikhaylova.github.io/itdt_ontology/#ConstructionStage>
+                <https://dmikhaylova.github.io/itdt_ontology/#PermitStage>
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :ConciseIdeaStage
-                :DevelopmentStage
-                :SetupStage
+  owl:members ( <https://dmikhaylova.github.io/itdt_ontology/#ConciseIdeaStage>
+                <https://dmikhaylova.github.io/itdt_ontology/#DevelopmentStage>
+                <https://dmikhaylova.github.io/itdt_ontology/#SetupStage>
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :GraphicalRecord
-                :Model
-                :WrittenRecord
+  owl:members ( <https://dmikhaylova.github.io/itdt_ontology/#GraphicalRecord>
+                <https://dmikhaylova.github.io/itdt_ontology/#Model>
+                <https://dmikhaylova.github.io/itdt_ontology/#WrittenRecord>
               )
 ] .
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :agriculturalUse
-                        :commercialUse
-                        :executiveUse
-                        :industrialUse
-                        :publicUse
-                        :residentialUse
-                        :touristicUse
+  owl:distinctMembers ( <https://dmikhaylova.github.io/itdt_ontology/#agriculturalUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#commercialUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#executiveUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#industrialUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#publicUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#residentialUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#touristicUse>
                       )
 ] .
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :blockAppartmentBuilding
-                        :courtyardHouse
-                        :guardRailHouses
-                        :isolatedHouse
-                        :rowAppartmentBuilding
-                        :terracedHouse
-                        :towerAppartmentBuilding
+  owl:distinctMembers ( <https://dmikhaylova.github.io/itdt_ontology/#blockAppartmentBuilding>
+                        <https://dmikhaylova.github.io/itdt_ontology/#courtyardHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#guardRailHouses>
+                        <https://dmikhaylova.github.io/itdt_ontology/#isolatedHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#rowAppartmentBuilding>
+                        <https://dmikhaylova.github.io/itdt_ontology/#terracedHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#towerAppartmentBuilding>
                       )
 ] .
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :blockAppartmentBuilding
-                        :courtyardHouse
-                        :multiFamilyHouse
-                        :rowAppartmentBuilding
-                        :terracedHouse
-                        :towerAppartmentBuilding
+  owl:distinctMembers ( <https://dmikhaylova.github.io/itdt_ontology/#blockAppartmentBuilding>
+                        <https://dmikhaylova.github.io/itdt_ontology/#courtyardHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#multiFamilyHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#rowAppartmentBuilding>
+                        <https://dmikhaylova.github.io/itdt_ontology/#terracedHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#towerAppartmentBuilding>
                       )
 ] .
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :industrialUse
-                        :residentialUse
+  owl:distinctMembers ( <https://dmikhaylova.github.io/itdt_ontology/#industrialUse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#residentialUse>
                       )
 ] .
 
 
 [ rdf:type owl:AllDifferent ;
-  owl:distinctMembers ( :isolatedHouse
-                        :multiFamilyHouse
+  owl:distinctMembers ( <https://dmikhaylova.github.io/itdt_ontology/#isolatedHouse>
+                        <https://dmikhaylova.github.io/itdt_ontology/#multiFamilyHouse>
                       )
 ] .
 
