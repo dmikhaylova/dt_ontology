@@ -6,3 +6,9 @@ the knowledge process behind architectural projects.
 
 Check the html documentation at [the main page](https://dmikhaylova.github.io/itdt_ontology/).
 
+# License
+The ontology is licensed under Creative Common BY 4.0 - you can copy and redistribute the material, remix, transform, and build upon the material for any purpose, even commercially, but the attribution is required.
+
+Attribution names: Daria Mikhaylova, Daniele Metilli
+
+[![License: CC BY 4.0](https://licensebuttons.net/l/by/4.0/80x15.png)](https://creativecommons.org/licenses/by/4.0/)
