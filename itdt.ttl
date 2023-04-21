@@ -1,4 +1,5 @@
 @prefix : <https://dmikhaylova.github.io/itdt_ontology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix wd: <https://www.wikidata.org/wiki/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -13,7 +14,11 @@
 @base <https://dmikhaylova.github.io/itdt_ontology> .
 
 <https://dmikhaylova.github.io/itdt_ontology> rdf:type owl:Ontology ;
+                                               cc:attributionName "Daria Mikhaylova, Daniele Metilli"@en ;
+                                               cc:attributionURL "https://dmikhaylova.github.io/itdt_ontology/"@en ;
+                                               cc:license "https://creativecommons.org/licenses/by/4.0/"@en ;
                                                dc:creator "Daria Mikhaylova (University of Pisa)"@en ;
+                                               dc:rights "Copyright 2022 -... Daria Mikhaylova, Daniele Metilli"@en ;
                                                dcterms:contributor "Daniele Metilli (University College London)"@en ;
                                                <http://purl.org/vocab/vann/preferredNamespacePrefix> "itdt"@en ;
                                                rdfs:comment """The ITDT ontology is an extension of RiC-O (https://www.ica.org/standards/RiC/ontology) created to describe the architectural records of the Italian architect and engineer Dino Tamburini. 
@@ -26,8 +31,24 @@ The main concept of the ontology is the Architectural Project, which is seen fro
 #    Annotation properties
 #################################################################
 
+###  http://creativecommons.org/ns#attributionName
+cc:attributionName rdf:type owl:AnnotationProperty .
+
+
+###  http://creativecommons.org/ns#attributionURL
+cc:attributionURL rdf:type owl:AnnotationProperty .
+
+
+###  http://creativecommons.org/ns#license
+cc:license rdf:type owl:AnnotationProperty .
+
+
 ###  http://purl.org/dc/elements/1.1/creator
 dc:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/rights
+dc:rights rdf:type owl:AnnotationProperty .
 
 
 ###  http://purl.org/dc/elements/1.1/title
